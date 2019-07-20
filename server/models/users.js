@@ -13,8 +13,8 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true
   },
-  favouriteFilms: {
-    type: Array
+  favourites: {
+    films: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
   }
 })
 
