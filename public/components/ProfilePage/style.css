@@ -32,3 +32,8 @@
 .modal-content input {
   margin: 1rem;
 }
+
+.add-film-drop-down {
+  border: solid 2px steelblue;
+  height: 10rem;
+}
