@@ -1,0 +1,17 @@
+.nav-bar {
+  background: lightsteelblue;
+  display: flex;
+  justify-content: center;
+  height: 3rem;
+  margin: auto;
+}
+
+.search-bar {
+  height: 1rem;
+  margin: auto;
+}
+
+.home-btn {
+  height: 1rem;
+  margin: auto;
+}

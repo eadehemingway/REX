@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Header } from './components/Header';
+import { Nav } from './components/Nav';
 import { Signup } from './components/Signup';
 import { Signin } from './components/Signin';
 import { Recommendations } from './components/Recommendations';
@@ -11,7 +11,7 @@ export class App extends React.Component {
   render() {
     return (
       <Router>
-        <Header />
+        <Nav />
         <Switch>
           <Route exact path="/" component={ProfilePage} />
           <Route path="/user/:id" component={ExternalProfile} />
