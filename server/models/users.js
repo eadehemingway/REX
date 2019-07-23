@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
   favourites: {
     films: [filmSchema]
   },
-  receivedRex: [rexSchema]
+  receivedRex: [{ approved: rexSchema }, { pending: rexSchema }]
 });
 
 const User = mongoose.model('User', userSchema);

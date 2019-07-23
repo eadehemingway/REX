@@ -37,7 +37,7 @@ exports.createUser = async (req, res) => {
   }
 };
 
-exports.getProfile = (req, res) => {
+exports.getUser = (req, res) => {
   const object = {
     name: 'shahenaz',
     age: '25'
@@ -46,12 +46,12 @@ exports.getProfile = (req, res) => {
 };
 
 exports.search = (req, res) => {
-  const { word } = req.params;
-  if (word === 'Jem') {
+  const { handle } = req.params;
+  if (handle === 'Jem') {
     res.json({
       age: '25'
     });
-  } else if (word === 'eade') {
+  } else if (handle === 'eade') {
     res.json({
       age: '26'
     });

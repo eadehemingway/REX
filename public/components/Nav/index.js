@@ -7,7 +7,7 @@ export class Nav extends Component {
     value: ''
   };
   componentDidMount() {
-    axios.get('/api/profile').then(({ data }) => {
+    axios.get('/api/user').then(({ data }) => {
       // console.log('data',data);
     });
   }

@@ -16,7 +16,7 @@ export class ProfilePage extends React.Component {
 
     return (
       <div className="page-content">
-        <h1> profile page</h1>
+        <h1> user page</h1>
 
         <div className="link-container">
           <Link to="/signup"> SIGN UP</Link>

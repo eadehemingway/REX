@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  getProfile,
+  getUser,
   search,
   createUser,
   getAllUsers
@@ -8,7 +8,8 @@ const {
 
 const router = express.Router();
 
-router.get('/api/v1/profile', getProfile).get('/api/search/:word', search);
+router.get('/api/v1/user', getUser);
+router.get('/api/user/:handle', search);
 router.post('/api/v1/user/signup', createUser);
 router.get('/api/v1/user', getAllUsers);
 
