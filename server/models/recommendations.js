@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const recommendationsSchema = new mongoose.Schema({
   movie: {
-    id: { type: mongoose.Schema.Types.ObjectId, ref: 'Movie' },
+    id: { type: mongoose.Schema.Types.ObjectId, ref: 'Film' },
     required: [true, 'Film name is required'],
     trim: true
   },
@@ -16,8 +16,8 @@ const recommendationsSchema = new mongoose.Schema({
     type: String,
     trim: true
   }
-})
+});
 
-const Recommendation = mongoose.model('Recommendation', recommendationsSchema)
+const Recommendation = mongoose.model('Recommendation', recommendationsSchema);
 
-module.exports = Recommendation
+module.exports = Recommendation;

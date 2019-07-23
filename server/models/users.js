@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   handle: {
@@ -14,10 +14,10 @@ const userSchema = new mongoose.Schema({
     trim: true
   },
   favourites: {
-    films: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
+    films: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Film' }]
   }
-})
+});
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema);
 
-module.exports = User
+module.exports = User;
