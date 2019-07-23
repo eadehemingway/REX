@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Modal } from './Modal';
+import React from 'react';
+
 import { AddFavFilmDropDown } from './AddFavFilmDropDown';
 
 export class FavouriteFilms extends React.Component {
