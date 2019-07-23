@@ -15,7 +15,6 @@ exports.getAllUsers = async (req, res) => {
     console.log(err);
   }
 };
-
 exports.createUser = async (req, res) => {
   try {
     const newUser = await User.create({
@@ -50,4 +49,28 @@ exports.getUser = (req, res) => {
   } else {
     res.json({ age: 10 });
   }
+};
+
+exports.addFavFilm = (req, res) => {
+  const filmInfo = req.body;
+  const handle = 'eade'; // get from cookie once sign in working
+
+  User.findOne({ handle: 'eade' }, (err, doc) => {
+    if (err) console.log('err', err);
+    doc.favourites.films.push(filmInfo);
+    doc.save();
+    res.json({ doc });
+  });
+};
+
+exports.deleteFavFilm = (req, res) => {
+  const { id } = req.params;
+
+  User.findOne({ handle: 'eade' }, (err, doc) => {
+    const filmArr = doc.favourites.films;
+    const index = filmArr.findIndex(e => e.id === id);
+    filmArr.splice(index, 1);
+    doc.save();
+    res.json({ doc });
+  });
 };

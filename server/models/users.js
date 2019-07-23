@@ -7,16 +7,17 @@ const tagSchema = new mongoose.Schema({
 const rexSchema = new mongoose.Schema({
   title: String,
   from: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  comment: String
+  comment: String,
+  pending: Boolean
 });
 
 const filmSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Film name is required'],
-    trim: true,
-    tag: [tagSchema]
-  }
+    trim: true
+  },
+  tag: [tagSchema]
 });
 
 const userSchema = new mongoose.Schema({
@@ -35,7 +36,7 @@ const userSchema = new mongoose.Schema({
   favourites: {
     films: [filmSchema]
   },
-  receivedRex: [{ approved: rexSchema }, { pending: rexSchema }]
+  receivedRex: [rexSchema]
 });
 
 const User = mongoose.model('User', userSchema);
