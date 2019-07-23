@@ -1,5 +1,24 @@
 const mongoose = require('mongoose');
 
+const tagSchema = new mongoose.Schema({
+  name: String,
+  colour: String
+});
+const rexSchema = new mongoose.Schema({
+  title: String,
+  from: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  comment: String
+});
+
+const filmSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Film name is required'],
+    trim: true,
+    tag: [tagSchema]
+  }
+});
+
 const userSchema = new mongoose.Schema({
   handle: {
     type: String,
@@ -14,8 +33,9 @@ const userSchema = new mongoose.Schema({
     trim: true
   },
   favourites: {
-    films: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Film' }]
-  }
+    films: [filmSchema]
+  },
+  receivedRex: [rexSchema]
 });
 
 const User = mongoose.model('User', userSchema);

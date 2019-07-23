@@ -23,7 +23,8 @@ exports.createUser = async (req, res) => {
       email: req.body.email,
       favourites: {
         films: req.body.favourites.films
-      }
+      },
+      receivedRex: req.body.receivedRex
     });
     res.status(200).json({
       status: 'success',
