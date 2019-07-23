@@ -1,16 +1,12 @@
 const express = require('express');
-const {
-  getUser,
-  search,
-  createUser,
-  getAllUsers
-} = require('./controllers/users');
+const { getUser, createUser, getAllUsers } = require('./controllers/users');
 
 const router = express.Router();
 
-router.get('/api/v1/user', getUser);
-router.get('/api/user/:handle', search);
-router.post('/api/v1/user/signup', createUser);
-router.get('/api/v1/user', getAllUsers);
+router.get('/api/user/:handle', getUser);
+router.post('/api/user/signup', createUser);
+// router.patch('/api/user/film', updateFavFilms);
+// router.patch('/api/user/film/tag', updateFilmTags);
+// router.patch('/api/user/rex', updateRex);
 
 module.exports = router;

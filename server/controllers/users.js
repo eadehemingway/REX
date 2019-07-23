@@ -38,14 +38,6 @@ exports.createUser = async (req, res) => {
 };
 
 exports.getUser = (req, res) => {
-  const object = {
-    name: 'shahenaz',
-    age: '25'
-  };
-  res.json(object);
-};
-
-exports.search = (req, res) => {
   const { handle } = req.params;
   if (handle === 'Jem') {
     res.json({
