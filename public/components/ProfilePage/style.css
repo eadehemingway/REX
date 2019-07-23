@@ -2,3 +2,38 @@
   display: flex;
   flex-direction: column;
 }
+
+.modal-window {
+  width: 30%;
+  height: 20rem;
+  background: white;
+  z-index: 2;
+  position: relative;
+  margin: 25% auto;
+}
+
+.modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal-content {
+  margin: 2rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.modal-content button,
+.modal-content input {
+  margin: 1rem;
+}
+
+.add-film-drop-down {
+  border: solid 2px steelblue;
+  height: 10rem;
+}
