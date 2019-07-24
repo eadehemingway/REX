@@ -6,7 +6,7 @@ const tagSchema = new mongoose.Schema({
 });
 const rexSchema = new mongoose.Schema({
   title: String,
-  from: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  fromHandle: String,
   comment: String,
   pending: Boolean
 });
@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Please enter your email'],
     unique: true,
     trim: true
+  },
+  password: {
+    type: String,
+    required: [true, 'please enter your password']
   },
   favourites: {
     films: [filmSchema]
