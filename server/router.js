@@ -1,16 +1,13 @@
 const express = require('express');
+const { getUser, createUser, getAllUsers } = require('./controllers/users');
 const {
-  getUser,
-  createUser,
   addFavFilm,
-  getAllUsers,
   deleteFavFilm,
-  addRex,
   addTagFilms,
-  removeTagFilms,
-  deleteRex,
-  changeRexStatus
-} = require('./controllers/users');
+  removeTagFilms
+} = require('./controllers/films');
+
+const { addRex, deleteRex, changeRexStatus } = require('./controllers/rex');
 
 const router = express.Router();
 
