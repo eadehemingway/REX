@@ -14,7 +14,7 @@ export class FavouriteFilms extends React.Component {
     const { showAddFilmDropDown } = this.state;
     return (
       <div>
-        <h2> Favourite films</h2>
+        <h2> my films</h2>
         <button onClick={this.toggleDropDown}> add new</button>
         {showAddFilmDropDown && <AddFavFilmDropDown />}
       </div>
