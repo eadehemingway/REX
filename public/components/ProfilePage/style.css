@@ -37,3 +37,11 @@
   border: solid 2px steelblue;
   height: 10rem;
 }
+
+.auto-complete-list {
+  list-style: none;
+}
+
+.drop-down-image {
+  width: 42px;
+}
