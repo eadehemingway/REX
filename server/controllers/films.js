@@ -1,61 +1,83 @@
-exports.addFavFilm = (req, res) => {
-  const filmInfo = req.body;
-  const handle = 'eade'; // get from cookie once sign in working
+const request = require('request')
+const User = require('./../models/users')
 
+exports.addFavFilm = (req, res) => {
+  const filmInfo = req.body
   User.findOne({ handle: 'eade' }, (err, doc) => {
-    if (err) console.log('err', err);
-    doc.favourites.films.push(filmInfo);
-    doc.save();
-    res.json({ doc });
-  });
-};
+    if (err) console.log('err', err)
+    doc.favourites.films.push(filmInfo)
+    doc.save()
+    res.json({ doc })
+  })
+}
 
 exports.deleteFavFilm = (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params
 
   User.findOne({ handle: 'eade' }, (err, doc) => {
-    const filmArr = doc.favourites.films;
-    const index = filmArr.findIndex(e => e.id === id);
-    filmArr.splice(index, 1);
-    doc.save();
-    res.json({ doc });
-  });
-};
+    const filmArr = doc.favourites.films
+    const index = filmArr.findIndex(e => e.id === id)
+    filmArr.splice(index, 1)
+    doc.save()
+    res.json({ doc })
+  })
+}
 
 exports.addTagFilms = (req, res) => {
-  const { tag } = req.body;
+  const { tag } = req.body
 
-  const filmId = req.params.id;
-  const handle = 'eade'; // get from cookies
+  const filmId = req.params.id
+  const handle = 'eade' // get from cookies
   User.findOne({ handle }, (err, doc) => {
-    if (err) console.log('err', err);
+    if (err) console.log('err', err)
 
-    const filmArr = doc.favourites.films;
-    const index = filmArr.findIndex(e => e.id === filmId);
+    const filmArr = doc.favourites.films
+    const index = filmArr.findIndex(e => e.id === filmId)
 
     if (filmArr.length > 0) {
-      filmArr[index].tag.push(tag);
+      filmArr[index].tag.push(tag)
     }
 
-    doc.save();
-    res.json({ doc });
-  });
-};
+    doc.save()
+    res.json({ doc })
+  })
+}
 
 exports.removeTagFilms = (req, res) => {
-  const { tagId } = req.params;
-  const filmId = req.params.id;
-  const handle = 'eade'; // get from cookies
+  const { tagId } = req.params
+  const filmId = req.params.id
+  const handle = 'eade' // get from cookies
   User.findOne({ handle }, (err, doc) => {
-    if (err) console.log('err', err);
+    if (err) console.log('err', err)
 
-    const filmArr = doc.favourites.films;
-    const index = filmArr.findIndex(e => e.id === filmId);
-    const filmToAlter = filmArr[index];
-    const tagIndex = filmToAlter.tag.findIndex(t => t.id === tagId);
-    filmToAlter.tag.splice(tagIndex, 1);
+    const filmArr = doc.favourites.films
+    const index = filmArr.findIndex(e => e.id === filmId)
+    const filmToAlter = filmArr[index]
+    const tagIndex = filmToAlter.tag.findIndex(t => t.id === tagId)
+    filmToAlter.tag.splice(tagIndex, 1)
 
-    doc.save();
-    res.json({ doc });
-  });
-};
+    doc.save()
+    res.json({ doc })
+  })
+}
+
+exports.getFilm = (req, res) => {
+  const { title } = req.params
+
+  request.get(
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${title}`,
+    (err, response, body) => {
+      if (err) console.log(err)
+      const data = JSON.parse(body).results
+
+      const filmInfo = data
+        .map(({ title, poster_path }) => ({ title, poster_path }))
+        .filter(t => t.title.startsWith(title[0].toUpperCase()))
+        .slice(0, 5)
+      res.status(200).json({
+        status: 'success',
+        filmInfo
+      })
+    }
+  )
+}
