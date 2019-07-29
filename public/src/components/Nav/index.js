@@ -8,7 +8,7 @@ export class Nav extends Component {
   };
   componentDidMount() {
     axios.get('/api/user').then(({ data }) => {
-      // console.log('data',data);
+
     });
   }
   search = e => {
@@ -23,6 +23,7 @@ export class Nav extends Component {
         <Link to="/" className="home-btn">
           {' '}
           HOME{' '}
+
         </Link>
         <div className="search-bar">
           <input

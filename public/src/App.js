@@ -4,7 +4,7 @@ import { Nav } from './components/Nav';
 import { Signup } from './components/Signup';
 import { Signin } from './components/Signin';
 import { Recommendations } from './components/Recommendations';
-import { ProfilePage } from './components/ProfilePage';
+import { ProfilePageConnected } from './components/ProfilePage';
 import { ExternalProfile } from './components/ExternalProfile';
 
 export class App extends React.Component {
@@ -13,7 +13,7 @@ export class App extends React.Component {
       <Router>
         <Nav />
         <Switch>
-          <Route exact path="/" component={ProfilePage} />
+          <Route exact path="/" component={ProfilePageConnected} />
           <Route path="/user/:id" component={ExternalProfile} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={Signin} />

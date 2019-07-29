@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal } from './Modal';
 import { FavouriteFilms } from './FavouriteFilms';
+import {increment} from './../../actions/actions'
+import {connect} from 'react-redux'
 
-export class ProfilePage extends React.Component {
+
+class ProfilePage extends React.Component {
   state = {
     modalOpen: false
   };
@@ -17,7 +20,7 @@ export class ProfilePage extends React.Component {
     return (
       <div className="page-content">
         <h1> user page</h1>
-
+      <button onClick={this.props.incrementByFive}> nummmmmmmmmmmmmmmmmmmmmmmmmmmm{this.props.eade}</button>
         <div className="link-container">
           <Link to="/signup"> SIGN UP</Link>
           <Link to="/signin"> SIGN IN </Link>
@@ -33,3 +36,18 @@ export class ProfilePage extends React.Component {
     );
   }
 }
+
+
+export const ProfilePageConnected = connect(
+  (state)=>{
+    return {
+      eade: state.counter
+    }
+
+}, 
+  (dispatch)=> {
+    return {
+      incrementByFive: () => dispatch(increment(5))
+    }
+
+})(ProfilePage)
