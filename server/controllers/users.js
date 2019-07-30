@@ -1,5 +1,11 @@
 const jwt = require('jsonwebtoken')
+const path = require('path')
+
 const User = require('../models/users')
+
+exports.getHome = (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/dist/index.html'))
+}
 
 exports.getAllUsers = async (req, res) => {
   try {
@@ -46,7 +52,7 @@ exports.getUser = (req, res) => {
 exports.validateUser = async (req, res) => {
   const { handle, password } = req.body
 
-  const user = await User.findOne({ handle }).select('+password')
+  const user = await User.findOne({ handle })
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     res.send('no user found')
@@ -64,7 +70,7 @@ exports.validateUser = async (req, res) => {
   }
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true
   res.cookie('jwt', token, cookieOptions)
-  user.password = undefined
+
   res.status(200).json({
     status: 'success',
     token,
