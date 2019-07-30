@@ -1,5 +1,10 @@
 const express = require('express')
-const { getUser, createUser, getAllUsers } = require('./controllers/users')
+const {
+  getUser,
+  createUser,
+  getAllUsers,
+  validateUser
+} = require('./controllers/users')
 const {
   addFavFilm,
   deleteFavFilm,
@@ -15,7 +20,7 @@ const router = express.Router()
 router.get('/api/user/:handle', getUser)
 router.get('/api/user', getAllUsers)
 router.post('/api/user/signup', createUser)
-// router.post('/api/user/signin', validateUser);
+router.post('/api/user/signin', validateUser)
 router.get('/api/film/:title', getFilm)
 router.patch('/api/film', addFavFilm)
 router.delete('/api/film/:id', deleteFavFilm)

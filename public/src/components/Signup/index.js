@@ -3,24 +3,24 @@ import axios from 'axios'
 
 export class Signup extends Component {
   state = {
-    error: null
+    handle: '',
+    password: '',
+    email: ''
   }
 
   handleChange = ({ target: { name, value } }) => {
-    console.log(name, value)
-
     this.setState({ [name]: value })
   }
 
   handleClick = () => {
     const { handle, email, password } = this.state
-    const { history } = this.props
+    // const { history } = this.props
     axios
       .post('/api/user/signup', { handle, email, password })
       .then(({ data }) => {
         if (data) {
           console.log('dataaaa', data)
-          history.push('/signin')
+          // history.push('/signin')
         } else {
           this.setState({ error })
         }
@@ -30,37 +30,31 @@ export class Signup extends Component {
       })
   }
 
-  onSubmit = e => {
-    e.preventDefault()
-  }
-
   render() {
     return (
       <div>
-        <form onClick={this.onSubmit}>
-          <input
-            type="text"
-            name="handle"
-            value={this.state.handle}
-            placeholder="handle"
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            name="email"
-            value={this.state.email}
-            placeholder="username"
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <button onClick={this.handleClick}>signUp</button>
-        </form>
+        <input
+          type="text"
+          name="handle"
+          value={this.state.handle}
+          placeholder="handle"
+          onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          name="email"
+          value={this.state.email}
+          placeholder="username"
+          onChange={this.handleChange}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          value={this.state.password}
+          onChange={this.handleChange}
+        />
+        <button onClick={this.handleClick}>signUp</button>
       </div>
     )
   }
