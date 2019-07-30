@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export class Nav extends Component {
   state = {
     value: ''
-  };
-  componentDidMount() {
-    axios.get('/api/user').then(({ data }) => {
-
-    });
   }
-  search = e => {
-    const { value } = this.state;
 
-    axios.get(`/api/search/${value}`).then(({ data }) => {});
-  };
+  componentDidMount() {
+    axios.get('/api/user').then(({ data }) => {})
+  }
+
+  search = e => {
+    const { value } = this.state
+
+    axios.get(`/api/search/${value}`).then(({ data }) => {})
+  }
 
   render() {
     return (
@@ -23,7 +23,6 @@ export class Nav extends Component {
         <Link to="/" className="home-btn">
           {' '}
           HOME{' '}
-
         </Link>
         <div className="search-bar">
           <input
@@ -33,6 +32,6 @@ export class Nav extends Component {
           <button onClick={this.search}> search</button>
         </div>
       </nav>
-    );
+    )
   }
 }

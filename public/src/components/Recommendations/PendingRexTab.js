@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export class PendingRexTab extends React.Component {
   state = {
     inApprovedTab: true
-  };
+  }
+
   render() {
     return (
       <section className="page-content">
@@ -15,6 +16,6 @@ export class PendingRexTab extends React.Component {
           <li>one</li>
         </ul>
       </section>
-    );
+    )
   }
 }

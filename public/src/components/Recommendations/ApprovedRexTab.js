@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export class ApprovedRexTab extends React.Component {
   state = {
     inApprovedTab: true
-  };
+  }
+
   render() {
     return (
       <section className="page-content">
@@ -16,6 +17,6 @@ export class ApprovedRexTab extends React.Component {
           <li>one</li>
         </ul>
       </section>
-    );
+    )
   }
 }
