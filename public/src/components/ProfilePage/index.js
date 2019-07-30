@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
-import { increment } from '../../actions/actions'
 
 class ProfilePage extends React.Component {
   state = {

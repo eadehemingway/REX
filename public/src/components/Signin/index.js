@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { signInSuccess } from '../../actions/actions'
 
-export class Signin extends React.Component {
+class Signin extends React.Component {
   state = {
     handle: '',
     password: ''
@@ -14,13 +16,14 @@ export class Signin extends React.Component {
 
   handleClick = () => {
     const { handle, password } = this.state
-    // const { history } = this.props
+    const { history } = this.props
     axios
       .post('/api/user/signin', { handle, password })
       .then(({ data }) => {
         if (data) {
           console.log('dataaaa', data)
-          // history.push('/signin')
+          history.push('/signin')
+          this.props.signInSuccess()
         } else {
           this.setState({ error })
         }
@@ -57,3 +60,10 @@ export class Signin extends React.Component {
     )
   }
 }
+
+export const SigninConnected = connect(
+  state => ({ signedIn: state.signedIn }),
+  dispatch => ({
+    signInSuccess: () => dispatch(signInSuccess())
+  })
+)(Signin)
