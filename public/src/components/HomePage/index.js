@@ -12,5 +12,6 @@ export const HomePage = () => (
       {' '}
       sign up{' '}
     </Link>
+    <Link to="/recommendations"> RECOMMENDATIONS </Link>
   </div>
 )

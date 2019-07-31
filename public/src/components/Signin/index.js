@@ -60,6 +60,7 @@ class Signin extends React.Component {
           dont have an account?
           <Link to="/signup"> SIGN UP</Link> instead
         </p>
+        <Link to="/recommendations"> RECOMMENDATIONS </Link>
       </div>
     )
   }
