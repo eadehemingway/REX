@@ -36,7 +36,7 @@ exports.createUser = async (req, res) => {
       }
     })
   } catch (err) {
-    console.log(err)
+    res.send('error creating user')
   }
 }
 
@@ -74,8 +74,6 @@ exports.validateUser = async (req, res) => {
   res.status(200).json({
     status: 'success',
     token,
-    data: {
-      user
-    }
+    user
   })
 }
