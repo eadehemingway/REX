@@ -4,14 +4,13 @@ import { useSelector } from 'react-redux'
 
 export const ProtectedRoute = ({ component: Component, path }) => {
   const authenticated = useSelector(state => state.signedIn)
-
   return (
     <Route
       exact
       path={path}
-      render={props =>
+      component={() =>
         authenticated ? (
-          <Component {...props} />
+          <Component />
         ) : (
           <Redirect
             to={{

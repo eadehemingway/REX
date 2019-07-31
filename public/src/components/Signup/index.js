@@ -14,18 +14,23 @@ export class Signup extends Component {
 
   handleClick = () => {
     const { handle, email, password } = this.state
-    // const { history } = this.props
+    const { history } = this.props
     axios
       .post('/api/user/signup', { handle, email, password })
       .then(({ data }) => {
         if (data) {
-          console.log('dataaaa', data)
-          // history.push('/signin')
+          console.log('signup success')
+
+          history.push('/signin')
         } else {
+          console.log('signup fail')
+
           this.setState({ error })
         }
       })
       .catch(error => {
+        console.log('signup fail')
+
         this.setState({ error })
       })
   }
@@ -54,7 +59,7 @@ export class Signup extends Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleClick}>signUp</button>
+        <button onClick={this.handleClick}>signUp</button>{' '}
       </div>
     )
   }

@@ -16,19 +16,23 @@ class Signin extends React.Component {
 
   handleClick = () => {
     const { handle, password } = this.state
-    const { history } = this.props
+    const { history, signInSuccess } = this.props
     axios
       .post('/api/user/signin', { handle, password })
       .then(({ data }) => {
-        if (data) {
-          console.log('dataaaa', data)
-          history.push('/signin')
-          this.props.signInSuccess()
+        if (data.status === 'success') {
+          signInSuccess()
+
+          history.push('/')
         } else {
+          console.log('signin fail, NO DATA')
+
           this.setState({ error })
         }
       })
       .catch(error => {
+        console.log('signin fail in CATCH')
+
         this.setState({ error })
       })
   }
@@ -50,7 +54,7 @@ class Signin extends React.Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleClick}>signUp</button>
+        <button onClick={this.handleClick}>sign in</button>
         <p>
           {' '}
           dont have an account?
