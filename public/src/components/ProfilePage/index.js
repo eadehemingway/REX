@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Axios from 'axios'
 import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
 

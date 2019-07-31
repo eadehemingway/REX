@@ -4,9 +4,10 @@ import { Nav } from './components/Nav'
 import { Signup } from './components/Signup'
 import { SigninConnected } from './components/Signin'
 import { Recommendations } from './components/Recommendations'
+import { ProtectedRoute } from './authRoute'
 import { ProfilePageConnected } from './components/ProfilePage'
-import { ExternalProfile } from './components/ExternalProfile'
-import { PublicRoute, ProtectedRoute } from './authRoute'
+
+import { HomePage } from './components/HomePage'
 
 export class App extends React.Component {
   render() {
@@ -14,10 +15,10 @@ export class App extends React.Component {
       <BrowserRouter>
         <Nav />
         <Switch>
-          <ProtectedRoute exact path="/" component={ProfilePageConnected} />
-          <ProtectedRoute path="/user/:id" component={ExternalProfile} />
-          <PublicRoute exact path="/signup" component={Signup} />
-          <PublicRoute exact path="/signin" component={SigninConnected} />
+          <Route exact path="/" component={HomePage} />
+          <ProtectedRoute path="/user/:id" component={ProfilePageConnected} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/signin" component={SigninConnected} />
           <ProtectedRoute
             exact
             path="/recommendations"

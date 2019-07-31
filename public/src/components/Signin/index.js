@@ -20,9 +20,9 @@ class Signin extends React.Component {
     axios
       .post('/api/user/signin', { handle, password })
       .then(({ data }) => {
+        console.log('aaaaaaaaaaaa')
         if (data.status === 'success') {
           signInSuccess()
-
           history.push('/')
         } else {
           console.log('signin fail, NO DATA')

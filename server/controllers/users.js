@@ -44,18 +44,22 @@ exports.getUser = (req, res) => {
   const { handle } = req.params
   User.findOne({ handle }, (err, doc) => {
     if (err) console.log('err', err)
-    doc.save()
     res.json({ doc })
   })
 }
 
 exports.validateUser = async (req, res) => {
   const { handle, password } = req.body
+  console.log('password:', password)
 
   const user = await User.findOne({ handle })
 
+  const passwordMatch = await user.correctPassword(password, user.password)
+  console.log('user:', user.password)
+
   if (!user || !(await user.correctPassword(password, user.password))) {
     res.send('no user found')
+    return
   }
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
