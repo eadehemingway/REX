@@ -5,7 +5,7 @@ import { App } from './App'
 import './style.css'
 import './components/Nav/style.css'
 import './components/ProfilePage/style.css'
-import { store } from './store/configStore'
+import store from './store/configStore'
 
 ReactDOM.render(
   <Provider store={store}>

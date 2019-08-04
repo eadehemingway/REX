@@ -5,16 +5,34 @@ import storage from 'redux-persist/lib/storage'
 import { persistReducer, persistStore } from 'redux-persist'
 import { allReducers } from '../reducers'
 
-const persistConfig = {
-  key: 'root',
-  storage
+function saveToLocalStorage(state) {
+  try {
+    const serializedState = JSON.stringify(state)
+    localStorage.setItem('state', serializedState)
+  } catch (e) {
+    console.log(e)
+  }
 }
 
-const persistedReducer = persistReducer(persistConfig, allReducers)
+function loadFromLocalStorage() {
+  try {
+    const serializedState = localStorage.getItem('state')
+    if (serializedState === null) return undefined
+    return JSON.parse(serializedState)
+  } catch (e) {
+    console.log(e)
+    return undefined
+  }
+}
 
-const loggerMiddleware = createLogger()
-export const store = createStore(
+const persistedState = loadFromLocalStorage()
+
+const store = createStore(
   allReducers,
+  persistedState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  // applyMiddleware(thunk, loggerMiddleware)
 )
+
+store.subscribe(() => saveToLocalStorage(store.getState()))
+
+export default store

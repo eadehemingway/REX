@@ -50,12 +50,10 @@ exports.getUser = (req, res) => {
 
 exports.validateUser = async (req, res) => {
   const { handle, password } = req.body
-  console.log('password:', password)
 
   const user = await User.findOne({ handle })
 
   const passwordMatch = await user.correctPassword(password, user.password)
-  console.log('user:', user.password)
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     res.send('no user found')
@@ -74,6 +72,7 @@ exports.validateUser = async (req, res) => {
   }
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true
   res.cookie('jwt', token, cookieOptions)
+  res.cookie('user', handle)
 
   res.status(200).json({
     status: 'success',

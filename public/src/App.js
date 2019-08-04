@@ -16,9 +16,9 @@ export class App extends React.Component {
         <Nav />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <ProtectedRoute path="/user/:id" component={ProfilePageConnected} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={SigninConnected} />
+          <ProtectedRoute path="/user/:id" component={ProfilePageConnected} />
           <ProtectedRoute
             exact
             path="/recommendations"
