@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Axios from 'axios'
 import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
-import { increment } from '../../actions/actions'
 
 class ProfilePage extends React.Component {
   state = {
@@ -30,7 +30,6 @@ class ProfilePage extends React.Component {
           <Link to="/signup"> SIGN UP</Link>
           <Link to="/signin"> SIGN IN </Link>
           <Link to="/recommendations"> RECOMMENDATIONS </Link>
-          <Link to="/user/:id"> EXTERNAL PROF </Link>
         </div>
 
         <button type="button" onClick={this.toggleModal}>

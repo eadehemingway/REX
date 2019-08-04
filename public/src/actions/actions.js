@@ -1,7 +1,6 @@
-export const increment = num => ({
-  type: 'increment',
-  payload: num
+export const signInSuccess = () => ({
+  type: 'sign_in_success'
 })
-export const decrement = () => ({
-  type: 'decrement'
+export const signOutSuccess = () => ({
+  type: 'sign_out_success'
 })

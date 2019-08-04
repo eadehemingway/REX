@@ -1,15 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
 
 const tagSchema = new mongoose.Schema({
   name: String,
   colour: String
-});
+})
 const rexSchema = new mongoose.Schema({
   title: String,
   fromHandle: String,
   comment: String,
   pending: Boolean
-});
+})
 
 const filmSchema = new mongoose.Schema({
   name: {
@@ -18,7 +19,7 @@ const filmSchema = new mongoose.Schema({
     trim: true
   },
   tag: [tagSchema]
-});
+})
 
 const userSchema = new mongoose.Schema({
   handle: {
@@ -41,8 +42,15 @@ const userSchema = new mongoose.Schema({
     films: [filmSchema]
   },
   receivedRex: [rexSchema]
-});
+})
 
-const User = mongoose.model('User', userSchema);
+userSchema.pre('save', async function(next) {
+  this.password = await bcrypt.hash(this.password, 12)
+  next()
+})
 
-module.exports = User;
+userSchema.methods.correctPassword = async function(userPassword, dbPassword) {
+  return await bcrypt.compare(userPassword, dbPassword)
+}
+const User = mongoose.model('User', userSchema)
+module.exports = User
