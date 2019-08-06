@@ -42,9 +42,16 @@ exports.createUser = async (req, res) => {
 
 exports.getUser = (req, res) => {
   const { handle } = req.params
+  const loggedInUserHandle = req.cookies.user
+
   User.findOne({ handle }, (err, doc) => {
     if (err) console.log('err', err)
-    res.json({ doc })
+    const {favourites} = doc
+    const favourtiesAndRex = {favourites, rex: doc.receivedRex}
+
+
+    const info = handle === loggedInUserHandle ? favourtiesAndRex : favourites
+    res.json({ doc: info })
   })
 }
 

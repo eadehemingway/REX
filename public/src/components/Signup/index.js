@@ -19,17 +19,14 @@ export class Signup extends Component {
       .post('/api/user/signup', { handle, email, password })
       .then(({ data }) => {
         if (data) {
-          console.log('signup success')
 
           history.push('/signin')
         } else {
-          console.log('signup fail')
 
           this.setState({ error })
         }
       })
       .catch(error => {
-        console.log('signup fail')
 
         this.setState({ error })
       })

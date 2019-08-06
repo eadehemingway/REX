@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
-import { NavConnected } from './components/Nav'
+import NavWithRouter from './components/Nav'
 import { Signup } from './components/Signup'
 import { SigninConnected } from './components/Signin'
 import { Recommendations } from './components/Recommendations'
@@ -13,7 +13,7 @@ export class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <NavConnected />
+        <NavWithRouter />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signup" component={Signup} />

@@ -4,3 +4,9 @@ export const signInSuccess = () => ({
 export const signOutSuccess = () => ({
   type: 'sign_out_success'
 })
+
+export const UpdateCurrentPageUserInfo = (userInfo) => ({
+  type: 'updatCurrentPageUserInfo', 
+  payload: userInfo
+
+})

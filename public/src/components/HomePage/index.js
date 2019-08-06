@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const HomePage = () => (
-  // console.log(document.cookie.split('=')[1])
-  <div className="page-content">
-    <div> HomePage</div>
-    <Link to="/signin" className="home-btn">
+export const HomePage = () => {
+  const user = document.cookie.split('=')[1]
+
+  return ( <div className="page-content">
+        <div> HomePage</div>
+      <Link to="/signin" className="home-btn">
       {' '}
       sign in{' '}
     </Link>
@@ -15,6 +16,6 @@ export const HomePage = () => (
     </Link>
     <Link to="/recommendations"> RECOMMENDATIONS </Link>
 
-    <Link to="user/d"> my home page </Link>
-  </div>
-)
+    <Link to={`user/${user}`}> my home page </Link>
+  </div>)
+}
