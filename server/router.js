@@ -4,7 +4,8 @@ const {
   createUser,
   getAllUsers,
   validateUser,
-  getHome
+  getHome,
+  signOut
 } = require('./controllers/users')
 const {
   addFavFilm,
@@ -20,9 +21,10 @@ const { isAuthenticated } = require('./middlewares/auth')
 const router = express.Router()
 
 router.get('/', getHome)
-router.get('/api/user/:handle', isAuthenticated, getUser)
 router.get('/api/user', getAllUsers)
 router.post('/api/user/signup', createUser)
+router.get('/api/user/signout', signOut)
+router.get('/api/user/:handle', isAuthenticated, getUser)
 router.post('/api/user/signin', validateUser)
 router.get('/api/film/:title', isAuthenticated, getFilm)
 router.patch('/api/film', isAuthenticated, addFavFilm)

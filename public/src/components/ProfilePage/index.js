@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+
 import Axios from 'axios'
 import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
 
-class ProfilePage extends React.Component {
+export class ProfilePage extends React.Component {
   state = {
     modalOpen: false
   }
@@ -17,15 +17,11 @@ class ProfilePage extends React.Component {
 
   render() {
     const { modalOpen } = this.state
-    const { incrementByFive, eade } = this.props
 
     return (
       <div className="page-content">
         <h1> user page</h1>
-        <button type="button" onClick={incrementByFive}>
-          {' '}
-          nummmmmmmmmmmmmmmmmmmmmmmmmmmm{eade}
-        </button>
+      
         <div className="link-container">
           <Link to="/signup"> SIGN UP</Link>
           <Link to="/signin"> SIGN IN </Link>
@@ -42,10 +38,3 @@ class ProfilePage extends React.Component {
     )
   }
 }
-
-export const ProfilePageConnected = connect(
-  state => ({ eade: state.counter }),
-  dispatch => ({
-    incrementByFive: () => dispatch(increment(5))
-  })
-)(ProfilePage)

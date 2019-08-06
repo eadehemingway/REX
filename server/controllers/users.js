@@ -80,3 +80,12 @@ exports.validateUser = async (req, res) => {
     user
   })
 }
+
+
+exports.signOut = (req, res) => {
+  res.clearCookie('jwt');
+  res.clearCookie('user');
+  delete req.session
+  res.json({signOut: true})
+
+}

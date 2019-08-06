@@ -22,7 +22,3 @@ export const ProtectedRoute = ({ component: Component, path }) => {
     />
   )
 }
-
-export const PublicRoute = ({ component: Component, path }) => (
-  <Route exact path={path} component={Component} />
-)
