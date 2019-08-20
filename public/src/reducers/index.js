@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
 import { signInReducer } from './signIn'
-import { currentPageUserInfoReducer } from './currentPageUserInfo'
+import { UserPageReducer } from './userPage'
 import { currentUserReducer } from './currentUser'
 
 export const allReducers = combineReducers({
   signedIn: signInReducer,
-  currentPageUserInfo: currentPageUserInfoReducer,
+  UserPage: UserPageReducer,
   currentUser: currentUserReducer
 })

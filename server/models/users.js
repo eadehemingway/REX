@@ -18,6 +18,7 @@ const filmSchema = new mongoose.Schema({
     required: [true, 'Film name is required'],
     trim: true
   },
+  poster_path: String,
   tag: [tagSchema]
 })
 
@@ -38,9 +39,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'please enter your password']
   },
-  favourites: {
-    films: [filmSchema]
-  },
+  films: [filmSchema],
   receivedRex: [rexSchema]
 })
 

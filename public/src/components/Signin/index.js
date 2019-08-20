@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { SignInSuccess, UpdateCurrentUser } from '../../actions/actions'
+import { signInSuccess, updateCurrentUser } from '../../actions/actions'
 
 class Signin extends React.Component {
   state = {
@@ -67,7 +67,7 @@ class Signin extends React.Component {
 export const SigninConnected = connect(
   state => ({ signedIn: state.signedIn }),
   dispatch => ({
-    signInSuccess: () => dispatch(SignInSuccess()),
-    updateCurrentUser: handle => dispatch(UpdateCurrentUser(handle))
+    signInSuccess: () => dispatch(signInSuccess()),
+    updateCurrentUser: handle => dispatch(updateCurrentUser(handle))
   })
 )(Signin)

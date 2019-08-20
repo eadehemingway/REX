@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import {
-  SignOutSuccess,
-  UpdateCurrentPageUserInfo
-} from '../../actions/actions'
+import { signOutSuccess, updateUserPage } from '../../actions/actions'
 
 class Nav extends Component {
   state = {
@@ -14,19 +11,9 @@ class Nav extends Component {
 
   searchUser = () => {
     const { userToSearch } = this.state
-    axios
-      .get(`/api/user/${userToSearch}`)
-      .then(res => {
-        const userObj = {
-          userName: userToSearch,
-          data: res.data.doc
-        }
-        this.props.UpdateCurrentPageUserInfo(userObj)
-      })
-      .then(() => {
-        this.props.history.push(`/user/${userToSearch}`)
-      })
-      .catch(e => console.log(e))
+    this.props.updateUserPage(userToSearch)
+
+    this.props.history.push(`/user/${userToSearch}`)
   }
 
   signOut = () => {
@@ -61,9 +48,8 @@ class Nav extends Component {
 const NavConnected = connect(
   null,
   dispatch => ({
-    signOut: () => dispatch(SignOutSuccess()),
-    UpdateCurrentPageUserInfo: userInfo =>
-      dispatch(UpdateCurrentPageUserInfo(userInfo))
+    signOut: () => dispatch(signOutSuccess()),
+    updateUserPage: userInfo => dispatch(updateUserPage(userInfo))
   })
 )(Nav)
 

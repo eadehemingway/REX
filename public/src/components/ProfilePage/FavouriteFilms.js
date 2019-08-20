@@ -3,21 +3,21 @@ import React from 'react'
 import { AddFavFilmDropDownConnected } from './AddFavFilmDropDown'
 
 export class FavouriteFilms extends React.Component {
-  state = {
-    showAddFilmDropDown: false
-  }
-
   toggleDropDown = () => {
     this.setState({ showAddFilmDropDown: !this.state.showAddFilmDropDown })
   }
 
   render() {
-    const { showAddFilmDropDown } = this.state
     return (
       <div>
         <h2> my films</h2>
+        {this.props.films.map(({ title, poster_path }) => (
+          <div key={title}>
+            <img src={`https://image.tmdb.org/t/p/w185/${poster_path}`} />
+            <p>{title}</p>
+          </div>
+        ))}
         <button onClick={this.toggleDropDown}> add new</button>
-        {showAddFilmDropDown && <AddFavFilmDropDownConnected />}
       </div>
     )
   }
