@@ -38,6 +38,7 @@ class AddFavFilmDropDown extends React.Component {
 
         <button> add</button>
         {showDropDown &&
+          filmInfo &&
           filmInfo.map(t => (
             <button key={t.title} onClick={() => this.addFavFilm(t)}>
               <img
