@@ -3,9 +3,10 @@ const User = require('./../models/users')
 
 exports.addFavFilm = (req, res) => {
   const { handle, filmInfo } = req.body
+
   User.findOne({ handle }, (err, doc) => {
     if (err) console.log('err', err)
-    doc.favourites.films.push(filmInfo)
+    doc.films.push(filmInfo)
     doc.save()
     res.json({ doc })
   })
@@ -15,7 +16,7 @@ exports.deleteFavFilm = (req, res) => {
   const { id } = req.params
 
   User.findOne({ handle: 'eade' }, (err, doc) => {
-    const filmArr = doc.favourites.films
+    const filmArr = doc.films
     const index = filmArr.findIndex(e => e.id === id)
     filmArr.splice(index, 1)
     doc.save()
@@ -31,7 +32,7 @@ exports.addTagFilms = (req, res) => {
   User.findOne({ handle }, (err, doc) => {
     if (err) console.log('err', err)
 
-    const filmArr = doc.favourites.films
+    const filmArr = doc.films
     const index = filmArr.findIndex(e => e.id === filmId)
 
     if (filmArr.length > 0) {
@@ -50,7 +51,7 @@ exports.removeTagFilms = (req, res) => {
   User.findOne({ handle }, (err, doc) => {
     if (err) console.log('err', err)
 
-    const filmArr = doc.favourites.films
+    const filmArr = doc.films
     const index = filmArr.findIndex(e => e.id === filmId)
     const filmToAlter = filmArr[index]
     const tagIndex = filmToAlter.tag.findIndex(t => t.id === tagId)

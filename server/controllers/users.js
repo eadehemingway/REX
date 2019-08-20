@@ -46,11 +46,11 @@ exports.getUser = (req, res) => {
 
   User.findOne({ handle }, (err, doc) => {
     if (err) console.log('err', err)
-    const {favourites} = doc
-    const favourtiesAndRex = {favourites, rex: doc.receivedRex}
+    const {films} = doc
+    const favourtiesAndRex = {films, rex: doc.receivedRex}
 
 
-    const info = handle === loggedInUserHandle ? favourtiesAndRex : favourites
+    const info = handle === loggedInUserHandle ? favourtiesAndRex : films
     res.json({ doc: info })
   })
 }

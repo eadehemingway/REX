@@ -30,6 +30,7 @@ class AddFavFilmDropDown extends React.Component {
 
   render() {
     const { favFilmList, filmInfo, showDropDown, value } = this.state
+
     return (
       <div className="add-film-drop-down">
         <input

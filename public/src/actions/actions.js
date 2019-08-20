@@ -5,8 +5,8 @@ export const SignOutSuccess = () => ({
   type: 'sign_out_success'
 })
 
-export const UpdateUserPageInfo = userInfo => ({
-  type: 'updatCurrentPageUserInfo',
+export const updatePageUser = userInfo => ({
+  type: 'updatePageUser',
   payload: userInfo
 })
 

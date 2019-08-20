@@ -4,7 +4,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import {
   SignOutSuccess,
-  UpdateCurrentPageUserInfo
+  updatePageUser
 } from '../../actions/actions'
 
 class Nav extends Component {
@@ -14,19 +14,10 @@ class Nav extends Component {
 
   searchUser = () => {
     const { userToSearch } = this.state
-    axios
-      .get(`/api/user/${userToSearch}`)
-      .then(res => {
-        const userObj = {
-          userName: userToSearch,
-          data: res.data.doc
-        }
-        this.props.UpdateCurrentPageUserInfo(userObj)
-      })
-      .then(() => {
+        this.props.updatePageUser(userToSearch)
+
         this.props.history.push(`/user/${userToSearch}`)
-      })
-      .catch(e => console.log(e))
+
   }
 
   signOut = () => {
@@ -62,8 +53,8 @@ const NavConnected = connect(
   null,
   dispatch => ({
     signOut: () => dispatch(SignOutSuccess()),
-    UpdateCurrentPageUserInfo: userInfo =>
-      dispatch(UpdateCurrentPageUserInfo(userInfo))
+    updatePageUser: userInfo =>
+      dispatch(updatePageUser(userInfo))
   })
 )(Nav)
 
