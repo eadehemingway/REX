@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
 
-export class AddFavFilmDropDown extends React.Component {
+class AddFavFilmDropDown extends React.Component {
   state = {
     modalOpen: false,
     value: '',
@@ -17,15 +18,14 @@ export class AddFavFilmDropDown extends React.Component {
     })
   }
 
-  addFavFilm = film => {
-    const favFilmList = [...this.state.favFilmList, film]
+  addFavFilm = filmInfo => {
+    const favFilmList = [...this.state.favFilmList, filmInfo]
     this.setState({ favFilmList, showDropDown: false })
 
-    // add this film to the database
-    // axios.patch('/api/film', {
-    //   userName: 'username',
-    //   film
-    // })
+    axios.patch('/api/film', {
+      handle: this.props.currentUser,
+      filmInfo
+    })
   }
 
   render() {
@@ -61,3 +61,7 @@ export class AddFavFilmDropDown extends React.Component {
     )
   }
 }
+
+export const AddFavFilmDropDownConnected = connect(state => ({
+  currentUser: state.currentUser
+}))(AddFavFilmDropDown)

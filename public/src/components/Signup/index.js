@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 
-export class Signup extends Component {
+export class Signup extends React.Component {
   state = {
     handle: '',
     password: '',
@@ -19,15 +19,12 @@ export class Signup extends Component {
       .post('/api/user/signup', { handle, email, password })
       .then(({ data }) => {
         if (data) {
-
           history.push('/signin')
         } else {
-
           this.setState({ error })
         }
       })
       .catch(error => {
-
         this.setState({ error })
       })
   }

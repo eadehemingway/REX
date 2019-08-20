@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { ApprovedRexTab } from './ApprovedRexTab'
 import { PendingRexTab } from './PendingRexTab'
 

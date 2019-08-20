@@ -2,9 +2,8 @@ const request = require('request')
 const User = require('./../models/users')
 
 exports.addFavFilm = (req, res) => {
-  console.log('je')
-  const filmInfo = req.body
-  User.findOne({ handle: 'eade' }, (err, doc) => {
+  const { handle, filmInfo } = req.body
+  User.findOne({ handle }, (err, doc) => {
     if (err) console.log('err', err)
     doc.favourites.films.push(filmInfo)
     doc.save()

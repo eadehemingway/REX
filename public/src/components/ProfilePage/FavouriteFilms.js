@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AddFavFilmDropDown } from './AddFavFilmDropDown'
+import { AddFavFilmDropDownConnected } from './AddFavFilmDropDown'
 
 export class FavouriteFilms extends React.Component {
   state = {
@@ -17,7 +17,7 @@ export class FavouriteFilms extends React.Component {
       <div>
         <h2> my films</h2>
         <button onClick={this.toggleDropDown}> add new</button>
-        {showAddFilmDropDown && <AddFavFilmDropDown />}
+        {showAddFilmDropDown && <AddFavFilmDropDownConnected />}
       </div>
     )
   }

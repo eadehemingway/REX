@@ -13,7 +13,7 @@ const rexSchema = new mongoose.Schema({
 })
 
 const filmSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: [true, 'Film name is required'],
     trim: true

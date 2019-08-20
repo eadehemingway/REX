@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-import Axios from 'axios'
 import { connect } from 'react-redux'
 import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
@@ -9,10 +7,6 @@ import { FavouriteFilms } from './FavouriteFilms'
 class ProfilePage extends React.Component {
   state = {
     modalOpen: false
-  }
-
-  componentDidMount() {
-    console.log('props', this.props)
   }
 
   toggleModal = () => {
@@ -26,14 +20,12 @@ class ProfilePage extends React.Component {
     return (
       <div className="page-content">
         <h1> user page for {this.props.userInfo.userName}</h1>
-
         <div className="link-container">
           <Link to="/recommendations"> RECOMMENDATIONS </Link>
         </div>
 
         <button type="button" onClick={this.toggleModal}>
-          {' '}
-          SEND REX{' '}
+          SEND REX
         </button>
         {modalOpen && <Modal toggleModal={this.toggleModal} />}
         <FavouriteFilms />
