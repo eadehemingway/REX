@@ -14,9 +14,9 @@ class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
-    console.log('UESR NAME', this.props.userPage);
+    console.log('COMPONENT DID MOUNT');
     axios.get(`/api/user/${this.props.userPage}`).then(res => {
-      console.log('DATA', res.data);
+      console.log(res.data);
       this.setState({ favFilms: res.data.doc.films });
     });
   }
@@ -31,8 +31,8 @@ class ProfilePage extends React.Component {
   };
 
   render() {
-    const { modalOpen } = this.state;
-    console.log('FAV', this.state.favFilms);
+    const { modalOpen, favFilms } = this.state;
+
     return (
       <div className="page-content">
         <div className="link-container">
@@ -43,9 +43,7 @@ class ProfilePage extends React.Component {
           SEND REX
         </button>
         {modalOpen && <Modal toggleModal={this.toggleModal} />}
-        {this.state.favFilms.length > 0 && (
-          <FavouriteFilms films={this.state.favFilms} />
-        )}
+        {favFilms.length > 0 && <FavouriteFilms films={favFilms} />}
         <AddFavFilmDropDownConnected addFilm={this.addFilm} />
       </div>
     );
