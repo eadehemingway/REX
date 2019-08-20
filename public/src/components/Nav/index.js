@@ -12,7 +12,6 @@ class Nav extends Component {
   searchUser = () => {
     const { userToSearch } = this.state
     this.props.updateUserPage(userToSearch)
-
     this.props.history.push(`/user/${userToSearch}`)
   }
 

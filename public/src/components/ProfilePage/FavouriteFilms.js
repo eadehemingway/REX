@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { AddFavFilmDropDownConnected } from './AddFavFilmDropDown'
-
 export class FavouriteFilms extends React.Component {
   toggleDropDown = () => {
     this.setState({ showAddFilmDropDown: !this.state.showAddFilmDropDown })

@@ -23,6 +23,16 @@ class ProfilePage extends React.Component {
     })
   }
 
+  componentWillMount() {
+    axios.get(`/api/user/${this.props.userInfo}`).then(res => {
+      const userObj = {
+        userName: this.props.userInfo,
+        data: res.data.doc
+      }
+      this.setState({ userObj })
+    })
+  }
+
   toggleModal = () => {
     const { modalOpen } = this.state
     this.setState({ modalOpen: !modalOpen })
