@@ -27,7 +27,13 @@ class ProfilePage extends React.Component {
     const { modalOpen } = this.state;
     this.setState({ modalOpen: !modalOpen });
   };
+  deleteFilm = filmId => {
+    const newFilmArr = [...this.state.favFilms].filter(f => f._id !== filmId);
+    this.setState({ favFilms: newFilmArr });
 
+    const handle = this.props.userPage;
+    axios.delete(`/api/user/${handle}/film/${filmId}`).then(res => {});
+  };
   render() {
     const { modalOpen, favFilms } = this.state;
 
@@ -41,7 +47,9 @@ class ProfilePage extends React.Component {
           SEND REX
         </button>
         {modalOpen && <Modal toggleModal={this.toggleModal} />}
-        {favFilms.length > 0 && <FavouriteFilms films={favFilms} />}
+        {favFilms.length > 0 && (
+          <FavouriteFilms films={favFilms} deleteFilm={this.deleteFilm} />
+        )}
         <AddFavFilmDropDownConnected addFilm={this.addFilm} />
       </div>
     );

@@ -40,7 +40,7 @@ class AddFavFilmDropDown extends React.Component {
         {showDropDown &&
           filmInfo &&
           filmInfo.map(t => (
-            <button key={t.title} onClick={() => this.addFavFilm(t)}>
+            <button key={t.poster_path} onClick={() => this.addFavFilm(t)}>
               <img
                 className="drop-down-image"
                 src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
