@@ -1,32 +1,30 @@
 import React, { Component } from 'react'
-import { Link , withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { signOutSuccess, UpdateCurrentPageUserInfo } from "../../actions/actions"
-
+import {
+  SignOutSuccess,
+  UpdateCurrentPageUserInfo
+} from '../../actions/actions'
 
 class Nav extends Component {
   state = {
-    value: ''
+    userToSearch: ''
   }
 
-  componentDidMount() {
-    axios.get('/api/user').then(({ data }) => {})
-  }
-
-  search = e => {
-    const { value } = this.state
-
+  searchUser = () => {
+    const { userToSearch } = this.state
     axios
-      .get(`/api/user/${value}`)
+      .get(`/api/user/${userToSearch}`)
       .then(res => {
-        console.log(value)
-        // update redux store with this data...?
-        this.props.UpdateCurrentPageUserInfo(res.data.doc)
-        console.log(res.data.doc)
+        const userObj = {
+          userName: userToSearch,
+          data: res.data.doc
+        }
+        this.props.UpdateCurrentPageUserInfo(userObj)
       })
       .then(() => {
-        this.props.history.push(`/user/${value}`)
+        this.props.history.push(`/user/${userToSearch}`)
       })
       .catch(e => console.log(e))
   }
@@ -45,16 +43,14 @@ class Nav extends Component {
     return (
       <nav className="nav-bar">
         <Link to="/" className="home-btn">
-          {' '}
           HOME{' '}
         </Link>
         <div className="search-bar">
           <input
             type="text"
-            onChange={e => this.setState({ value: e.target.value })}
+            onChange={e => this.setState({ userToSearch: e.target.value })}
           />
-          <button onClick={this.search}> search</button>
-
+          <button onClick={this.searchUser}> search</button>
           <button onClick={() => this.signOut()}>LOG OUT</button>
         </div>
       </nav>
@@ -65,9 +61,10 @@ class Nav extends Component {
 const NavConnected = connect(
   null,
   dispatch => ({
-    signOut: () => dispatch(new signOutSuccess()),
-    UpdateCurrentPageUserInfo: (userInfo)=> dispatch(new UpdateCurrentPageUserInfo(userInfo))
+    signOut: () => dispatch(SignOutSuccess()),
+    UpdateCurrentPageUserInfo: userInfo =>
+      dispatch(UpdateCurrentPageUserInfo(userInfo))
   })
 )(Nav)
 
-export default withRouter(NavConnected)
+export default withRouter(NavConnected) // the withRouter allows the nav to cause a redirect using history.push

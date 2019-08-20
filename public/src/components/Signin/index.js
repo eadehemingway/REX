@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { signInSuccess } from '../../actions/actions'
+import { SignInSuccess } from '../../actions/actions'
 
 class Signin extends React.Component {
   state = {
@@ -24,14 +24,10 @@ class Signin extends React.Component {
           signInSuccess()
           history.push('/')
         } else {
-          console.log('signin fail, NO DATA')
-
           this.setState({ error })
         }
       })
       .catch(error => {
-        console.log('signin fail in CATCH')
-
         this.setState({ error })
       })
   }
@@ -68,6 +64,6 @@ class Signin extends React.Component {
 export const SigninConnected = connect(
   state => ({ signedIn: state.signedIn }),
   dispatch => ({
-    signInSuccess: () => dispatch(signInSuccess())
+    signInSuccess: () => dispatch(SignInSuccess())
   })
 )(Signin)

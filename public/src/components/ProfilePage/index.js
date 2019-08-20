@@ -2,12 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Axios from 'axios'
+import { connect } from 'react-redux'
 import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
 
-export class ProfilePage extends React.Component {
+class ProfilePage extends React.Component {
   state = {
     modalOpen: false
+  }
+
+  componentDidMount() {
+    console.log('props', this.props)
   }
 
   toggleModal = () => {
@@ -20,8 +25,8 @@ export class ProfilePage extends React.Component {
 
     return (
       <div className="page-content">
-        <h1> user page</h1>
-      
+        <h1> user page for {this.props.userInfo.userName}</h1>
+
         <div className="link-container">
           <Link to="/signup"> SIGN UP</Link>
           <Link to="/signin"> SIGN IN </Link>
@@ -38,3 +43,7 @@ export class ProfilePage extends React.Component {
     )
   }
 }
+
+export const ProfilePageConnected = connect(state => ({
+  userInfo: state.currentPageUserInfo
+}))(ProfilePage)

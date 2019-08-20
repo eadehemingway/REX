@@ -5,7 +5,7 @@ import { Signup } from './components/Signup'
 import { SigninConnected } from './components/Signin'
 import { Recommendations } from './components/Recommendations'
 import { ProtectedRoute } from './authRoute'
-import { ProfilePage } from './components/ProfilePage'
+import { ProfilePageConnected } from './components/ProfilePage'
 
 import { HomePage } from './components/HomePage'
 
@@ -18,7 +18,7 @@ export class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={SigninConnected} />
-          <ProtectedRoute path="/user/:id" component={ProfilePage} />
+          <ProtectedRoute path="/user/:id" component={ProfilePageConnected} />
           <ProtectedRoute
             exact
             path="/recommendations"
