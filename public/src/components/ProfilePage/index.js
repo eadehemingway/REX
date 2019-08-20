@@ -28,8 +28,6 @@ class ProfilePage extends React.Component {
         <h1> user page for {this.props.userInfo.userName}</h1>
 
         <div className="link-container">
-          <Link to="/signup"> SIGN UP</Link>
-          <Link to="/signin"> SIGN IN </Link>
           <Link to="/recommendations"> RECOMMENDATIONS </Link>
         </div>
 
