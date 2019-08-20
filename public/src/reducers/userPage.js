@@ -1,9 +1,8 @@
-export const UserPageReducer = (state = '', action) => {
+export const userPageReducer = (state = '', action) => {
   switch (action.type) {
     case 'update_page_user':
-      console.log('payload', action.payload)
-      return action.payload
+      return action.payload;
     default:
-      return state
+      return state;
   }
-}
+};

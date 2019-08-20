@@ -1,15 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 export class FavouriteFilms extends React.Component {
   toggleDropDown = () => {
-    this.setState({ showAddFilmDropDown: !this.state.showAddFilmDropDown })
-  }
+    this.setState({ showAddFilmDropDown: !this.state.showAddFilmDropDown });
+  };
 
   render() {
+    const { films } = this.props;
+
     return (
       <div>
         <h2> my films</h2>
-        {this.props.films.map(({ title, poster_path }) => (
+        {films.map(({ title, poster_path }) => (
           <div key={title}>
             <img src={`https://image.tmdb.org/t/p/w185/${poster_path}`} />
             <p>{title}</p>
@@ -17,6 +19,6 @@ export class FavouriteFilms extends React.Component {
         ))}
         <button onClick={this.toggleDropDown}> add new</button>
       </div>
-    )
+    );
   }
 }

@@ -1,39 +1,48 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { connect } from 'react-redux'
-import { signInSuccess, updateCurrentUser } from '../../actions/actions'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import {
+  signInSuccess,
+  updateCurrentUser,
+  updateUserPage
+} from '../../actions/actions';
 
 class Signin extends React.Component {
   state = {
     handle: '',
     password: ''
-  }
+  };
 
   handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value })
-  }
+    this.setState({ [name]: value });
+  };
 
   handleClick = () => {
-    const { handle, password } = this.state
-    const { history, signInSuccess, updateCurrentUser } = this.props
+    const { handle, password } = this.state;
+    const {
+      history,
+      signInSuccess,
+      updateCurrentUser,
+      updateUserPage
+    } = this.props;
     axios
       .post('/api/user/signin', { handle, password })
       .then(({ data }) => {
-        console.log('data:', data)
         if (data.status === 'success') {
-          const { handle } = data.user
-          signInSuccess()
-          updateCurrentUser(handle)
-          history.push('/')
+          const { handle } = data.user;
+          signInSuccess();
+          updateUserPage(handle);
+          updateCurrentUser(handle);
+          history.push('/');
         } else {
-          this.setState({ error })
+          this.setState({ error });
         }
       })
       .catch(error => {
-        this.setState({ error })
-      })
-  }
+        this.setState({ error });
+      });
+  };
 
   render() {
     return (
@@ -60,7 +69,7 @@ class Signin extends React.Component {
         </p>
         <Link to="/recommendations"> RECOMMENDATIONS </Link>
       </div>
-    )
+    );
   }
 }
 
@@ -68,6 +77,7 @@ export const SigninConnected = connect(
   state => ({ signedIn: state.signedIn }),
   dispatch => ({
     signInSuccess: () => dispatch(signInSuccess()),
-    updateCurrentUser: handle => dispatch(updateCurrentUser(handle))
+    updateCurrentUser: handle => dispatch(updateCurrentUser(handle)),
+    updateUserPage: handle => dispatch(updateUserPage(handle))
   })
-)(Signin)
+)(Signin);
