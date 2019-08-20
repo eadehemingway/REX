@@ -14,9 +14,7 @@ class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
-    console.log('COMPONENT DID MOUNT');
     axios.get(`/api/user/${this.props.userPage}`).then(res => {
-      console.log(res.data);
       this.setState({ favFilms: res.data.doc.films });
     });
   }

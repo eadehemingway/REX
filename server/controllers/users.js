@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const path = require('path');
-
 const User = require('../models/users');
 
 exports.getHome = (req, res) => {
@@ -56,10 +55,7 @@ exports.getUser = (req, res) => {
 
 exports.validateUser = async (req, res) => {
   const { handle, password } = req.body;
-
   const user = await User.findOne({ handle });
-
-  const passwordMatch = await user.correctPassword(password, user.password);
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     res.send('no user found');

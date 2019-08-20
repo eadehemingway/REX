@@ -1,10 +1,6 @@
 import React from 'react';
 
 export class FavouriteFilms extends React.Component {
-  toggleDropDown = () => {
-    this.setState({ showAddFilmDropDown: !this.state.showAddFilmDropDown });
-  };
-
   render() {
     const { films } = this.props;
 
@@ -17,7 +13,6 @@ export class FavouriteFilms extends React.Component {
             <p>{title}</p>
           </div>
         ))}
-        <button onClick={this.toggleDropDown}> add new</button>
       </div>
     );
   }
