@@ -4,7 +4,7 @@ import { AddFilmInput } from './AddFilmInput'
 
 export class Modal extends React.Component {
   state = {
-    film: {},
+    film: null,
     receiverHandle: '',
     comment: ''
   }
@@ -25,7 +25,7 @@ export class Modal extends React.Component {
 
   render() {
     const { film, receiverHandle, comment } = this.state
-    console.log('receiverHandle:', receiverHandle)
+    console.log('receiverHandle:', film)
     return (
       <div className="modal-overlay">
         <div className="modal-window">
