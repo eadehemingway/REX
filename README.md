@@ -16,6 +16,24 @@ npm start
 
 go to http://localhost:3000
 
+### State
+
+Our current state structure is
+
+```
+{
+signedIn: boolean,
+signedInUser: string,
+userBeingViewed: string
+}
+```
+
+The userBeingViewed refers to the user whose page you are looking at, when you sign in it gets assigned as default to the signed in user, but if you search for another user it gets updated to that user.
+
+# Actions
+
+types written in camel case
+
 ## react hooks for redux
 
 ```
