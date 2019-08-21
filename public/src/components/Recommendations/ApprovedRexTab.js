@@ -11,10 +11,8 @@ export class ApprovedRexTab extends React.Component {
         <h2> APPROVED Recommendation</h2>
 
         <ul>
-          <li>one</li>
-          <li>one</li>
-          <li>one</li>
-          <li>one</li>
+          {this.props.rex.length > 1 &&
+            this.props.rex.map(r => <li key={r}> {r}</li>)}
         </ul>
       </section>
     )
