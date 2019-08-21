@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {
   signInSuccess,
-  updateCurrentUser,
+  updateSignedInUser,
   updateUserPage
 } from '../../actions/actions';
 
@@ -23,7 +23,7 @@ class Signin extends React.Component {
     const {
       history,
       signInSuccess,
-      updateCurrentUser,
+      updateSignedInUser,
       updateUserPage
     } = this.props;
     axios
@@ -33,7 +33,7 @@ class Signin extends React.Component {
           const { handle } = data.user;
           signInSuccess();
           updateUserPage(handle);
-          updateCurrentUser(handle);
+          updateSignedInUser(handle);
           history.push('/');
         } else {
           this.setState({ error });
@@ -77,7 +77,7 @@ export const SigninConnected = connect(
   state => ({ signedIn: state.signedIn }),
   dispatch => ({
     signInSuccess: () => dispatch(signInSuccess()),
-    updateCurrentUser: handle => dispatch(updateCurrentUser(handle)),
+    updateSignedInUser: handle => dispatch(updateSignedInUser(handle)),
     updateUserPage: handle => dispatch(updateUserPage(handle))
   })
 )(Signin);

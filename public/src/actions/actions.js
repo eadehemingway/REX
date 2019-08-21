@@ -10,7 +10,7 @@ export const updateUserPage = handle => ({
   payload: handle
 });
 
-export const updateCurrentUser = handle => ({
-  type: 'update_current_user',
+export const updateSignedInUser = handle => ({
+  type: 'update_signedInUser_user',
   payload: handle
 });

@@ -21,7 +21,7 @@ class AddFavFilmDropDown extends React.Component {
     this.setState({ showDropDown: false });
     this.props.addFilm(filmInfo);
     axios.patch('/api/film', {
-      handle: this.props.currentUser,
+      handle: this.props.signedInUser,
       filmInfo
     });
   };
@@ -54,5 +54,5 @@ class AddFavFilmDropDown extends React.Component {
 }
 
 export const AddFavFilmDropDownConnected = connect(state => ({
-  currentUser: state.currentUser
+  signedInUser: state.signedInUser
 }))(AddFavFilmDropDown);
