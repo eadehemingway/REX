@@ -3,8 +3,6 @@ const User = require('../models/users')
 
 exports.addRex = (req, res) => {
   const { film, receiverHandle, comment } = req.body
-  console.log('receiverHandle:', receiverHandle)
-  console.log('film:', film)
 
   User.findOne({ handle: receiverHandle }, (err, doc) => {
     if (!doc)
