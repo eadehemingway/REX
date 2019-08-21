@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { AddFilmInput } from './AddFilmInput'
+import { FilmDropDown } from './FilmDropDown'
 
 export class Modal extends React.Component {
   state = {
@@ -19,19 +19,18 @@ export class Modal extends React.Component {
   handleChange = (event, name) => {
     this.setState({ [name]: event.target.value })
   }
-  updateSelectedFilm = filmInfo => {
+  selectFilm = filmInfo => {
     this.setState({ film: filmInfo })
   }
 
   render() {
     const { film, receiverHandle, comment } = this.state
-    console.log('receiverHandle:', film)
     return (
       <div className="modal-overlay">
         <div className="modal-window">
           SEND RECOMMENDATION
           <div className="modal-content">
-            <AddFilmInput updateSelectedFilm={this.updateSelectedFilm} />
+            <FilmDropDown selectFilm={this.selectFilm} />
             {film && (
               <div>
                 <img

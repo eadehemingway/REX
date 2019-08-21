@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
-import { AddFavFilmDropDownConnected } from './AddFavFilmDropDown'
 import axios from 'axios'
+import { FilmDropDown } from './FilmDropDown'
 
 class ProfilePage extends React.Component {
   state = {
@@ -22,6 +22,10 @@ class ProfilePage extends React.Component {
   addFilm = newFilm => {
     const newFilmArr = [...this.state.favFilms, newFilm]
     this.setState({ favFilms: newFilmArr })
+    axios.patch('/api/film', {
+      handle: this.props.signedInUser,
+      filmInfo: newFilm
+    })
   }
   toggleModal = () => {
     const { modalOpen } = this.state
@@ -48,7 +52,7 @@ class ProfilePage extends React.Component {
         {favFilms.length > 0 && (
           <FavouriteFilms films={favFilms} deleteFilm={this.deleteFilm} />
         )}
-        <AddFavFilmDropDownConnected addFilm={this.addFilm} />
+        <FilmDropDown selectFilm={this.addFilm} />
       </div>
     )
   }
@@ -56,6 +60,7 @@ class ProfilePage extends React.Component {
 
 export const ProfilePageConnected = connect(state => {
   return {
-    userBeingViewed: state.userBeingViewed
+    userBeingViewed: state.userBeingViewed,
+    signedInUser: state.signedInUser
   }
 })(ProfilePage)
