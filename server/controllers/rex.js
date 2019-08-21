@@ -1,11 +1,19 @@
 const cookie = require('cookie')
+const User = require('../models/users')
 
 exports.addRex = (req, res) => {
-  const reqInfo = req.body.rex
-  const handle = req.body.toHandle // in the body have the handle of who you want to send rec to.
-  User.findOne({ handle: handle }, (err, doc) => {
+  const { film, receiverHandle } = req.body
+  console.log('receiverHandle:', receiverHandle)
+  console.log('film:', film)
+
+  User.findOne({ handle: receiverHandle }, (err, doc) => {
+    if (!doc)
+      return res.json({
+        status: 'fail',
+        message: 'no user exists with this handle'
+      })
     if (err) console.log('err', err)
-    doc.receivedRex.push(reqInfo)
+    doc.receivedRex.push(film)
     doc.save()
     res.json({ doc })
   })
