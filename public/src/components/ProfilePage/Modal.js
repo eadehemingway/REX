@@ -5,23 +5,24 @@ import { AddFilmInput } from './AddFilmInput'
 export class Modal extends React.Component {
   state = {
     film: {},
-    receiverHandle: ''
+    receiverHandle: '',
+    comment: ''
   }
   sendRex = () => {
-    const { film, receiverHandle } = this.state
+    const { film, receiverHandle, comment } = this.state
     axios
-      .patch('/api/rex', { film, receiverHandle })
+      .patch('/api/rex', { film, receiverHandle, comment })
       .then(response => console.log(response))
   }
-  handleChange = event => {
-    this.setState({ receiverHandle: event.target.value })
+  handleChange = (event, name) => {
+    this.setState({ [name]: event.target.value })
   }
   updateSelectedFilm = filmInfo => {
     this.setState({ film: filmInfo })
   }
 
   render() {
-    const { film, receiverHandle } = this.state
+    const { film, receiverHandle, comment } = this.state
     console.log('receiverHandle:', receiverHandle)
     return (
       <div className="modal-overlay">
@@ -41,7 +42,13 @@ export class Modal extends React.Component {
               type="text"
               placeholder="rex handle"
               value={receiverHandle}
-              onChange={event => this.handleChange(event)}
+              onChange={event => this.handleChange(event, 'receiverHandle')}
+            />
+            <input
+              type="text"
+              placeholder="comment"
+              value={comment}
+              onChange={event => this.handleChange(event, 'comment')}
             />
             <button onClick={() => this.sendRex(film, receiverHandle)}>
               send

@@ -2,7 +2,7 @@ const cookie = require('cookie')
 const User = require('../models/users')
 
 exports.addRex = (req, res) => {
-  const { film, receiverHandle } = req.body
+  const { film, receiverHandle, comment } = req.body
   console.log('receiverHandle:', receiverHandle)
   console.log('film:', film)
 
@@ -13,7 +13,17 @@ exports.addRex = (req, res) => {
         message: 'no user exists with this handle'
       })
     if (err) console.log('err', err)
-    doc.receivedRex.push(film)
+
+    const fromHandle = cookie.parse(req.headers.cookie).user
+
+    const rex = {
+      filmInfo: film,
+      fromHandle,
+      comment,
+      pending: true
+    }
+
+    doc.receivedRex.push(rex)
     doc.save()
     res.json({ doc })
   })

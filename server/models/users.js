@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { Schema } = require('mongoose')
 const bcrypt = require('bcryptjs')
 
 const tagSchema = new mongoose.Schema({
@@ -6,7 +7,7 @@ const tagSchema = new mongoose.Schema({
   colour: String
 })
 const rexSchema = new mongoose.Schema({
-  title: String,
+  filmInfo: Schema.Types.Mixed,
   fromHandle: String,
   comment: String,
   pending: Boolean
