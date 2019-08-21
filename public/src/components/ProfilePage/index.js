@@ -10,12 +10,16 @@ class ProfilePage extends React.Component {
   state = {
     modalOpen: false,
     userObj: null,
-    favFilms: []
+    favFilms: [],
+    viewMode: true
   }
 
   componentDidMount() {
+    const { userBeingViewed, signedInUser } = this.props
+    const viewMode = userBeingViewed !== signedInUser
     axios.get(`/api/user/${this.props.userBeingViewed}`).then(res => {
-      this.setState({ favFilms: res.data.doc.films })
+      const favFilms = res.data.doc || []
+      this.setState({ favFilms, viewMode })
     })
   }
 
@@ -37,22 +41,29 @@ class ProfilePage extends React.Component {
     axios.delete(`/api/film/${filmId}`).then(res => {})
   }
   render() {
-    const { modalOpen, favFilms } = this.state
-
+    const { modalOpen, favFilms, viewMode } = this.state
     return (
       <div className="page-content">
-        <div className="link-container">
-          <Link to="/recommendations"> RECOMMENDATIONS </Link>
-        </div>
+        {!viewMode && (
+          <div className="link-container">
+            <Link to="/recommendations"> RECOMMENDATIONS </Link>
+          </div>
+        )}
         <h1> {this.props.userBeingViewed}</h1>
-        <button type="button" onClick={this.toggleModal}>
-          SEND REX
-        </button>
+        {!viewMode && (
+          <button type="button" onClick={this.toggleModal}>
+            SEND REX
+          </button>
+        )}
         {modalOpen && <Modal toggleModal={this.toggleModal} />}
         {favFilms.length > 0 && (
-          <FavouriteFilms films={favFilms} deleteFilm={this.deleteFilm} />
+          <FavouriteFilms
+            films={favFilms}
+            deleteFilm={this.deleteFilm}
+            viewMode={viewMode}
+          />
         )}
-        <FilmDropDown selectFilm={this.addFilm} />
+        {!viewMode && <FilmDropDown selectFilm={this.addFilm} />}
       </div>
     )
   }
