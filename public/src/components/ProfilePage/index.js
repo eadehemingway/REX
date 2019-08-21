@@ -14,7 +14,7 @@ class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`/api/user/${this.props.userPage}`).then(res => {
+    axios.get(`/api/user/${this.props.userBeingViewed}`).then(res => {
       this.setState({ favFilms: res.data.doc.films });
     });
   }
@@ -31,7 +31,7 @@ class ProfilePage extends React.Component {
     const newFilmArr = [...this.state.favFilms].filter(f => f._id !== filmId);
     this.setState({ favFilms: newFilmArr });
 
-    const handle = this.props.userPage;
+    const handle = this.props.userBeingViewed;
     axios.delete(`/api/user/${handle}/film/${filmId}`).then(res => {});
   };
   render() {
@@ -42,7 +42,7 @@ class ProfilePage extends React.Component {
         <div className="link-container">
           <Link to="/recommendations"> RECOMMENDATIONS </Link>
         </div>
-        <h1> {this.props.userPage}</h1>
+        <h1> {this.props.userBeingViewed}</h1>
         <button type="button" onClick={this.toggleModal}>
           SEND REX
         </button>
@@ -58,6 +58,6 @@ class ProfilePage extends React.Component {
 
 export const ProfilePageConnected = connect(state => {
   return {
-    userPage: state.userPage
+    userBeingViewed: state.userBeingViewed
   };
 })(ProfilePage);

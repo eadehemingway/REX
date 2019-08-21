@@ -1,16 +1,16 @@
 export const signInSuccess = () => ({
-  type: 'sign_in_success'
+  type: 'signInSuccess'
 });
 export const signOutSuccess = () => ({
-  type: 'sign_out_success'
+  type: 'signOutSuccess'
 });
 
-export const updateUserPage = handle => ({
-  type: 'update_page_user',
+export const updateUserBeingViewed = handle => ({
+  type: 'updateUserBeingViewed',
   payload: handle
 });
 
 export const updateSignedInUser = handle => ({
-  type: 'update_signedInUser_user',
+  type: 'updateSignedInUser',
   payload: handle
 });

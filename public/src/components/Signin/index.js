@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {
   signInSuccess,
   updateSignedInUser,
-  updateUserPage
+  updateUserBeingViewed
 } from '../../actions/actions';
 
 class Signin extends React.Component {
@@ -24,7 +24,7 @@ class Signin extends React.Component {
       history,
       signInSuccess,
       updateSignedInUser,
-      updateUserPage
+      updateUserBeingViewed
     } = this.props;
     axios
       .post('/api/user/signin', { handle, password })
@@ -32,7 +32,7 @@ class Signin extends React.Component {
         if (data.status === 'success') {
           const { handle } = data.user;
           signInSuccess();
-          updateUserPage(handle);
+          updateUserBeingViewed(handle);
           updateSignedInUser(handle);
           history.push('/');
         } else {
@@ -78,6 +78,6 @@ export const SigninConnected = connect(
   dispatch => ({
     signInSuccess: () => dispatch(signInSuccess()),
     updateSignedInUser: handle => dispatch(updateSignedInUser(handle)),
-    updateUserPage: handle => dispatch(updateUserPage(handle))
+    updateUserBeingViewed: handle => dispatch(updateUserBeingViewed(handle))
   })
 )(Signin);
