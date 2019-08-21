@@ -1,8 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
-import { createLogger } from 'redux-logger'
-import thunk from 'redux-thunk'
-import storage from 'redux-persist/lib/storage'
-import { persistReducer, persistStore } from 'redux-persist'
+import { createStore } from 'redux'
 import { allReducers } from '../reducers'
 
 function saveToLocalStorage(state) {
