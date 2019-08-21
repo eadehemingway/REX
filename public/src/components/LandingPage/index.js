@@ -15,7 +15,6 @@ export const LandingPage = () => {
         {' '}
         sign up{' '}
       </Link>
-      <Link to="/recommendations"> RECOMMENDATIONS </Link>
 
       <Link to={`user/${user}`}> my home page </Link>
     </div>

@@ -6,7 +6,6 @@ exports.isAuthenticated = async (req, res, next) => {
   // get jwt
 
   if (!req.headers.cookie) {
-    console.log('no cookie, we need to redirect')
     res.redirect(302, '/signin')
   } else if (req.headers.cookie.match(/jwt/)) {
     const parsedCookie = cookie.parse(req.headers.cookie)
