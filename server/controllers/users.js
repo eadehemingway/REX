@@ -49,9 +49,10 @@ exports.getUser = (req, res) => {
     if (err) console.log('err', err)
     if (!doc) return
     const { films } = doc
-    const favourtiesAndRex = { films, rex: doc.receivedRex }
-    const info = handle === loggedInUserHandle ? favourtiesAndRex : films
-    res.json({ doc: info })
+    const rex = handle === loggedInUserHandle ? doc.receivedRex : null
+    const favourtiesAndRex = { films, rex }
+
+    res.json({ doc: favourtiesAndRex })
   })
 }
 
