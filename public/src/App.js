@@ -7,7 +7,7 @@ import { Recommendations } from './components/Recommendations'
 import { ProtectedRoute } from './authRoute'
 import { ProfilePageConnected } from './components/ProfilePage'
 
-import { HomePage } from './components/HomePage'
+import { LandingPage } from './components/LandingPage'
 
 export class App extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export class App extends React.Component {
       <BrowserRouter>
         <NavWithRouter />
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={LandingPage} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={SigninConnected} />
           <ProtectedRoute path="/user/:id" component={ProfilePageConnected} />

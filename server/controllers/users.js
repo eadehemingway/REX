@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const User = require('../models/users');
 
-exports.getHome = (req, res) => {
+exports.getLandingPage = (req, res) => {
   res.sendFile(path.join(__dirname, '../public/dist/index.html'));
 };
 

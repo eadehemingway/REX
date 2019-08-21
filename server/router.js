@@ -4,7 +4,7 @@ const {
   createUser,
   getAllUsers,
   validateUser,
-  getHome,
+  getLandingPage,
   signOut
 } = require('./controllers/users');
 const {
@@ -20,7 +20,7 @@ const { isAuthenticated } = require('./middlewares/auth');
 
 const router = express.Router();
 
-router.get('/', getHome);
+router.get('/', getLandingPage);
 router.get('/api/user', getAllUsers);
 router.post('/api/user/signup', createUser);
 router.get('/api/user/signout', signOut);

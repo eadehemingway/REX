@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const HomePage = () => {
+export const LandingPage = () => {
   const user = document.cookie.split('=')[1]
 
   return (
     <div className="page-content">
-      <div> HomePage</div>
+      <div> LandingPage</div>
       <Link to="/signin" className="home-btn">
         {' '}
         sign in{' '}
