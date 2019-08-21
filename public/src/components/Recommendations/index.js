@@ -1,23 +1,20 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { ApprovedRexTab } from './ApprovedRexTab'
-import { PendingRexTab } from './PendingRexTab'
+
+import { RexTab } from './RexTab'
 
 class Recommendations extends React.Component {
   state = {
     inApprovedTab: true,
-    pendingRex: [],
-    approvedRex: []
+    rex: []
   }
 
   componentDidMount() {
     const { signedInUser } = this.props
     axios.get(`/api/user/${signedInUser}`).then(response => {
       const rex = response.data.doc.rex
-      const pendingRex = rex.filter(r => r.pending)
-      const approvedRex = rex.filter(r => !r.pending)
-      this.setState({ pendingRex, approvedRex })
+      this.setState({ rex })
     })
   }
 
@@ -25,17 +22,23 @@ class Recommendations extends React.Component {
     this.setState({ inApprovedTab: !this.state.inApprovedTab })
   }
 
+  removeRexFromState = id => {}
+  changeStatusInState = id => {}
   render() {
-    const { inApprovedTab, approvedRex, pendingRex } = this.state
+    const { inApprovedTab, rex } = this.state
     return (
       <section className="page-content">
-        <button onClick={this.toggleInApprovedTab}> go to pending</button>
+        <button onClick={this.toggleInApprovedTab}>
+          {' '}
+          go to {inApprovedTab ? 'pending' : 'approved'}
+        </button>
 
-        {inApprovedTab ? (
-          <ApprovedRexTab rex={approvedRex} />
-        ) : (
-          <PendingRexTab rex={pendingRex} />
-        )}
+        <RexTab
+          rex={rex}
+          inApprovedTab={inApprovedTab}
+          changeStatus={this.changeStatusInState}
+          removeRex={this.removeRexFromState}
+        />
       </section>
     )
   }
