@@ -30,9 +30,7 @@ class ProfilePage extends React.Component {
   deleteFilm = filmId => {
     const newFilmArr = [...this.state.favFilms].filter(f => f._id !== filmId)
     this.setState({ favFilms: newFilmArr })
-
-    const handle = this.props.userBeingViewed
-    axios.delete(`/api/user/${handle}/film/${filmId}`).then(res => {})
+    axios.delete(`/api/film/${filmId}`).then(res => {})
   }
   render() {
     const { modalOpen, favFilms } = this.state
