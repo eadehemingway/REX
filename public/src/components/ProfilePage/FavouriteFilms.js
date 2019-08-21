@@ -2,7 +2,7 @@ import React from 'react'
 
 export class FavouriteFilms extends React.Component {
   render() {
-    const { films, deleteFilm, viewMode } = this.props
+    const { films, deleteFilm, editMode } = this.props
 
     return (
       <div>
@@ -11,7 +11,7 @@ export class FavouriteFilms extends React.Component {
           <div key={poster_path}>
             <img src={`https://image.tmdb.org/t/p/w185/${poster_path}`} />
             <p>{title}</p>
-            {!viewMode && (
+            {editMode && (
               <button onClick={() => deleteFilm(_id)}>delete</button>
             )}
           </div>
