@@ -13,6 +13,8 @@ export class Modal extends React.Component {
     axios
       .patch('/api/rex', { film, receiverHandle, comment })
       .then(response => console.log(response))
+
+    this.props.toggleModal()
   }
   handleChange = (event, name) => {
     this.setState({ [name]: event.target.value })
