@@ -1,41 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Modal } from './Modal';
-import { FavouriteFilms } from './FavouriteFilms';
-import { AddFavFilmDropDownConnected } from './AddFavFilmDropDown';
-import axios from 'axios';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Modal } from './Modal'
+import { FavouriteFilms } from './FavouriteFilms'
+import { AddFavFilmDropDownConnected } from './AddFavFilmDropDown'
+import axios from 'axios'
 
 class ProfilePage extends React.Component {
   state = {
     modalOpen: false,
     userObj: null,
     favFilms: []
-  };
+  }
 
   componentDidMount() {
     axios.get(`/api/user/${this.props.userBeingViewed}`).then(res => {
-      this.setState({ favFilms: res.data.doc.films });
-    });
+      this.setState({ favFilms: res.data.doc.films })
+    })
   }
 
   addFilm = newFilm => {
-    const newFilmArr = [...this.state.favFilms, newFilm];
-    this.setState({ favFilms: newFilmArr });
-  };
+    const newFilmArr = [...this.state.favFilms, newFilm]
+    this.setState({ favFilms: newFilmArr })
+  }
   toggleModal = () => {
-    const { modalOpen } = this.state;
-    this.setState({ modalOpen: !modalOpen });
-  };
+    const { modalOpen } = this.state
+    this.setState({ modalOpen: !modalOpen })
+  }
   deleteFilm = filmId => {
-    const newFilmArr = [...this.state.favFilms].filter(f => f._id !== filmId);
-    this.setState({ favFilms: newFilmArr });
+    const newFilmArr = [...this.state.favFilms].filter(f => f._id !== filmId)
+    this.setState({ favFilms: newFilmArr })
 
-    const handle = this.props.userBeingViewed;
-    axios.delete(`/api/user/${handle}/film/${filmId}`).then(res => {});
-  };
+    const handle = this.props.userBeingViewed
+    axios.delete(`/api/user/${handle}/film/${filmId}`).then(res => {})
+  }
   render() {
-    const { modalOpen, favFilms } = this.state;
+    const { modalOpen, favFilms } = this.state
 
     return (
       <div className="page-content">
@@ -52,12 +52,12 @@ class ProfilePage extends React.Component {
         )}
         <AddFavFilmDropDownConnected addFilm={this.addFilm} />
       </div>
-    );
+    )
   }
 }
 
 export const ProfilePageConnected = connect(state => {
   return {
     userBeingViewed: state.userBeingViewed
-  };
-})(ProfilePage);
+  }
+})(ProfilePage)

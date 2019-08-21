@@ -1,48 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { connect } from 'react-redux';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { connect } from 'react-redux'
 import {
   signInSuccess,
   updateSignedInUser,
   updateUserBeingViewed
-} from '../../actions/actions';
+} from '../../actions/actions'
 
 class Signin extends React.Component {
   state = {
     handle: '',
     password: ''
-  };
+  }
 
   handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
+    this.setState({ [name]: value })
+  }
 
   handleClick = () => {
-    const { handle, password } = this.state;
+    const { handle, password } = this.state
     const {
       history,
       signInSuccess,
       updateSignedInUser,
       updateUserBeingViewed
-    } = this.props;
+    } = this.props
     axios
       .post('/api/user/signin', { handle, password })
       .then(({ data }) => {
         if (data.status === 'success') {
-          const { handle } = data.user;
-          signInSuccess();
-          updateUserBeingViewed(handle);
-          updateSignedInUser(handle);
-          history.push('/');
+          const { handle } = data.user
+          signInSuccess()
+          updateUserBeingViewed(handle)
+          updateSignedInUser(handle)
+          history.push('/')
         } else {
-          this.setState({ error });
+          this.setState({ error })
         }
       })
       .catch(error => {
-        this.setState({ error });
-      });
-  };
+        this.setState({ error })
+      })
+  }
 
   render() {
     return (
@@ -67,9 +67,8 @@ class Signin extends React.Component {
           dont have an account?
           <Link to="/signup"> SIGN UP</Link> instead
         </p>
-        <Link to="/recommendations"> RECOMMENDATIONS </Link>
       </div>
-    );
+    )
   }
 }
 
@@ -80,4 +79,4 @@ export const SigninConnected = connect(
     updateSignedInUser: handle => dispatch(updateSignedInUser(handle)),
     updateUserBeingViewed: handle => dispatch(updateUserBeingViewed(handle))
   })
-)(Signin);
+)(Signin)
