@@ -5,15 +5,14 @@ export class RexTab extends React.Component {
   state = {
     inApprovedTab: true
   }
-  // router.delete('/api/rex/:id', isAuthenticated, deleteRex)
 
-  approveRex = id => {
+  toggleRexApproval = id => {
     axios.patch(`/api/rex/${id}/status`)
-    this.props.changeStatus(id)
+    this.props.changeStatusInState(id)
   }
-  removeRex = id => {
+  deleteRex = id => {
     axios.delete(`/api/rex/${id}`)
-    this.props.removeRex(id)
+    this.props.deleteRex(id)
   }
   render() {
     const { inApprovedTab, rex } = this.props
@@ -34,15 +33,20 @@ export class RexTab extends React.Component {
                     src={`https://image.tmdb.org/t/p/w185/${r.filmInfo.poster_path}`}
                   />
                   {inApprovedTab ? (
-                    <button onClick={() => this.removeRex(r._id)}>
-                      remove
-                    </button>
+                    <div>
+                      <button onClick={() => this.toggleRexApproval(r._id)}>
+                        unapprove
+                      </button>
+                      <button onClick={() => this.deleteRex(r._id)}>
+                        remove
+                      </button>
+                    </div>
                   ) : (
                     <div>
-                      <button onClick={() => this.approveRex(r._id)}>
+                      <button onClick={() => this.toggleRexApproval(r._id)}>
                         approve
                       </button>
-                      <button onClick={() => this.removeRex(r._id)}>
+                      <button onClick={() => this.deleteRex(r._id)}>
                         dismiss
                       </button>
                     </div>
