@@ -17,7 +17,7 @@ export class FilmDropDown extends React.Component {
   render() {
     const { filmInfo, value } = this.state
     return (
-      <div className="add-film-drop-down">
+      <div>
         <input
           type="text"
           placeholder="film name"
