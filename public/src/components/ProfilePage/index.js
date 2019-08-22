@@ -26,7 +26,7 @@ class ProfilePage extends React.Component {
   }
 
   addFilm = (newFilm, tag = {}) => {
-    const newFilmWithTag = { ...newFilm, tag }
+    const newFilmWithTag = { ...newFilm, tag: [tag] }
     const newFilmArr = [...this.state.favFilms, newFilmWithTag]
     this.setState({ favFilms: newFilmArr })
 
@@ -76,7 +76,7 @@ class ProfilePage extends React.Component {
             editMode={editMode}
           />
         )}
-        {editMode && <AddFavFilm selectFilm={this.addFilm} />}
+        {editMode && <AddFavFilm addFilm={this.addFilm} />}
       </div>
     )
   }

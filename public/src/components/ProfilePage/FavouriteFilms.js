@@ -3,7 +3,6 @@ import React from 'react'
 export class FavouriteFilms extends React.Component {
   render() {
     const { films, deleteFilm, editMode } = this.props
-    console.log(films)
     return (
       <div>
         <h2> my films</h2>

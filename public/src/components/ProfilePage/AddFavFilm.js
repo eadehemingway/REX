@@ -7,7 +7,8 @@ export class AddFavFilm extends React.Component {
   state = {
     tagName: '',
     tagColour: 'white',
-    displayColorPicker: false
+    displayColorPicker: false,
+    selectedFilm: null
   }
 
   handleTagName = e => {
@@ -16,10 +17,28 @@ export class AddFavFilm extends React.Component {
   handleTagColour = e => {
     this.setState({ tagColour: e.hex, displayColorPicker: false })
   }
+  selectFilm = filmInfo => {
+    this.setState({ selectedFilm: filmInfo })
+  }
 
+  addFilm = filmInfo => {
+    const { tagName, tagColour } = this.state
+
+    this.props.addFilm(filmInfo, {
+      name: tagName,
+      colour: tagColour
+    })
+
+    this.setState({
+      tagName: '',
+      tagColour: 'white',
+      displayColorPicker: false,
+      selectedFilm: null
+    })
+  }
   render() {
-    console.log(this.state.tagColour)
-    const { tagName, tagColour, displayColorPicker } = this.state
+    const { tagColour, displayColorPicker, selectedFilm } = this.state
+
     return (
       <div className="add-film-drop-down">
         <input placeholder="tag name" onChange={this.handleTagName}></input>
@@ -37,14 +56,17 @@ export class AddFavFilm extends React.Component {
             onChangeComplete={this.handleTagColour}
           />
         )}
-        <FilmDropDown
-          selectFilm={filmInfo =>
-            this.props.selectFilm(filmInfo, {
-              name: tagName,
-              colour: tagColour
-            })
-          }
-        />
+        <FilmDropDown selectFilm={this.selectFilm} />
+        {selectedFilm && (
+          <div>
+            <img
+              className="drop-down-image"
+              src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
+            />
+            <li className="auto-complete-list">{selectedFilm.title}</li>
+          </div>
+        )}{' '}
+        <button onClick={() => this.addFilm(selectedFilm)}>submit</button>
       </div>
     )
   }

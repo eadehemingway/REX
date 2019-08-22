@@ -4,18 +4,23 @@ import axios from 'axios'
 export class FilmDropDown extends React.Component {
   state = {
     value: '',
-    filmInfo: []
+    filmInfo: [],
+    showDropDown: false
   }
 
   getMovies = title => {
-    this.setState({ value: title })
+    this.setState({ value: title, showDropDown: true })
     axios.get(`/api/film/${title}`).then(res => {
       this.setState({ filmInfo: res.data.filmInfo })
     })
   }
 
+  selectFilm = film => {
+    this.props.selectFilm(film)
+    this.setState({ showDropDown: false })
+  }
   render() {
-    const { filmInfo, value } = this.state
+    const { filmInfo, value, showDropDown } = this.state
     return (
       <div>
         <input
@@ -24,12 +29,9 @@ export class FilmDropDown extends React.Component {
           value={value}
           onChange={e => this.getMovies(e.target.value)}
         />
-        {filmInfo &&
+        {showDropDown &&
           filmInfo.map(t => (
-            <button
-              key={t.poster_path}
-              onClick={() => this.props.selectFilm(t)}
-            >
+            <button key={t.poster_path} onClick={() => this.selectFilm(t)}>
               <img
                 className="drop-down-image"
                 src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
