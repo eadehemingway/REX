@@ -5,6 +5,7 @@ import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
 import axios from 'axios'
 import { FilmDropDown } from './FilmDropDown'
+import { jdenticon } from 'jdenticon' // need this for the identicon
 
 class ProfilePage extends React.Component {
   state = {
@@ -44,6 +45,11 @@ class ProfilePage extends React.Component {
     const { modalOpen, favFilms, editMode } = this.state
     return (
       <div className="page-content">
+        <svg
+          width="80"
+          height="80"
+          data-jdenticon-value={this.props.signedInUser}
+        ></svg>
         {editMode && (
           <div className="link-container">
             <Link to="/recommendations"> RECOMMENDATIONS </Link>
