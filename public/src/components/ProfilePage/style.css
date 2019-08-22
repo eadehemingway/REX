@@ -36,6 +36,7 @@
 .add-film-drop-down {
   border: solid 2px steelblue;
   height: 10rem;
+  padding: 2rem;
 }
 
 .auto-complete-list {

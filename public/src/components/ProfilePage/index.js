@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
 import axios from 'axios'
-import { FilmDropDown } from './FilmDropDown'
 import { jdenticon } from 'jdenticon' // need this for the identicon
+import { AddFavFilm } from './AddFavFilm'
 
 class ProfilePage extends React.Component {
   state = {
@@ -20,17 +20,22 @@ class ProfilePage extends React.Component {
     const editMode = userBeingViewed === signedInUser
     axios.get(`/api/user/${this.props.userBeingViewed}`).then(res => {
       const favFilms = res.data.doc.films || []
+
       this.setState({ favFilms, editMode })
     })
   }
 
-  addFilm = newFilm => {
-    const newFilmArr = [...this.state.favFilms, newFilm]
+  addFilm = (newFilm, tag = {}) => {
+    const newFilmWithTag = { ...newFilm, tag: [tag] }
+    const newFilmArr = [...this.state.favFilms, newFilmWithTag]
     this.setState({ favFilms: newFilmArr })
-    axios.patch('/api/film', {
-      handle: this.props.signedInUser,
-      filmInfo: newFilm
-    })
+
+    axios
+      .patch('/api/film', {
+        handle: this.props.signedInUser,
+        filmInfo: newFilmWithTag
+      })
+      .catch(e => console.log('ERROR ADDING FILM', e))
   }
   toggleModal = () => {
     const { modalOpen } = this.state
@@ -39,7 +44,9 @@ class ProfilePage extends React.Component {
   deleteFilm = filmId => {
     const newFilmArr = [...this.state.favFilms].filter(f => f._id !== filmId)
     this.setState({ favFilms: newFilmArr })
-    axios.delete(`/api/film/${filmId}`).then(res => {})
+    axios
+      .delete(`/api/film/${filmId}`)
+      .catch(e => console.log('ERROR DELETING FILM', e))
   }
   render() {
     const { modalOpen, favFilms, editMode } = this.state
@@ -48,7 +55,7 @@ class ProfilePage extends React.Component {
         <svg
           width="80"
           height="80"
-          data-jdenticon-value={this.props.signedInUser}
+          data-jdenticon-value={this.props.userBeingViewed}
         ></svg>
         {editMode && (
           <div className="link-container">
@@ -69,7 +76,7 @@ class ProfilePage extends React.Component {
             editMode={editMode}
           />
         )}
-        {editMode && <FilmDropDown selectFilm={this.addFilm} />}
+        {editMode && <AddFavFilm addFilm={this.addFilm} />}
       </div>
     )
   }
