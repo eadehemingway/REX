@@ -20,6 +20,12 @@ export class FavouriteFilms extends React.Component {
             {editMode && (
               <button onClick={() => deleteFilm(_id)}>delete</button>
             )}
+            <button
+              onClick={() => this.props.openModal({ title, poster_path })}
+            >
+              {' '}
+              recommend this film
+            </button>
           </div>
         ))}
       </div>

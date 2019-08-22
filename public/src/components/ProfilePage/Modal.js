@@ -8,13 +8,16 @@ export class Modal extends React.Component {
     receiverHandle: '',
     comment: ''
   }
+  componentDidMount() {
+    this.setState({ film: this.props.film })
+  }
   sendRex = () => {
     const { film, receiverHandle, comment } = this.state
     axios
       .patch('/api/rex', { film, receiverHandle, comment })
       .then(response => console.log(response))
 
-    this.props.toggleModal()
+    this.props.closeModal()
   }
   handleChange = (event, name) => {
     this.setState({ [name]: event.target.value })
@@ -25,6 +28,7 @@ export class Modal extends React.Component {
 
   render() {
     const { film, receiverHandle, comment } = this.state
+
     return (
       <div className="modal-overlay">
         <div className="modal-window">
@@ -54,7 +58,7 @@ export class Modal extends React.Component {
             <button onClick={() => this.sendRex(film, receiverHandle)}>
               send
             </button>
-            <button onClick={this.props.toggleModal}>close</button>
+            <button onClick={this.props.closeModal}>close</button>
           </div>
         </div>
       </div>

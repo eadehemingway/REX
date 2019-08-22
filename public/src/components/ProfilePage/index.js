@@ -12,7 +12,8 @@ class ProfilePage extends React.Component {
     modalOpen: false,
     userObj: null,
     favFilms: [],
-    editMode: false
+    editMode: false,
+    filmToRecommend: null
   }
 
   componentDidMount() {
@@ -37,9 +38,11 @@ class ProfilePage extends React.Component {
       })
       .catch(e => console.log('ERROR ADDING FILM', e))
   }
-  toggleModal = () => {
-    const { modalOpen } = this.state
-    this.setState({ modalOpen: !modalOpen })
+  openModal = (film = null) => {
+    this.setState({ filmToRecommend: film, modalOpen: true })
+  }
+  closeModal = () => {
+    this.setState({ modalOpen: false, filmToRecommend: null })
   }
   deleteFilm = filmId => {
     const newFilmArr = [...this.state.favFilms].filter(f => f._id !== filmId)
@@ -49,31 +52,39 @@ class ProfilePage extends React.Component {
       .catch(e => console.log('ERROR DELETING FILM', e))
   }
   render() {
-    const { modalOpen, favFilms, editMode } = this.state
+    const { modalOpen, favFilms, editMode, filmToRecommend } = this.state
+    const { userBeingViewed } = this.props
     return (
       <div className="page-content">
         <svg
           width="80"
           height="80"
-          data-jdenticon-value={this.props.userBeingViewed}
+          data-jdenticon-value={userBeingViewed}
         ></svg>
         {editMode && (
           <div className="link-container">
             <Link to="/recommendations"> RECOMMENDATIONS </Link>
           </div>
         )}
-        <h1> {this.props.userBeingViewed}</h1>
+        <h1> {userBeingViewed}</h1>
         {editMode && (
-          <button type="button" onClick={this.toggleModal}>
+          <button type="button" onClick={() => this.openModal()}>
             SEND REX
           </button>
         )}
-        {modalOpen && <Modal toggleModal={this.toggleModal} />}
+        {modalOpen && (
+          <Modal
+            openModal={this.openModal}
+            closeModal={this.closeModal}
+            film={filmToRecommend}
+          />
+        )}
         {favFilms.length > 0 && (
           <FavouriteFilms
             films={favFilms}
             deleteFilm={this.deleteFilm}
             editMode={editMode}
+            openModal={this.openModal}
           />
         )}
         {editMode && <AddFavFilm addFilm={this.addFilm} />}
