@@ -38,6 +38,7 @@ export class Modal extends React.Component {
             {film && (
               <div>
                 <img
+                  className="drop-down-image"
                   src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}
                 />
                 <li className="auto-complete-list">{film.title}</li>
