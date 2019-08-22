@@ -25,13 +25,19 @@ export class Modal extends React.Component {
   selectFilm = filmInfo => {
     this.setState({ film: filmInfo })
   }
-
+  handleClick = e => {
+    if (this.modalWindow.contains(e.target)) return
+    this.props.closeModal()
+  }
   render() {
     const { film, receiverHandle, comment } = this.state
 
     return (
-      <div className="modal-overlay">
-        <div className="modal-window">
+      <div className="modal-overlay" onClick={this.handleClick}>
+        <div
+          className="modal-window"
+          ref={modalWindow => (this.modalWindow = modalWindow)}
+        >
           SEND RECOMMENDATION
           <div className="modal-content">
             <FilmDropDown selectFilm={this.selectFilm} />
