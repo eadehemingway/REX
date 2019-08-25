@@ -34,7 +34,7 @@
 }
 
 .add-film-drop-down {
-  border: solid 2px steelblue;
+  border: solid 2px lightgrey;
   height: 10rem;
   padding: 2rem;
 }
@@ -75,12 +75,15 @@
 }
 
 .tab-header {
-  background: red;
   outline: none;
   background: none;
   border: none;
+  margin: 1rem;
+  padding-right: 0;
+  padding-left: 0;
 }
 
-.selectedTab {
-  border-bottom: 1px solid black;
+.selected-tab {
+  border-bottom: 2px solid black;
+  padding-bottom: 8px;
 }

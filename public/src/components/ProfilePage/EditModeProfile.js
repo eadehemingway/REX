@@ -65,11 +65,26 @@ export class EditModeProfile extends React.Component {
             film={filmToRecommend}
           />
         )}
-        <button onClick={() => this.changeTab('films')}> films</button>
-        <button onClick={() => this.changeTab('approvedRex')}>
+        <button
+          className={`tab-header ${onFilmTab && 'selected-tab'}`}
+          onClick={() => this.changeTab('films')}
+        >
+          {' '}
+          films
+        </button>
+        <button
+          className={`tab-header ${onApprovedRexTab && 'selected-tab'}`}
+          onClick={() => this.changeTab('approvedRex')}
+        >
           approved rex
         </button>
-        <button onClick={() => this.changeTab('newRex')}> new rex</button>
+        <button
+          className={`tab-header ${onNewRexTab && 'selected-tab'}`}
+          onClick={() => this.changeTab('newRex')}
+        >
+          {' '}
+          new rex
+        </button>
 
         {onFilmTab && favFilms.length > 0 && (
           <FilmTab
