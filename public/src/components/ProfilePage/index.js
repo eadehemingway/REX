@@ -17,7 +17,9 @@ class ProfilePage extends React.Component {
 
   componentDidMount() {
     const { userBeingViewed, signedInUser } = this.props
+
     const editMode = userBeingViewed === signedInUser
+    console.log('editMode:', editMode)
     axios.get(`/api/user/${this.props.userBeingViewed}`).then(res => {
       const favFilms = res.data.doc.films || []
 
@@ -52,6 +54,7 @@ class ProfilePage extends React.Component {
   }
   render() {
     const { modalOpen, favFilms, editMode, filmToRecommend } = this.state
+
     const { userBeingViewed } = this.props
 
     return (

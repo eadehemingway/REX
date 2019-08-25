@@ -113,3 +113,27 @@
 .rex-img {
   width: 70px;
 }
+
+.films,
+.empty-tile-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  width: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.film-img,
+.empty-tile-btn {
+  width: 131px;
+  height: 178px;
+}
+
+.empty-tile-btn {
+  background: #ebebeb;
+  outline: none;
+  border: 1px dashed #a7a6a6;
+  border-radius: 4px;
+  display: inline-block;
+}

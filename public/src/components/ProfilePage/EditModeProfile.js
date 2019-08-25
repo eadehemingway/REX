@@ -7,7 +7,8 @@ import { FilmTab } from './FilmTab'
 
 export class EditModeProfile extends React.Component {
   state = {
-    tabOpen: 'films'
+    tabOpen: 'films',
+    rex: []
   }
   componentDidMount() {
     const { signedInUser } = this.props
@@ -67,7 +68,6 @@ export class EditModeProfile extends React.Component {
           className={`tab-header ${onFilmTab ? 'selected-tab' : ''}`}
           onClick={() => this.changeTab('films')}
         >
-          {' '}
           films
         </button>
         <button
