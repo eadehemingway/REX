@@ -1,7 +1,5 @@
 import React from 'react'
 import { Modal } from './Modal'
-import { FavouriteFilms } from './FavouriteFilms'
-import { AddFavFilm } from './AddFavFilm'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { RexTab } from './RexTab'

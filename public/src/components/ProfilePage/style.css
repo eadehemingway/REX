@@ -81,6 +81,7 @@
   margin: 1rem;
   padding-right: 0;
   padding-left: 0;
+  cursor: pointer;
 }
 
 .selected-tab {
