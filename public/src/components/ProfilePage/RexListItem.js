@@ -7,20 +7,25 @@ export class RexListItem extends React.Component {
     const { rex, inApprovedTab, toggleRexApproval } = this.props
 
     return (
-      <div>
-        <p>{rex.filmInfo.title}</p>
-        <p> comment: {rex.comment}</p>
-        <p> recommendation from : {rex.fromHandle}</p>
+      <div className="rex-list-item">
         <img
-          className="drop-down-image"
+          className="rex-img"
           src={`https://image.tmdb.org/t/p/w185/${rex.filmInfo.poster_path}`}
         />
+        <div className="rex-list-item-info">
+          <p className="rex-info-p-tag">{rex.filmInfo.title}</p>
+          <p className="rex-info-p-tag"> comment: {rex.comment}</p>
+          <p className="rex-info-p-tag">
+            {' '}
+            recommendation from : {rex.fromHandle}
+          </p>
 
-        <div>
-          <button onClick={() => toggleRexApproval(rex._id)}>
-            {inApprovedTab ? 'unapprove' : 'approve'}
-          </button>
-          <button onClick={() => deleteRex(rex._id)}>delete</button>
+          <div>
+            <button onClick={() => toggleRexApproval(rex._id)}>
+              {inApprovedTab ? 'unapprove' : 'approve'}
+            </button>
+            <button onClick={() => deleteRex(rex._id)}>delete</button>
+          </div>
         </div>
       </div>
     )

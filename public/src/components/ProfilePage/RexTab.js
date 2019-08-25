@@ -18,7 +18,7 @@ export class RexTab extends React.Component {
     const rexToShow = inApprovedTab ? approvedRex : pendingRex
 
     return (
-      <section>
+      <section className="rex-list">
         {rexToShow.length > 0 &&
           rexToShow.map((r, i) => {
             return (

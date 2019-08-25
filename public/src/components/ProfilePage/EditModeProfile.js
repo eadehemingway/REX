@@ -64,20 +64,20 @@ export class EditModeProfile extends React.Component {
           />
         )}
         <button
-          className={`tab-header ${onFilmTab && 'selected-tab'}`}
+          className={`tab-header ${onFilmTab ? 'selected-tab' : ''}`}
           onClick={() => this.changeTab('films')}
         >
           {' '}
           films
         </button>
         <button
-          className={`tab-header ${onApprovedRexTab && 'selected-tab'}`}
+          className={`tab-header ${onApprovedRexTab ? 'selected-tab' : ''}`}
           onClick={() => this.changeTab('approvedRex')}
         >
           approved rex
         </button>
         <button
-          className={`tab-header ${onNewRexTab && 'selected-tab'}`}
+          className={`tab-header ${onNewRexTab ? 'selected-tab' : ''}`}
           onClick={() => this.changeTab('newRex')}
         >
           {' '}
