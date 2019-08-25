@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import NavWithRouter from './components/Nav'
 import { Signup } from './components/Signup'
 import { SigninConnected } from './components/Signin'
-import { RecommendationsConnected } from './components/Recommendations'
 import { ProtectedRoute } from './authRoute'
 import { ProfilePageConnected } from './components/ProfilePage'
 
@@ -19,11 +18,6 @@ export class App extends React.Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={SigninConnected} />
           <ProtectedRoute path="/user/:id" component={ProfilePageConnected} />
-          <ProtectedRoute
-            exact
-            path="/recommendations"
-            component={RecommendationsConnected}
-          />
         </Switch>
       </BrowserRouter>
     )

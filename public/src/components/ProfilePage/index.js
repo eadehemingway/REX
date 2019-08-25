@@ -1,12 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Modal } from './Modal'
 import { FavouriteFilms } from './FavouriteFilms'
 import axios from 'axios'
 import { jdenticon } from 'jdenticon' // need this for the identicon
-import { AddFavFilm } from './AddFavFilm'
-import { EditModeProfile } from './EditModeProfile'
+import { EditModeProfileConnected } from './EditModeProfile'
 
 class ProfilePage extends React.Component {
   state = {
@@ -54,17 +51,9 @@ class ProfilePage extends React.Component {
       .catch(e => console.log('ERROR DELETING FILM', e))
   }
   render() {
-    const {
-      modalOpen,
-      favFilms,
-      editMode,
-      filmToRecommend,
-      tabOpen
-    } = this.state
+    const { modalOpen, favFilms, editMode, filmToRecommend } = this.state
     const { userBeingViewed } = this.props
-    const onFilmTab = tabOpen === 'films'
-    const onApprovedRexTab = tabOpen === 'approvedRex'
-    const onNewRex = tabOpen === 'newRex'
+
     return (
       <div className="page-content">
         <div className="profile-header">
@@ -90,12 +79,12 @@ class ProfilePage extends React.Component {
         </div>
 
         {editMode && (
-          <EditModeProfile
+          <EditModeProfileConnected
             addFilm={this.addFilm}
             openModal={this.openModal}
             closeModal={this.closeModal}
-            filmToRecommend={this.state.filmToRecommend}
-            favFilms={this.state.favFilms}
+            filmToRecommend={filmToRecommend}
+            favFilms={favFilms}
             deleteFilm={this.deleteFilm}
             modalOpen={modalOpen}
           />
