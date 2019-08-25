@@ -5,7 +5,6 @@ export class FavouriteFilms extends React.Component {
     const { films, deleteFilm, editMode } = this.props
     return (
       <div>
-        <h2> my films</h2>
         {films.map(({ title, poster_path, _id, tag }) => (
           <div key={poster_path}>
             <img src={`https://image.tmdb.org/t/p/w185/${poster_path}`} />

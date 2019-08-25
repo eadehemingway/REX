@@ -23,7 +23,6 @@ export class RexTab extends React.Component {
 
     return (
       <section className="page-content">
-        <h2> {inApprovedTab ? 'approved' : 'pending'} Recommendation</h2>
         <ul>
           {rexToShow.length > 0 &&
             rexToShow.map((r, i) => {

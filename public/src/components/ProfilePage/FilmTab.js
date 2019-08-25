@@ -11,7 +11,6 @@ export class FilmTab extends React.Component {
     this.setState({ showAddFilmPanel: !this.state.showAddFilmPanel })
   }
   render() {
-    console.log(this.props)
     const { addFilm, favFilms, deleteFilm, openModal } = this.props
     const { showAddFilmPanel } = this.state
     const films = favFilms || []
