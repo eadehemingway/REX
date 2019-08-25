@@ -56,6 +56,13 @@ export class EditModeProfile extends React.Component {
     const { rex } = this.state
     return (
       <div>
+        {modalOpen && (
+          <Modal
+            openModal={openModal}
+            closeModal={closeModal}
+            film={filmToRecommend}
+          />
+        )}
         <button onClick={() => this.changeTab('films')}> films</button>
         <button onClick={() => this.changeTab('approvedRex')}>
           approved rex
@@ -63,12 +70,15 @@ export class EditModeProfile extends React.Component {
         <button onClick={() => this.changeTab('newRex')}> new rex</button>
 
         {onFilmTab && favFilms.length > 0 && (
-          <FavouriteFilms
-            films={favFilms}
-            deleteFilm={deleteFilm}
-            editMode={true}
-            openModal={this.openModal}
-          />
+          <div>
+            <AddFavFilm addFilm={addFilm} />
+            <FavouriteFilms
+              films={favFilms}
+              deleteFilm={deleteFilm}
+              editMode={true}
+              openModal={this.openModal}
+            />
+          </div>
         )}
 
         {onApprovedRexTab && (
@@ -85,15 +95,6 @@ export class EditModeProfile extends React.Component {
             inApprovedTab={false}
             changeStatusInState={this.changeStatusInState}
             deleteRex={this.deleteRexFromState}
-          />
-        )}
-
-        <AddFavFilm addFilm={addFilm} />
-        {modalOpen && (
-          <Modal
-            openModal={openModal}
-            closeModal={closeModal}
-            film={filmToRecommend}
           />
         )}
       </div>
