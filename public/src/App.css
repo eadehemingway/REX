@@ -1,0 +1,14 @@
+.App {
+  position: relative;
+}
+
+.background-rect {
+  background: #f0f0f0;
+  height: 604px;
+  width: 318px;
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  top: 111px;
+  border-radius: 10px;
+}

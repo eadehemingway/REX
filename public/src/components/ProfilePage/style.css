@@ -73,3 +73,14 @@
   margin: 0;
   padding-bottom: 10px;
 }
+
+.tab-header {
+  background: red;
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.selectedTab {
+  border-bottom: 1px solid black;
+}
