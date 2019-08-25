@@ -6,6 +6,7 @@ import { FavouriteFilms } from './FavouriteFilms'
 import axios from 'axios'
 import { jdenticon } from 'jdenticon' // need this for the identicon
 import { AddFavFilm } from './AddFavFilm'
+import { EditModeProfile } from './EditModeProfile'
 
 class ProfilePage extends React.Component {
   state = {
@@ -13,7 +14,8 @@ class ProfilePage extends React.Component {
     userObj: null,
     favFilms: [],
     editMode: false,
-    filmToRecommend: null
+    filmToRecommend: null,
+    tabOpen: 'films'
   }
 
   componentDidMount() {
@@ -52,8 +54,17 @@ class ProfilePage extends React.Component {
       .catch(e => console.log('ERROR DELETING FILM', e))
   }
   render() {
-    const { modalOpen, favFilms, editMode, filmToRecommend } = this.state
+    const {
+      modalOpen,
+      favFilms,
+      editMode,
+      filmToRecommend,
+      tabOpen
+    } = this.state
     const { userBeingViewed } = this.props
+    const onFilmTab = tabOpen === 'films'
+    const onApprovedRexTab = tabOpen === 'approvedRex'
+    const onNewRex = tabOpen === 'newRex'
     return (
       <div className="page-content">
         <div className="profile-header">
@@ -65,6 +76,7 @@ class ProfilePage extends React.Component {
           ></svg>
           <div className="handle-send-rex-btn-container">
             <p className="handle-title"> @{userBeingViewed}</p>
+
             {editMode && (
               <button
                 className="send-rex-btn"
@@ -76,20 +88,19 @@ class ProfilePage extends React.Component {
             )}
           </div>
         </div>
-        {editMode && (
-          <div className="link-container">
-            <Link to="/recommendations"> RECOMMENDATIONS </Link>
-          </div>
-        )}
 
-        {modalOpen && (
-          <Modal
+        {editMode && (
+          <EditModeProfile
+            addFilm={this.addFilm}
             openModal={this.openModal}
             closeModal={this.closeModal}
-            film={filmToRecommend}
+            filmToRecommend={this.state.filmToRecommend}
+            favFilms={this.state.favFilms}
+            deleteFilm={this.deleteFilm}
+            modalOpen={modalOpen}
           />
         )}
-        {favFilms.length > 0 && (
+        {!editMode && (
           <FavouriteFilms
             films={favFilms}
             deleteFilm={this.deleteFilm}
@@ -97,7 +108,6 @@ class ProfilePage extends React.Component {
             openModal={this.openModal}
           />
         )}
-        {editMode && <AddFavFilm addFilm={this.addFilm} />}
       </div>
     )
   }
