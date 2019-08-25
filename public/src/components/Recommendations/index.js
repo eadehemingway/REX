@@ -47,7 +47,6 @@ class Recommendations extends React.Component {
     return (
       <section className="page-content">
         <button onClick={this.toggleInApprovedTab}>
-          {' '}
           go to {inApprovedTab ? 'pending' : 'approved'}
         </button>
 

@@ -56,22 +56,32 @@ class ProfilePage extends React.Component {
     const { userBeingViewed } = this.props
     return (
       <div className="page-content">
-        <svg
-          width="80"
-          height="80"
-          data-jdenticon-value={userBeingViewed}
-        ></svg>
+        <div className="profile-header">
+          <svg
+            width="80"
+            height="80"
+            data-jdenticon-value={userBeingViewed}
+            className="profile-pic"
+          ></svg>
+          <div className="handle-send-rex-btn-container">
+            <p className="handle-title"> @{userBeingViewed}</p>
+            {editMode && (
+              <button
+                className="send-rex-btn"
+                type="button"
+                onClick={() => this.openModal()}
+              >
+                SEND REX
+              </button>
+            )}
+          </div>
+        </div>
         {editMode && (
           <div className="link-container">
             <Link to="/recommendations"> RECOMMENDATIONS </Link>
           </div>
         )}
-        <h1> {userBeingViewed}</h1>
-        {editMode && (
-          <button type="button" onClick={() => this.openModal()}>
-            SEND REX
-          </button>
-        )}
+
         {modalOpen && (
           <Modal
             openModal={this.openModal}

@@ -13,7 +13,7 @@ export class FavouriteFilms extends React.Component {
             {tag.length > 0 &&
               tag.map((t, i) => (
                 <p key={i} style={{ background: t.colour }}>
-                  {t.name}{' '}
+                  {t.name}
                 </p>
               ))}
 
@@ -23,7 +23,6 @@ export class FavouriteFilms extends React.Component {
             <button
               onClick={() => this.props.openModal({ title, poster_path })}
             >
-              {' '}
               recommend this film
             </button>
           </div>

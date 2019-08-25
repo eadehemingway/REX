@@ -63,7 +63,6 @@ class Signin extends React.Component {
         />
         <button onClick={this.handleClick}>sign in</button>
         <p>
-          {' '}
           dont have an account?
           <Link to="/signup"> SIGN UP</Link> instead
         </p>

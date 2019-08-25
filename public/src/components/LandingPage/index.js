@@ -8,12 +8,10 @@ export const LandingPage = () => {
     <div className="page-content">
       <div> LandingPage</div>
       <Link to="/signin" className="home-btn">
-        {' '}
-        sign in{' '}
+        sign in
       </Link>
       <Link to="/signup" className="home-btn">
-        {' '}
-        sign up{' '}
+        sign up
       </Link>
 
       <Link to={`user/${user}`}> my home page </Link>

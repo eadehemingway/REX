@@ -65,7 +65,7 @@ export class AddFavFilm extends React.Component {
             />
             <li className="auto-complete-list">{selectedFilm.title}</li>
           </div>
-        )}{' '}
+        )}
         <button onClick={() => this.addFilm(selectedFilm)}>submit</button>
       </div>
     )
