@@ -5,6 +5,7 @@ import { AddFavFilm } from './AddFavFilm'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { RexTab } from './RexTab'
+import { FilmTab } from './FilmTab'
 
 export class EditModeProfile extends React.Component {
   state = {
@@ -54,6 +55,7 @@ export class EditModeProfile extends React.Component {
     const onApprovedRexTab = tabOpen === 'approvedRex'
     const onNewRexTab = tabOpen === 'newRex'
     const { rex } = this.state
+
     return (
       <div>
         {modalOpen && (
@@ -70,15 +72,13 @@ export class EditModeProfile extends React.Component {
         <button onClick={() => this.changeTab('newRex')}> new rex</button>
 
         {onFilmTab && favFilms.length > 0 && (
-          <div>
-            <AddFavFilm addFilm={addFilm} />
-            <FavouriteFilms
-              films={favFilms}
-              deleteFilm={deleteFilm}
-              editMode={true}
-              openModal={this.openModal}
-            />
-          </div>
+          <FilmTab
+            addFilm={addFilm}
+            favFilms={favFilms}
+            deleteFilm={deleteFilm}
+            editMode={true}
+            openModal={this.openModal}
+          />
         )}
 
         {onApprovedRexTab && (
