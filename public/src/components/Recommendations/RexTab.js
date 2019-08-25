@@ -2,10 +2,6 @@ import React from 'react'
 import axios from 'axios'
 
 export class RexTab extends React.Component {
-  state = {
-    inApprovedTab: true
-  }
-
   toggleRexApproval = id => {
     axios.patch(`/api/rex/${id}/status`)
     this.props.changeStatusInState(id)
@@ -15,15 +11,16 @@ export class RexTab extends React.Component {
     this.props.deleteRex(id)
   }
   render() {
-    const { inApprovedTab, rex } = this.props
+    const { selectedTab, rex } = this.props
 
     const pendingRex = rex.filter(r => r.pending)
     const approvedRex = rex.filter(r => !r.pending)
+    const inApprovedTab = selectedTab === 'Approved'
     const rexToShow = inApprovedTab ? approvedRex : pendingRex
 
     return (
       <section className="page-content">
-        <h2> {inApprovedTab ? 'approved' : 'pending'} Recommendation</h2>
+        <h2> {selectedTab} Recommendation</h2>
         <ul>
           {rexToShow.length > 0 &&
             rexToShow.map((r, i) => {

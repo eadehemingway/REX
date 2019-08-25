@@ -1,13 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import './styles.css'
 
 import { RexTab } from './RexTab'
 
 class Recommendations extends React.Component {
   state = {
-    inApprovedTab: true,
-    rex: []
+    rex: [],
+    selectedTab: 'Approved'
   }
 
   componentDidMount() {
@@ -18,8 +19,10 @@ class Recommendations extends React.Component {
     })
   }
 
-  toggleInApprovedTab = () => {
-    this.setState({ inApprovedTab: !this.state.inApprovedTab })
+  changeSelectedTab = value => {
+    this.setState({
+      selectedTab: value
+    })
   }
 
   deleteRexFromState = id => {
@@ -42,18 +45,26 @@ class Recommendations extends React.Component {
     this.setState({ rex: newRex })
   }
   render() {
-    const { inApprovedTab, rex } = this.state
+    const { selectedTab, rex } = this.state
 
     return (
       <section className="page-content">
-        <button onClick={this.toggleInApprovedTab}>
-          {' '}
-          go to {inApprovedTab ? 'pending' : 'approved'}
+        <button
+          onClick={() => this.changeSelectedTab('Approved')}
+          className={`tab-header ${selectedTab === 'Approved' &&
+            'selectedTab'}`}
+        >
+          Approved
         </button>
-
+        <button
+          onClick={() => this.changeSelectedTab('Pending')}
+          className={`tab-header ${selectedTab === 'Pending' && 'selectedTab'}`}
+        >
+          Pending
+        </button>
         <RexTab
           rex={rex}
-          inApprovedTab={inApprovedTab}
+          selectedTab={selectedTab}
           changeStatusInState={this.changeStatusInState}
           deleteRex={this.deleteRexFromState}
         />
