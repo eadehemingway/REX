@@ -1,5 +1,5 @@
 import React from 'react'
-import { FilledLargeTile } from './FilledLargeTile'
+import { FilmTile } from './FilmTile'
 import { EmptyLargeTile } from './EmptyLargeTile'
 import './style.css'
 
@@ -12,12 +12,13 @@ export class LargeTiles extends React.Component {
     return (
       <div className="large-film-container">
         {topFilms.map((f, i) => (
-          <FilledLargeTile
+          <FilmTile
             film={f}
             key={i}
             editMode={editMode}
             deleteFilm={deleteFilm}
             openModal={openModal}
+            containerClass="large-film-tile"
           />
         ))}
         {editMode &&
