@@ -8,7 +8,7 @@ export class LargeTiles extends React.Component {
     const { topFilms } = this.props
 
     return (
-      <div className="films">
+      <div className="large-film-container">
         {topFilms.length > 0 ? (
           <FilledLargeTile topFilms={[]} />
         ) : (

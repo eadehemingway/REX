@@ -114,7 +114,7 @@
   width: 70px;
 }
 
-.films,
+.large-film-container,
 .empty-tile-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -124,7 +124,7 @@
   white-space: nowrap;
 }
 
-.film-img,
+.large-film-img,
 .empty-tile-btn {
   width: 131px;
   height: 178px;
@@ -136,4 +136,16 @@
   border: 1px dashed #a7a6a6;
   border-radius: 4px;
   display: inline-block;
+}
+.small-film-img {
+  width: 70px;
+}
+.small-tile-section {
+  margin-top: 2rem;
+}
+.small-tile-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
 }

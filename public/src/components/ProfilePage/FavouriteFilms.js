@@ -1,6 +1,6 @@
 import React from 'react'
 import { LargeTiles } from './LargeTiles'
-// import { SmallTiles } from './SmallTiles'
+import { SmallTiles } from './SmallTiles'
 
 import './style.css'
 
@@ -11,7 +11,7 @@ export class FavouriteFilms extends React.Component {
     return (
       <div>
         <LargeTiles topFilms={[]} />
-        {/* <SmallTiles /> */}
+        <SmallTiles films={films} />
       </div>
     )
   }

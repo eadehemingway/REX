@@ -5,11 +5,11 @@ export class FilledLargeTile extends React.Component {
   render() {
     const { topFilms, deleteFilm, editMode } = this.props
     return (
-      <div className="films">
+      <div className="large-film-container">
         {topFilms.map(({ title, poster_path, _id, tag }) => (
           <div key={poster_path}>
             <img
-              className="film-img"
+              className="large-film-img"
               src={`https://image.tmdb.org/t/p/w185/${poster_path}`}
             />
             {/* <p>{title}</p> */}
