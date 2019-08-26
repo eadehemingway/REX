@@ -6,7 +6,6 @@ import './style.css'
 export class LargeTiles extends React.Component {
   render() {
     const { topFilms } = this.props
-    console.log('topFilms:', topFilms)
 
     return (
       <div className="films">

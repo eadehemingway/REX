@@ -119,9 +119,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
-  width: 600px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  width: 300px;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .film-img,
