@@ -2,7 +2,7 @@ const cookie = require('cookie')
 const User = require('../models/users')
 
 exports.addRex = (req, res) => {
-  const { film, receiverHandle, comment } = req.body
+  const { filmInfo, receiverHandle, comment } = req.body
 
   User.findOne({ handle: receiverHandle }, (err, doc) => {
     if (!doc)
@@ -15,7 +15,7 @@ exports.addRex = (req, res) => {
     const fromHandle = cookie.parse(req.headers.cookie).user
 
     const rex = {
-      filmInfo: film,
+      filmInfo,
       fromHandle,
       comment,
       pending: true

@@ -14,7 +14,7 @@ export class SendRexModal extends React.Component {
   sendRex = () => {
     const { selectedFilm, receiverHandle, comment } = this.state
     axios
-      .patch('/api/rex', { selectedFilm, receiverHandle, comment })
+      .patch('/api/rex', { filmInfo: selectedFilm, receiverHandle, comment })
       .then(response => console.log(response))
 
     this.props.closeModal()
