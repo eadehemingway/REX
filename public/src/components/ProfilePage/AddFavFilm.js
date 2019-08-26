@@ -56,7 +56,10 @@ export class AddFavFilm extends React.Component {
             onChangeComplete={this.handleTagColour}
           />
         )}
-        <FilmDropDown selectFilm={this.selectFilm} />
+        <FilmDropDown
+          selectFilm={this.selectFilm}
+          selectedFilm={selectedFilm}
+        />
 
         <button onClick={() => this.addFilm(selectedFilm)}>submit</button>
       </div>

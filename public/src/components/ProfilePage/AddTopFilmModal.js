@@ -23,7 +23,10 @@ export class AddTopFilmModal extends React.Component {
           className="modal-window"
           ref={modalWindow => (this.modalWindow = modalWindow)}
         >
-          <FilmDropDown selectFilm={this.selectFilm} />
+          <FilmDropDown
+            selectFilm={this.selectFilm}
+            selectedFilm={selectedFilm}
+          />
 
           <button onClick={() => addTopFilm(selectedFilm)}>add film</button>
         </div>
