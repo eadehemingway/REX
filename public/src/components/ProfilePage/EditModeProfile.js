@@ -41,7 +41,6 @@ export class EditModeProfile extends React.Component {
 
   render() {
     const {
-      addFilm,
       openModal,
       closeModal,
       filmToRecommend,
@@ -86,8 +85,7 @@ export class EditModeProfile extends React.Component {
 
         {onFilmTab && favFilms.length > 0 && (
           <FilmTab
-            addFilm={addFilm}
-            favFilms={favFilms}
+            films={favFilms}
             deleteFilm={deleteFilm}
             editMode={true}
             openModal={this.openModal}

@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { FavouriteFilms } from './FavouriteFilms'
 import axios from 'axios'
 import { jdenticon } from 'jdenticon' // need this for the identicon
 import { EditModeProfileConnected } from './EditModeProfile'
+import { FilmTab } from './FilmTab'
 
 class ProfilePage extends React.Component {
   state = {
@@ -26,18 +26,6 @@ class ProfilePage extends React.Component {
     })
   }
 
-  addFilm = (newFilm, tag = {}) => {
-    const newFilmWithTag = { ...newFilm, tag: [tag] }
-    const newFilmArr = [...this.state.favFilms, newFilmWithTag]
-    this.setState({ favFilms: newFilmArr })
-
-    axios
-      .patch('/api/film', {
-        handle: this.props.signedInUser,
-        filmInfo: newFilmWithTag
-      })
-      .catch(e => console.log('ERROR ADDING FILM', e))
-  }
   openModal = (film = null) => {
     this.setState({ filmToRecommend: film, modalOpen: true })
   }
@@ -82,7 +70,6 @@ class ProfilePage extends React.Component {
 
         {editMode && (
           <EditModeProfileConnected
-            addFilm={this.addFilm}
             openModal={this.openModal}
             closeModal={this.closeModal}
             filmToRecommend={filmToRecommend}
@@ -92,7 +79,7 @@ class ProfilePage extends React.Component {
           />
         )}
         {!editMode && (
-          <FavouriteFilms
+          <FilmTab
             films={favFilms}
             deleteFilm={this.deleteFilm}
             editMode={editMode}

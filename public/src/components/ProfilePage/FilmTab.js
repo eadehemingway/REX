@@ -1,29 +1,19 @@
 import React from 'react'
-import axios from 'axios'
-import { FavouriteFilms } from './FavouriteFilms'
-import { AddFavFilm } from './AddFavFilm'
+import { LargeTiles } from './LargeTiles'
+import { SmallTiles } from './SmallTiles'
+
+import './style.css'
 
 export class FilmTab extends React.Component {
-  state = {
-    showAddFilmPanel: false
-  }
-  toggleAddFilmPanel = () => {
-    this.setState({ showAddFilmPanel: !this.state.showAddFilmPanel })
-  }
   render() {
-    const { addFilm, favFilms, deleteFilm, openModal } = this.props
-    const { showAddFilmPanel } = this.state
-    const films = favFilms || []
+    const { films, deleteFilm, editMode } = this.props
+    console.log('films:', films)
+
+    const topFilms = films.filter(f => f.tag === 'topFilm')
     return (
       <div>
-        <button onClick={this.toggleAddFilmPanel}> +</button>
-        {showAddFilmPanel && <AddFavFilm addFilm={addFilm} />}
-        <FavouriteFilms
-          films={films}
-          deleteFilm={deleteFilm}
-          editMode={true}
-          openModal={openModal}
-        />
+        <LargeTiles topFilms={topFilms} />
+        <SmallTiles films={films} />
       </div>
     )
   }
