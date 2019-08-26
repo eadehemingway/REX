@@ -4,7 +4,6 @@ import './style.css'
 export class FilledLargeTile extends React.Component {
   render() {
     const { film, editMode, deleteFilm, openModal } = this.props
-    console.log('film:', film)
 
     return (
       <div>
@@ -23,9 +22,7 @@ export class FilledLargeTile extends React.Component {
         {editMode && (
           <button onClick={() => deleteFilm(film._id)}>delete</button>
         )}
-        <button onClick={() => openModal({ title, poster_path })}>
-          recommend this film
-        </button>
+        <button onClick={() => openModal(film)}>recommend this film</button>
       </div>
     )
   }

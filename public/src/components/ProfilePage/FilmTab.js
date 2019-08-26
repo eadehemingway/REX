@@ -33,7 +33,7 @@ class FilmTab extends React.Component {
       .catch(e => console.log('ERROR DELETING FILM', e))
   }
   render() {
-    const { editMode, signedInUser } = this.props
+    const { editMode, signedInUser, openModal } = this.props
     const { films } = this.state
     const topFilms = films.filter(f => {
       const tagNames = f.tag.map(t => t.name)
@@ -47,6 +47,7 @@ class FilmTab extends React.Component {
           addTopFilm={this.addFilm}
           editMode={editMode}
           deleteFilm={this.deleteFilm}
+          openModal={openModal}
         />
         <SmallTiles
           films={films}
@@ -54,6 +55,7 @@ class FilmTab extends React.Component {
           addFilm={this.addFilm}
           editMode={editMode}
           deleteFilm={this.deleteFilm}
+          openModal={openModal}
         />
       </div>
     )

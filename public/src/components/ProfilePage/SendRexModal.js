@@ -4,17 +4,17 @@ import { FilmDropDown } from './FilmDropDown'
 
 export class SendRexModal extends React.Component {
   state = {
-    film: null,
+    selectedFilm: null,
     receiverHandle: '',
     comment: ''
   }
   componentDidMount() {
-    this.setState({ film: this.props.film })
+    this.setState({ selectedFilm: this.props.film })
   }
   sendRex = () => {
-    const { film, receiverHandle, comment } = this.state
+    const { selectedFilm, receiverHandle, comment } = this.state
     axios
-      .patch('/api/rex', { film, receiverHandle, comment })
+      .patch('/api/rex', { selectedFilm, receiverHandle, comment })
       .then(response => console.log(response))
 
     this.props.closeModal()
@@ -23,14 +23,14 @@ export class SendRexModal extends React.Component {
     this.setState({ [name]: event.target.value })
   }
   selectFilm = filmInfo => {
-    this.setState({ film: filmInfo })
+    this.setState({ selectedFilm: filmInfo })
   }
   handleClick = e => {
     if (this.modalWindow.contains(e.target)) return
     this.props.closeModal()
   }
   render() {
-    const { film, receiverHandle, comment } = this.state
+    const { selectedFilm, receiverHandle, comment } = this.state
 
     return (
       <div className="modal-overlay" onClick={this.handleClick}>
@@ -40,7 +40,10 @@ export class SendRexModal extends React.Component {
         >
           SEND RECOMMENDATION
           <div className="modal-content">
-            <FilmDropDown selectFilm={this.selectFilm} />
+            <FilmDropDown
+              selectFilm={this.selectFilm}
+              selectedFilm={selectedFilm}
+            />
 
             <input
               type="text"
@@ -54,7 +57,7 @@ export class SendRexModal extends React.Component {
               value={comment}
               onChange={event => this.handleChange(event, 'comment')}
             />
-            <button onClick={() => this.sendRex(film, receiverHandle)}>
+            <button onClick={() => this.sendRex(selectedFilm, receiverHandle)}>
               send
             </button>
             <button onClick={this.props.closeModal}>close</button>

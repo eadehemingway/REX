@@ -34,9 +34,7 @@ export class SmallTiles extends React.Component {
               {editMode && (
                 <button onClick={() => deleteFilm(f._id)}>delete</button>
               )}
-              <button onClick={() => openModal({ title, poster_path })}>
-                recommend this film
-              </button>
+              <button onClick={() => openModal(f)}>recommend this film</button>
             </div>
           ))}
         </div>

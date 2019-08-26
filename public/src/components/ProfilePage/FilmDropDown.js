@@ -5,8 +5,7 @@ export class FilmDropDown extends React.Component {
   state = {
     value: '',
     filmInfo: [],
-    showDropDown: false,
-    selectedFilm: null
+    showDropDown: false
   }
 
   getMovies = title => {
@@ -18,10 +17,12 @@ export class FilmDropDown extends React.Component {
 
   selectFilm = film => {
     this.props.selectFilm(film)
-    this.setState({ showDropDown: false, selectedFilm: film })
+    this.setState({ showDropDown: false })
   }
   render() {
-    const { filmInfo, value, showDropDown, selectedFilm } = this.state
+    const { filmInfo, value, showDropDown } = this.state
+    const { selectedFilm } = this.props
+
     return (
       <div>
         <input
