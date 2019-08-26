@@ -39,7 +39,11 @@ class FilmTab extends React.Component {
           signedInUser={signedInUser}
           addTopFilm={this.addFilm}
         />
-        <SmallTiles films={films} signedInUser={signedInUser} />
+        <SmallTiles
+          films={films}
+          signedInUser={signedInUser}
+          addFilm={this.addFilm}
+        />
       </div>
     )
   }
