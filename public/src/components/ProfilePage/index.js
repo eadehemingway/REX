@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { jdenticon } from 'jdenticon' // need this for the identicon
 import { EditModeProfileConnected } from './EditModeProfile'
-import { FilmTab } from './FilmTab'
+import { FilmTabConnected } from './FilmTab'
 
 class ProfilePage extends React.Component {
   state = {
@@ -79,7 +79,7 @@ class ProfilePage extends React.Component {
           />
         )}
         {!editMode && (
-          <FilmTab
+          <FilmTabConnected
             films={favFilms}
             deleteFilm={this.deleteFilm}
             editMode={editMode}

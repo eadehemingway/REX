@@ -5,7 +5,7 @@ export class FilledLargeTile extends React.Component {
   render() {
     const { film } = this.props
     return (
-      <div key={i}>
+      <div>
         <img
           className="large-film-img"
           src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}

@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { FilmDropDown } from './FilmDropDown'
 
-export class Modal extends React.Component {
+export class SendRexModal extends React.Component {
   state = {
     film: null,
     receiverHandle: '',

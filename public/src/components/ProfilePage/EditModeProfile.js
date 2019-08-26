@@ -1,9 +1,9 @@
 import React from 'react'
-import { Modal } from './Modal'
+import { SendRexModal } from './SendRexModal'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { RexTab } from './RexTab'
-import { FilmTab } from './FilmTab'
+import { FilmTabConnected } from './FilmTab'
 
 export class EditModeProfile extends React.Component {
   state = {
@@ -57,7 +57,7 @@ export class EditModeProfile extends React.Component {
     return (
       <div>
         {modalOpen && (
-          <Modal
+          <SendRexModal
             openModal={openModal}
             closeModal={closeModal}
             film={filmToRecommend}
@@ -84,7 +84,7 @@ export class EditModeProfile extends React.Component {
         </button>
 
         {onFilmTab && favFilms.length > 0 && (
-          <FilmTab
+          <FilmTabConnected
             films={favFilms}
             deleteFilm={deleteFilm}
             editMode={true}
