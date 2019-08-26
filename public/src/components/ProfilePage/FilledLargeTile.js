@@ -3,24 +3,22 @@ import './style.css'
 
 export class FilledLargeTile extends React.Component {
   render() {
-    const { topFilms, deleteFilm, editMode } = this.props
+    const { film } = this.props
     return (
-      <div className="large-film-container">
-        {topFilms.map(({ title, poster_path, _id, tag }) => (
-          <div key={poster_path}>
-            <img
-              className="large-film-img"
-              src={`https://image.tmdb.org/t/p/w185/${poster_path}`}
-            />
-            {/* <p>{title}</p> */}
-            {/* {tag.length > 0 &&
+      <div key={i}>
+        <img
+          className="large-film-img"
+          src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}
+        />
+        {/* <p>{title}</p> */}
+        {/* {tag.length > 0 &&
               tag.map((t, i) => (
                 <p key={i} style={{ background: t.colour }}>
                   {t.name}
                 </p>
               ))} */}
 
-            {/* {editMode && (
+        {/* {editMode && (
               <button onClick={() => deleteFilm(_id)}>delete</button>
             )}
             <button
@@ -28,8 +26,6 @@ export class FilledLargeTile extends React.Component {
             >
               recommend this film
             </button> */}
-          </div>
-        ))}
       </div>
     )
   }

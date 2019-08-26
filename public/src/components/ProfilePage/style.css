@@ -114,8 +114,7 @@
   width: 70px;
 }
 
-.large-film-container,
-.empty-tile-container {
+.large-film-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
@@ -123,7 +122,12 @@
   overflow-x: auto;
   white-space: nowrap;
 }
-
+.small-tile-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+}
 .large-film-img,
 .empty-tile-btn {
   width: 131px;
@@ -138,14 +142,16 @@
   display: inline-block;
 }
 .small-film-img {
-  width: 70px;
+  width: 100px;
 }
 .small-tile-section {
   margin-top: 2rem;
 }
-.small-tile-container {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100vw;
+
+.cropped-to-square {
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+  margin-bottom: 15px;
 }
