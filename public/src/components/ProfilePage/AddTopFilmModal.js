@@ -25,13 +25,7 @@ export class AddTopFilmModal extends React.Component {
         >
           <FilmDropDown selectFilm={this.selectFilm} />
 
-          <button
-            onClick={() =>
-              addTopFilm(selectedFilm, { colour: '', name: 'TOP' })
-            }
-          >
-            add film
-          </button>
+          <button onClick={() => addTopFilm(selectedFilm)}>add film</button>
         </div>
       </div>
     )

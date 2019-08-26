@@ -5,18 +5,24 @@ import './style.css'
 
 export class LargeTiles extends React.Component {
   render() {
-    const { topFilms, addTopFilm } = this.props
+    const { topFilms, addTopFilm, editMode, deleteFilm } = this.props
     const maxNumTopFilms = 4
     const emptyTilesNeeded = maxNumTopFilms - topFilms.length
     const emptyTileArray = [...Array(emptyTilesNeeded)].map((_, i) => i)
     return (
       <div className="large-film-container">
         {topFilms.map((f, i) => (
-          <FilledLargeTile film={f} key={i} />
+          <FilledLargeTile
+            film={f}
+            key={i}
+            editMode={editMode}
+            deleteFilm={deleteFilm}
+          />
         ))}
-        {emptyTileArray.map(i => (
-          <EmptyLargeTile key={i} addTopFilm={addTopFilm} />
-        ))}
+        {editMode &&
+          emptyTileArray.map(i => (
+            <EmptyLargeTile key={i} addTopFilm={addTopFilm} />
+          ))}
       </div>
     )
   }

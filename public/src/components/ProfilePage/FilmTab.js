@@ -24,9 +24,16 @@ class FilmTab extends React.Component {
       })
       .catch(e => console.log('ERROR ADDING FILM', e))
   }
-
+  deleteFilm = filmId => {
+    const { films } = this.state
+    const newFilmArr = [...films].filter(f => f._id !== filmId)
+    this.setState({ films: newFilmArr })
+    axios
+      .delete(`/api/film/${filmId}`)
+      .catch(e => console.log('ERROR DELETING FILM', e))
+  }
   render() {
-    const { deleteFilm, editMode, signedInUser } = this.props
+    const { editMode, signedInUser } = this.props
     const { films } = this.state
     const topFilms = films.filter(f => {
       const tagNames = f.tag.map(t => t.name)
@@ -38,11 +45,15 @@ class FilmTab extends React.Component {
           topFilms={topFilms}
           signedInUser={signedInUser}
           addTopFilm={this.addFilm}
+          editMode={editMode}
+          deleteFilm={this.deleteFilm}
         />
         <SmallTiles
           films={films}
           signedInUser={signedInUser}
           addFilm={this.addFilm}
+          editMode={editMode}
+          deleteFilm={this.deleteFilm}
         />
       </div>
     )

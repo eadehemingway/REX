@@ -11,15 +11,19 @@ export class EmptyLargeTile extends React.Component {
   toggleAddModal = () => {
     this.setState(prevState => ({ addModalOpen: !prevState.addModalOpen }))
   }
+  addTopFilm = film => {
+    const { addTopFilm } = this.props
+    addTopFilm(film, { colour: '', name: 'TOP' })
+    this.setState({ addModalOpen: false })
+  }
   render() {
     const { addModalOpen } = this.state
-    const { addTopFilm } = this.props
     return (
       <div>
         {addModalOpen && (
           <AddTopFilmModal
             closeModal={this.toggleAddModal}
-            addTopFilm={addTopFilm}
+            addTopFilm={this.addTopFilm}
           />
         )}
         <button onClick={this.toggleAddModal} className="empty-tile-btn">

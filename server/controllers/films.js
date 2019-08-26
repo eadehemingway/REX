@@ -18,6 +18,7 @@ exports.deleteFavFilm = (req, res) => {
   const { filmid } = req.params
 
   User.findOne({ handle }, (err, doc) => {
+    if (!doc) res.json('could not find record of this user')
     const filmArr = doc.films
     const index = filmArr.findIndex(e => e.id === filmid)
     filmArr.splice(index, 1)

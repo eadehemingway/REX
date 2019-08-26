@@ -32,13 +32,7 @@ class ProfilePage extends React.Component {
   closeModal = () => {
     this.setState({ modalOpen: false, filmToRecommend: null })
   }
-  deleteFilm = filmId => {
-    const newFilmArr = [...this.state.favFilms].filter(f => f._id !== filmId)
-    this.setState({ favFilms: newFilmArr })
-    axios
-      .delete(`/api/film/${filmId}`)
-      .catch(e => console.log('ERROR DELETING FILM', e))
-  }
+
   render() {
     const { modalOpen, favFilms, editMode, filmToRecommend } = this.state
 
@@ -74,14 +68,12 @@ class ProfilePage extends React.Component {
             closeModal={this.closeModal}
             filmToRecommend={filmToRecommend}
             favFilms={favFilms}
-            deleteFilm={this.deleteFilm}
             modalOpen={modalOpen}
           />
         )}
         {!editMode && (
           <FilmTabConnected
             films={favFilms}
-            deleteFilm={this.deleteFilm}
             editMode={editMode}
             openModal={this.openModal}
           />

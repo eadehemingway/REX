@@ -3,7 +3,9 @@ import './style.css'
 
 export class FilledLargeTile extends React.Component {
   render() {
-    const { film } = this.props
+    const { film, editMode, deleteFilm, openModal } = this.props
+    console.log('film:', film)
+
     return (
       <div>
         <img
@@ -18,14 +20,12 @@ export class FilledLargeTile extends React.Component {
                 </p>
               ))} */}
 
-        {/* {editMode && (
-              <button onClick={() => deleteFilm(_id)}>delete</button>
-            )}
-            <button
-              onClick={() => this.props.openModal({ title, poster_path })}
-            >
-              recommend this film
-            </button> */}
+        {editMode && (
+          <button onClick={() => deleteFilm(film._id)}>delete</button>
+        )}
+        <button onClick={() => openModal({ title, poster_path })}>
+          recommend this film
+        </button>
       </div>
     )
   }
