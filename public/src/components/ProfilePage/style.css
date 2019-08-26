@@ -154,4 +154,18 @@
   height: 100px;
   margin-right: 15px;
   margin-bottom: 15px;
+  position: relative;
+}
+
+.onhover-tile-btn-container {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+}
+
+.onhover-tile-btn {
+  background: white;
+}
+.large-film-tile {
+  position: relative;
 }
