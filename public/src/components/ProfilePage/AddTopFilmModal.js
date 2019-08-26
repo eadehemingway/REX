@@ -12,11 +12,14 @@ export class AddTopFilmModal extends React.Component {
   selectFilm = filmInfo => {
     this.setState({ selectedFilm: filmInfo })
   }
+  addTopFilm = () => {
+    const { selectedFilm } = this.state
+    if (!selectedFilm) return
+    const { addTopFilm } = this.props
+    addTopFilm(selectedFilm)
+  }
   render() {
     const { selectedFilm } = this.state
-
-    const { addTopFilm } = this.props
-
     return (
       <div className="modal-overlay" onClick={this.handleClick}>
         <div
@@ -27,8 +30,7 @@ export class AddTopFilmModal extends React.Component {
             selectFilm={this.selectFilm}
             selectedFilm={selectedFilm}
           />
-
-          <button onClick={() => addTopFilm(selectedFilm)}>add film</button>
+          <button onClick={this.addTopFilm}>add film</button>
         </div>
       </div>
     )

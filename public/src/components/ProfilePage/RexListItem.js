@@ -4,7 +4,7 @@ export class RexListItem extends React.Component {
   state = {}
 
   render() {
-    const { rex, inApprovedTab, toggleRexApproval } = this.props
+    const { rex, inApprovedTab, toggleRexApproval, deleteRex } = this.props
 
     return (
       <div className="rex-list-item">
