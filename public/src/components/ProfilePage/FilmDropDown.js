@@ -31,16 +31,22 @@ export class FilmDropDown extends React.Component {
           value={value}
           onChange={e => this.getMovies(e.target.value)}
         />
-        {showDropDown &&
-          filmInfo.map(t => (
-            <button key={t.poster_path} onClick={() => this.selectFilm(t)}>
-              <img
-                className="drop-down-image"
-                src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
-              />
-              <li className="auto-complete-list">{t.title}</li>
-            </button>
-          ))}
+        <div className="drop-down-container">
+          {showDropDown &&
+            filmInfo.map(t => (
+              <button
+                className="dropdown-list-item"
+                key={t.poster_path}
+                onClick={() => this.selectFilm(t)}
+              >
+                <img
+                  className="drop-down-image"
+                  src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
+                />
+                <li className="auto-complete-list">{t.title}</li>
+              </button>
+            ))}
+        </div>
 
         {selectedFilm && (
           <div>
