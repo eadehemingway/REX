@@ -33,7 +33,13 @@ export class AddTopFilmModal extends React.Component {
               <li className="auto-complete-list">{selectedFilm.title}</li>
             </div>
           )}
-          <button onClick={() => addTopFilm(selectedFilm)}>add film</button>
+          <button
+            onClick={() =>
+              addTopFilm(selectedFilm, { colour: '', name: 'TOP' })
+            }
+          >
+            add film
+          </button>
         </div>
       </div>
     )
