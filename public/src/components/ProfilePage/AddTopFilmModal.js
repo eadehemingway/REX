@@ -24,15 +24,7 @@ export class AddTopFilmModal extends React.Component {
           ref={modalWindow => (this.modalWindow = modalWindow)}
         >
           <FilmDropDown selectFilm={this.selectFilm} />
-          {selectedFilm && (
-            <div>
-              <img
-                className="drop-down-image"
-                src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
-              />
-              <li className="auto-complete-list">{selectedFilm.title}</li>
-            </div>
-          )}
+
           <button
             onClick={() =>
               addTopFilm(selectedFilm, { colour: '', name: 'TOP' })

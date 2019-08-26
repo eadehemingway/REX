@@ -5,7 +5,8 @@ export class FilmDropDown extends React.Component {
   state = {
     value: '',
     filmInfo: [],
-    showDropDown: false
+    showDropDown: false,
+    selectedFilm: null
   }
 
   getMovies = title => {
@@ -17,10 +18,10 @@ export class FilmDropDown extends React.Component {
 
   selectFilm = film => {
     this.props.selectFilm(film)
-    this.setState({ showDropDown: false })
+    this.setState({ showDropDown: false, selectedFilm: film })
   }
   render() {
-    const { filmInfo, value, showDropDown } = this.state
+    const { filmInfo, value, showDropDown, selectedFilm } = this.state
     return (
       <div>
         <input
@@ -39,6 +40,16 @@ export class FilmDropDown extends React.Component {
               <li className="auto-complete-list">{t.title}</li>
             </button>
           ))}
+
+        {selectedFilm && (
+          <div>
+            <img
+              className="drop-down-image"
+              src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
+            />
+            <li className="auto-complete-list">{selectedFilm.title}</li>
+          </div>
+        )}
       </div>
     )
   }

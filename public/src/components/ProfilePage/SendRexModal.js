@@ -41,15 +41,7 @@ export class SendRexModal extends React.Component {
           SEND RECOMMENDATION
           <div className="modal-content">
             <FilmDropDown selectFilm={this.selectFilm} />
-            {film && (
-              <div>
-                <img
-                  className="drop-down-image"
-                  src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}
-                />
-                <li className="auto-complete-list">{film.title}</li>
-              </div>
-            )}
+
             <input
               type="text"
               placeholder="rex handle"
