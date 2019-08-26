@@ -32,7 +32,7 @@ export class FilmTile extends React.Component {
             {editMode && (
               <button onClick={() => deleteFilm(film._id)}>delete</button>
             )}
-            <button onClick={() => openModal(film)}>recommend this film</button>
+            <button onClick={() => openModal(film)}>send rex</button>
           </div>
         )}
       </div>

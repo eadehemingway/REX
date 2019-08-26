@@ -164,7 +164,8 @@
   display: flex;
   flex-direction: column;
   background: white;
-  opacity: 0.8;
+  opacity: 0.9;
+  width: 95px;
 }
 
 .large-film-tile {
@@ -176,7 +177,7 @@
   top: 0px;
   right: 0px;
   background: white;
-  opacity: 0.5;
+  opacity: 0.9;
   padding: 0 4px 4px 4px;
   border-radius: 2px;
 }
