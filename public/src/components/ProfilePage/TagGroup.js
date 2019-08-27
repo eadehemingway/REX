@@ -26,19 +26,21 @@ export class TagGroup extends React.Component {
         >
           {tagName}
         </h3>
-        {filmsWithThisTag.map((f, i) => {
-          return (
-            <div key={i}>
-              <FilmTile
-                film={f}
-                editMode={editMode}
-                deleteFilm={deleteFilm}
-                openModal={openModal}
-                containerClass="cropped-to-square"
-              />
-            </div>
-          )
-        })}
+        <div className="tag-group-film-container">
+          {filmsWithThisTag.map((f, i) => {
+            return (
+              <div key={i}>
+                <FilmTile
+                  film={f}
+                  editMode={editMode}
+                  deleteFilm={deleteFilm}
+                  openModal={openModal}
+                  containerClass="cropped-to-square"
+                />
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
