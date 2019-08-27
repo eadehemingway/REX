@@ -5,6 +5,19 @@ export class FilmTile extends React.Component {
   state = {
     showMoreMenu: false
   }
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOut, false)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOut, false)
+  }
+  handleClickOut = e => {
+    if (this.moreMenu && this.moreMenu.contains(e.target)) {
+      return
+    }
+    this.setState({ showMoreMenu: false })
+  }
+
   toggleMoreMenu = () => {
     this.setState(prevState => ({ showMoreMenu: !prevState.showMoreMenu }))
   }
@@ -25,7 +38,10 @@ export class FilmTile extends React.Component {
           ...
         </div>
         {showMoreMenu && (
-          <div className="onhover-tile-btn-container">
+          <div
+            className="onhover-tile-btn-container"
+            ref={moreMenu => (this.moreMenu = moreMenu)}
+          >
             {editMode && (
               <button
                 className="interactive"
