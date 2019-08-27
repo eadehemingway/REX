@@ -45,7 +45,7 @@ export class SendRexModal extends React.Component {
           selectedFilm={selectedFilm}
           deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
         />
-        <label htmlFor="rex-input" className="send-rex-label">
+        <label htmlFor="rex-input" className="form-label">
           Rex
         </label>
         <input
@@ -54,9 +54,9 @@ export class SendRexModal extends React.Component {
           placeholder="rex handle"
           value={receiverHandle}
           onChange={event => this.handleChange(event, 'receiverHandle')}
-          className="send-rex-input text-input"
+          className="form-inputtext-input"
         />
-        <label htmlFor="comment-input" className="send-rex-label">
+        <label htmlFor="comment-input" className="form-label">
           Comment
         </label>
         <input
@@ -64,10 +64,10 @@ export class SendRexModal extends React.Component {
           id="comment-input"
           placeholder="comment"
           value={comment}
-          className="send-rex-input text-input"
+          className="form-inputtext-input"
           onChange={event => this.handleChange(event, 'comment')}
         />
-        <div className="modal-btn-container">
+        <div className="send-rex-btn-container">
           <button
             className="modal-btn button"
             onClick={() => this.sendRex(selectedFilm, receiverHandle)}

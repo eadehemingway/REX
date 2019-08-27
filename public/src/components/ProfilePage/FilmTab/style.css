@@ -9,18 +9,14 @@
 }
 .large-film-tile {
   position: relative;
-}
-.large-film-img,
-.empty-tile-btn {
   width: 131px;
   height: 178px;
+  border-radius: 4px;
 }
 
 .empty-tile-btn {
   background: #ebebeb;
-  outline: none;
   border: 1px dashed #a7a6a6;
-  border-radius: 4px;
   display: inline-block;
 }
 /* SMALL FILMS ==============================*/
@@ -46,16 +42,14 @@
   position: relative;
 }
 
-.tag-group {
-  width: 100%;
-}
-
 .tag-group-film-container {
   display: flex;
   width: 400px;
   flex-wrap: wrap;
 }
-
+.tag-group {
+  width: 100%;
+}
 .tag-dropdown {
   background: white;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
@@ -69,7 +63,7 @@
 }
 /* ADD FILM PANEL ==============================*/
 
-.add-film-drop-down {
+.add-film-drop-down-container {
   background: white;
   padding: 2rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
@@ -81,7 +75,7 @@
   box-sizing: border-box;
 }
 
-.open-add-film-dropdown-btn {
+.add-film-dropdown-btn {
   position: relative;
   width: 400px;
 }
@@ -90,8 +84,10 @@
   width: 20px;
   height: 20px;
   border: 2px solid lightgrey;
-
   margin: 10px 0 20px 1rem;
+}
+.color-picker-container {
+  position: relative;
 }
 .color-picker {
   position: absolute;
@@ -99,22 +95,19 @@
   left: 22px;
 }
 
-.tag-dropdown-btn {
-  padding: 0.5rem;
-}
-.tag-dropdown-color {
-  border-radius: 4px;
-}
-.color-picker-container {
-  position: relative;
-}
 .tag-input-container {
   display: flex;
   margin-bottom: 2rem;
   position: relative;
 }
+.tag-dropdown-btn {
+  padding: 0.5rem;
+}
+.tag-dropdown-tag {
+  border-radius: 4px;
+}
 /* GENERAL ============================== */
-.onhover-tile-btn-container {
+.film-tile-more-menu {
   position: absolute;
   top: 20px;
   right: 0px;

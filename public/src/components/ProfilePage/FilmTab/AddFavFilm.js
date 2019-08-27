@@ -62,13 +62,13 @@ export class AddFavFilm extends React.Component {
     const { tags } = this.props
 
     return (
-      <div className="add-film-drop-down">
+      <div className="add-film-drop-down-container">
         <FilmDropDown
           selectFilm={this.selectFilm}
           selectedFilm={selectedFilm}
           deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
         />
-        <label htmlFor="tag" className="add-tag-label">
+        <label htmlFor="tag" className="form-label">
           Tag
         </label>
         <div className="tag-input-container">
@@ -92,7 +92,7 @@ export class AddFavFilm extends React.Component {
                   onClick={() => this.useExistingTag(t)}
                 >
                   <div
-                    className="tag-dropdown-color"
+                    className="tag-dropdown-tag"
                     style={{ background: t.colour }}
                   >
                     {t.name}

@@ -66,7 +66,7 @@ export class SmallTiles extends React.Component {
 
         {editMode && (
           <div
-            className="open-add-film-dropdown-btn button"
+            className="add-film-dropdown-btn button"
             ref={addFilmPanel => (this.addFilmPanel = addFilmPanel)}
           >
             <p onClick={this.toggleAddPanel}>Add</p>

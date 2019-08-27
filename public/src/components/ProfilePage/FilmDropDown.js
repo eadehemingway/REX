@@ -43,7 +43,7 @@ export class FilmDropDown extends React.Component {
 
     return (
       <div>
-        <label htmlFor="film" className="film-dropdown-label">
+        <label htmlFor="film" className="form-label">
           Film
         </label>
         <input
@@ -51,7 +51,7 @@ export class FilmDropDown extends React.Component {
           type="text"
           placeholder="Add a film"
           value={value}
-          className="film-dropdown-input text-input"
+          className="form-input text-input"
           onChange={e => this.getMovies(e.target.value)}
         />
         <div
@@ -69,7 +69,7 @@ export class FilmDropDown extends React.Component {
                   className="drop-down-image"
                   src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
                 />
-                <li className="auto-complete-list">{t.title}</li>
+                <p>{t.title}</p>
               </button>
             ))}
         </div>
@@ -83,7 +83,7 @@ export class FilmDropDown extends React.Component {
             <button className="button" onClick={deleteSelectedFilm}>
               remove
             </button>
-            <li className="auto-complete-list">{selectedFilm.title}</li>
+            <p>{selectedFilm.title}</p>
           </div>
         )}
       </div>

@@ -25,7 +25,7 @@ export class FilmTile extends React.Component {
     return (
       <div className={containerClass}>
         <img
-          className="large-film-img"
+          className="large-film-tile"
           src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}
         />
 
@@ -37,7 +37,7 @@ export class FilmTile extends React.Component {
         </div>
         {showMoreMenu && (
           <div
-            className="onhover-tile-btn-container"
+            className="film-tile-more-menu"
             ref={moreMenu => (this.moreMenu = moreMenu)}
           >
             {editMode && (

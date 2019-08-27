@@ -42,7 +42,7 @@ h2 {
   width: 49%;
 }
 /* SEND REX MODAL  ======================*/
-.modal-btn-container {
+.send-rex-btn-container {
   display: flex;
   justify-content: space-between;
 }
@@ -59,10 +59,6 @@ h2 {
 
 .drop-down-image {
   width: 42px;
-}
-
-.auto-complete-list {
-  list-style: none;
 }
 
 .dropdown-list-item {
@@ -116,13 +112,10 @@ h2 {
 
 /* GENERAL LABELS INPUTS BUTTONS ============== */
 
-.send-rex-label,
-.film-dropdown-label,
-.add-tag-label {
+.form-label {
   display: block;
 }
-.film-dropdown-input,
-.send-rex-input {
+.form-input {
   height: 35px;
   width: 100%;
   margin: 10px 0 20px 0;
