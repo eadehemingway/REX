@@ -1,8 +1,8 @@
 import React from 'react'
 import './style.css'
 import { AddFavFilm } from './AddFavFilm'
-import { FilmTile } from './FilmTile'
 import { TagGroup } from './TagGroup'
+
 export class SmallTiles extends React.Component {
   state = {
     addFilmPanelOpen: false,
@@ -40,11 +40,12 @@ export class SmallTiles extends React.Component {
     this.props.addFilm(e)
   }
   render() {
-    const { editMode, deleteFilm, openModal } = this.props
-    const { addFilmPanelOpen, showMoreMenu, tags, films } = this.state
+    const { editMode, deleteFilm, openModal, films } = this.props
+    const { addFilmPanelOpen, tags } = this.state
     const filmsWithNoTag = (films || []).filter(f => {
       return f.tag.length === 0
     })
+
     return (
       <div className="small-tile-section">
         <h2>SMALL TILES</h2>
