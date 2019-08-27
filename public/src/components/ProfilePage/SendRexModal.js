@@ -53,7 +53,7 @@ export class SendRexModal extends React.Component {
           placeholder="rex handle"
           value={receiverHandle}
           onChange={event => this.handleChange(event, 'receiverHandle')}
-          className="send-rex-input"
+          className="send-rex-input text-input"
         />
         <label htmlFor="comment-input" className="send-rex-label">
           Comment
@@ -63,7 +63,7 @@ export class SendRexModal extends React.Component {
           id="comment-input"
           placeholder="comment"
           value={comment}
-          className="send-rex-input"
+          className="send-rex-input text-input"
           onChange={event => this.handleChange(event, 'comment')}
         />
         <div className="modal-btn-container">

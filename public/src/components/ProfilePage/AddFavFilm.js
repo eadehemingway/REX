@@ -41,7 +41,11 @@ export class AddFavFilm extends React.Component {
 
     return (
       <div className="add-film-drop-down">
-        <input placeholder="tag name" onChange={this.handleTagName}></input>
+        <input
+          className="text-input"
+          placeholder="tag name"
+          onChange={this.handleTagName}
+        ></input>
         <p
           className="interactive"
           style={{ background: tagColour, width: 70 }}

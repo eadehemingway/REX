@@ -38,6 +38,7 @@ class Nav extends Component {
         </button>
         <div className="search-bar">
           <input
+            className="text-input"
             type="text"
             onChange={e => this.setState({ userToSearch: e.target.value })}
           />

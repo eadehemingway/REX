@@ -34,7 +34,7 @@ export class FilmDropDown extends React.Component {
           type="text"
           placeholder="Add a film"
           value={value}
-          className="send-rex-input"
+          className="film-dropdown-input text-input"
           onChange={e => this.getMovies(e.target.value)}
         />
         <div className="drop-down-container">
