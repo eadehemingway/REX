@@ -1,21 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap');
+
+h2 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
 .link-container {
   display: flex;
   flex-direction: column;
 }
 
 .modal-window {
-  width: 30%;
-  height: 20rem;
+  width: 450px;
+  height: 450px;
   background: white;
   z-index: 2;
   position: relative;
-  margin: 20px auto;
+  margin: 20vh auto;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
 }
 
 .modal-overlay {
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.63);
   z-index: 1;
   position: fixed;
   top: 0;
@@ -23,15 +33,14 @@
 }
 
 .modal-content {
-  margin: 2rem;
-  width: 80%;
+  width: 300px;
+  height: 400px;
   display: flex;
   flex-direction: column;
+
+  margin: 2rem;
 }
-.modal-content button,
-.modal-content input {
-  margin: 1rem;
-}
+
 .drop-down-container {
   background: white;
   display: flex;
@@ -190,4 +199,35 @@
   opacity: 0.9;
   padding: 0 4px 4px 4px;
   border-radius: 2px;
+}
+
+.modal-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.send-rex-label {
+  display: block;
+}
+
+.send-rex-input {
+  height: 35px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid gray;
+
+  margin: 10px 0 20px 0;
+}
+
+.send-rex-btn::placeholder {
+  font-family: 'Red Hat Text', sans-serif;
+}
+
+.send-rex-btn {
+  height: 35px;
+  width: 49%;
+  outline: none;
+  border: none;
+  background: rgb(224, 224, 224);
+  border-radius: 8px;
 }

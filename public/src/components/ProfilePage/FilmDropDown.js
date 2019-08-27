@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import './style.css'
 
 export class FilmDropDown extends React.Component {
   state = {
@@ -25,10 +26,15 @@ export class FilmDropDown extends React.Component {
 
     return (
       <div>
+        <label htmlFor="film" className="send-rex-label">
+          Film
+        </label>
         <input
+          id="film"
           type="text"
-          placeholder="film name"
+          placeholder="Add a film"
           value={value}
+          className="send-rex-input"
           onChange={e => this.getMovies(e.target.value)}
         />
         <div className="drop-down-container">

@@ -38,29 +38,45 @@ export class SendRexModal extends React.Component {
           className="modal-window"
           ref={modalWindow => (this.modalWindow = modalWindow)}
         >
-          SEND RECOMMENDATION
           <div className="modal-content">
+            <h2>Send Recommendation</h2>
             <FilmDropDown
               selectFilm={this.selectFilm}
               selectedFilm={selectedFilm}
             />
-
+            <label htmlFor="rex-input" className="send-rex-label">
+              Rex
+            </label>
             <input
               type="text"
+              id="rex-input"
               placeholder="rex handle"
               value={receiverHandle}
               onChange={event => this.handleChange(event, 'receiverHandle')}
+              className="send-rex-input"
             />
+            <label htmlFor="comment-input" className="send-rex-label">
+              Comment
+            </label>
             <input
               type="text"
+              id="comment-input"
               placeholder="comment"
               value={comment}
+              className="send-rex-input"
               onChange={event => this.handleChange(event, 'comment')}
             />
-            <button onClick={() => this.sendRex(selectedFilm, receiverHandle)}>
-              send
-            </button>
-            <button onClick={this.props.closeModal}>close</button>
+            <div className="modal-btn-container">
+              <button
+                className="send-rex-btn"
+                onClick={() => this.sendRex(selectedFilm, receiverHandle)}
+              >
+                send
+              </button>
+              <button className="send-rex-btn" onClick={this.props.closeModal}>
+                close
+              </button>
+            </div>
           </div>
         </div>
       </div>
