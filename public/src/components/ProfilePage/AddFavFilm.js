@@ -5,7 +5,7 @@ import { SketchPicker } from 'react-color'
 
 export class AddFavFilm extends React.Component {
   state = {
-    tagName: '',
+    tagName: null,
     tagColour: 'white',
     displayColorPicker: false,
     selectedFilm: null
@@ -21,20 +21,16 @@ export class AddFavFilm extends React.Component {
     this.setState({ selectedFilm: filmInfo })
   }
 
-  addFilm = filmInfo => {
-    const { tagName, tagColour } = this.state
+  addFilm = () => {
+    const { tagName, tagColour, selectedFilm } = this.state
+    const tag = tagName ? [{ name: tagName, colour: tagColour }] : []
 
-    this.props.addFilm(filmInfo, {
-      name: tagName,
-      colour: tagColour
-    })
+    const filmInfo = {
+      ...selectedFilm,
+      tag
+    }
 
-    this.setState({
-      tagName: '',
-      tagColour: 'white',
-      displayColorPicker: false,
-      selectedFilm: null
-    })
+    this.props.addFilm(filmInfo)
   }
   render() {
     const { tagColour, displayColorPicker, selectedFilm } = this.state
@@ -68,7 +64,7 @@ export class AddFavFilm extends React.Component {
           </div>
         </div>
 
-        <button className="button" onClick={() => this.addFilm(selectedFilm)}>
+        <button className="button" onClick={this.addFilm}>
           submit
         </button>
       </div>

@@ -12,15 +12,14 @@ class FilmTab extends React.Component {
     this.setState({ films: this.props.films })
   }
 
-  addFilm = (newFilm, tag = {}) => {
-    const newFilmWithTag = { ...newFilm, tag: [tag] }
-    const newFilmArr = [...this.state.films, newFilmWithTag]
+  addFilm = newFilm => {
+    const newFilmArr = [...this.state.films, newFilm]
     this.setState({ films: newFilmArr })
 
     axios
       .patch('/api/film', {
         handle: this.props.signedInUser,
-        filmInfo: newFilmWithTag
+        filmInfo: newFilm
       })
       .catch(e => console.log('ERROR ADDING FILM', e))
   }

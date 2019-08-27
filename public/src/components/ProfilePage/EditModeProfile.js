@@ -87,11 +87,10 @@ export class EditModeProfile extends React.Component {
           className={`tab-header ${onNewRexTab ? 'selected-tab' : ''}`}
           onClick={() => this.changeTab('newRex')}
         >
-          {' '}
           new rex
         </button>
 
-        {onFilmTab && favFilms.length > 0 && (
+        {onFilmTab && (
           <FilmTabConnected
             films={favFilms}
             editMode={true}

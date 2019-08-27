@@ -35,7 +35,6 @@ class ProfilePage extends React.Component {
 
   render() {
     const { modalOpen, favFilms, editMode, filmToRecommend } = this.state
-
     const { userBeingViewed } = this.props
 
     return (
@@ -74,7 +73,7 @@ class ProfilePage extends React.Component {
         {!editMode && (
           <FilmTabConnected
             films={favFilms}
-            editMode={editMode}
+            editMode={false}
             openModal={this.openModal}
           />
         )}

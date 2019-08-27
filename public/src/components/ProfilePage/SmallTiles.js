@@ -28,26 +28,35 @@ export class SmallTiles extends React.Component {
         <h2>SMALL TILES</h2>
 
         {editMode && (
-          <div
-            className="open-add-film-dropdown-btn button"
-            onClick={this.toggleAddPanel}
-          >
-            Add
+          <div className="open-add-film-dropdown-btn button">
+            <p onClick={this.toggleAddPanel}>Add</p>
             {addFilmPanelOpen && <AddFavFilm addFilm={this.addFilm} />}
           </div>
         )}
 
         <div className="small-tile-container">
-          {films.map((f, i) => (
-            <FilmTile
-              film={f}
-              key={i}
-              editMode={editMode}
-              deleteFilm={deleteFilm}
-              openModal={openModal}
-              containerClass="cropped-to-square"
-            />
-          ))}
+          {films.map((f, i) => {
+            return (
+              <div key={i}>
+                <FilmTile
+                  film={f}
+                  editMode={editMode}
+                  deleteFilm={deleteFilm}
+                  openModal={openModal}
+                  containerClass="cropped-to-square"
+                />
+                {f.tag.length > 0 &&
+                  f.tag.map((t, i) => (
+                    <div
+                      key={i}
+                      style={{ background: t.colour, border: '2px solid grey' }}
+                    >
+                      {t.name}
+                    </div>
+                  ))}
+              </div>
+            )
+          })}
         </div>
       </div>
     )
