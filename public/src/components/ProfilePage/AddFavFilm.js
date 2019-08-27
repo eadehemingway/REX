@@ -19,7 +19,7 @@ export class AddFavFilm extends React.Component {
   }
 
   handleClickOut = e => {
-    if (this.colorPicker.contains(e.target)) {
+    if (this.colorPicker && this.colorPicker.contains(e.target)) {
       return
     }
     this.setState({ displayColorPicker: false })
