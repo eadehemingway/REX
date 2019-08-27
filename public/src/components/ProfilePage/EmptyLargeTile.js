@@ -13,7 +13,8 @@ export class EmptyLargeTile extends React.Component {
   }
   addTopFilm = film => {
     const { addTopFilm } = this.props
-    addTopFilm(film, { colour: '', name: 'TOP' })
+    const filmWithTag = { ...film, tag: [{ colour: 'white', name: 'TOP' }] }
+    addTopFilm(filmWithTag)
     this.setState({ addModalOpen: false })
   }
   render() {

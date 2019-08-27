@@ -34,7 +34,6 @@ class FilmTab extends React.Component {
   render() {
     const { editMode, signedInUser, openModal } = this.props
     const { films } = this.state
-    // console.log('films in film tab', films)
     const topFilms = films.filter(f => {
       const tagNames = f.tag.map(t => t.name)
       return tagNames.includes('TOP')
