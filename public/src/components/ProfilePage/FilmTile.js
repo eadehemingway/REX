@@ -12,9 +12,7 @@ export class FilmTile extends React.Component {
     document.removeEventListener('mousedown', this.handleClickOut, false)
   }
   handleClickOut = e => {
-    if (this.moreMenu && this.moreMenu.contains(e.target)) {
-      return
-    }
+    if (this.moreMenu && this.moreMenu.contains(e.target)) return
     this.setState({ showMoreMenu: false })
   }
 
