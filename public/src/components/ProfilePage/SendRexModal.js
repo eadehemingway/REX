@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { FilmDropDown } from './FilmDropDown'
+import { Modal } from './Modal'
 
 export class SendRexModal extends React.Component {
   state = {
@@ -13,11 +14,18 @@ export class SendRexModal extends React.Component {
   }
   sendRex = () => {
     const { selectedFilm, receiverHandle, comment } = this.state
+    const { addRexToState, signedInUser, closeModal } = this.props
+
     axios
       .patch('/api/rex', { filmInfo: selectedFilm, receiverHandle, comment })
       .then(response => console.log(response))
 
-    this.props.closeModal()
+    if (receiverHandle === signedInUser) {
+      const rexObj = { filmInfo: selectedFilm, comment, pending: true }
+      addRexToState(rexObj)
+    }
+
+    closeModal()
   }
   handleChange = (event, name) => {
     this.setState({ [name]: event.target.value })
@@ -25,61 +33,51 @@ export class SendRexModal extends React.Component {
   selectFilm = filmInfo => {
     this.setState({ selectedFilm: filmInfo })
   }
-  handleClick = e => {
-    if (this.modalWindow.contains(e.target)) return
-    this.props.closeModal()
-  }
   render() {
     const { selectedFilm, receiverHandle, comment } = this.state
+    const { closeModal } = this.props
 
     return (
-      <div className="modal-overlay" onClick={this.handleClick}>
-        <div
-          className="modal-window"
-          ref={modalWindow => (this.modalWindow = modalWindow)}
-        >
-          <div className="modal-content">
-            <h2>Send Recommendation</h2>
-            <FilmDropDown
-              selectFilm={this.selectFilm}
-              selectedFilm={selectedFilm}
-            />
-            <label htmlFor="rex-input" className="send-rex-label">
-              Rex
-            </label>
-            <input
-              type="text"
-              id="rex-input"
-              placeholder="rex handle"
-              value={receiverHandle}
-              onChange={event => this.handleChange(event, 'receiverHandle')}
-              className="send-rex-input"
-            />
-            <label htmlFor="comment-input" className="send-rex-label">
-              Comment
-            </label>
-            <input
-              type="text"
-              id="comment-input"
-              placeholder="comment"
-              value={comment}
-              className="send-rex-input"
-              onChange={event => this.handleChange(event, 'comment')}
-            />
-            <div className="modal-btn-container">
-              <button
-                className="send-rex-btn"
-                onClick={() => this.sendRex(selectedFilm, receiverHandle)}
-              >
-                send
-              </button>
-              <button className="send-rex-btn" onClick={this.props.closeModal}>
-                close
-              </button>
-            </div>
-          </div>
+      <Modal closeModal={closeModal}>
+        <h2>Send Recommendation</h2>
+        <FilmDropDown
+          selectFilm={this.selectFilm}
+          selectedFilm={selectedFilm}
+        />
+        <label htmlFor="rex-input" className="send-rex-label">
+          Rex
+        </label>
+        <input
+          type="text"
+          id="rex-input"
+          placeholder="rex handle"
+          value={receiverHandle}
+          onChange={event => this.handleChange(event, 'receiverHandle')}
+          className="send-rex-input"
+        />
+        <label htmlFor="comment-input" className="send-rex-label">
+          Comment
+        </label>
+        <input
+          type="text"
+          id="comment-input"
+          placeholder="comment"
+          value={comment}
+          className="send-rex-input"
+          onChange={event => this.handleChange(event, 'comment')}
+        />
+        <div className="modal-btn-container">
+          <button
+            className="send-rex-btn"
+            onClick={() => this.sendRex(selectedFilm, receiverHandle)}
+          >
+            send
+          </button>
+          <button className="send-rex-btn" onClick={this.props.closeModal}>
+            close
+          </button>
         </div>
-      </div>
+      </Modal>
     )
   }
 }

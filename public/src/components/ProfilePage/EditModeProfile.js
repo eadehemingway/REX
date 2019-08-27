@@ -23,6 +23,11 @@ export class EditModeProfile extends React.Component {
     const newRex = [...rex].filter(r => r._id !== id)
     this.setState({ rex: newRex })
   }
+  addRexToState = newRex => {
+    const { rex } = this.state
+    const newRexArr = [...rex, newRex]
+    this.setState({ rex: newRexArr })
+  }
   changeStatusInState = id => {
     const { rex } = this.state
     const newRex = rex.map(r => {
@@ -45,7 +50,8 @@ export class EditModeProfile extends React.Component {
       closeModal,
       filmToRecommend,
       favFilms,
-      modalOpen
+      modalOpen,
+      signedInUser
     } = this.props
 
     const { tabOpen, rex } = this.state
@@ -60,8 +66,11 @@ export class EditModeProfile extends React.Component {
             openModal={openModal}
             closeModal={closeModal}
             film={filmToRecommend}
+            addRexToState={this.addRexToState}
+            signedInUser={signedInUser}
           />
         )}
+
         <button
           className={`tab-header ${onFilmTab ? 'selected-tab' : ''}`}
           onClick={() => this.changeTab('films')}
