@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { RexListItem } from './RexListItem'
+import './style.css'
 export class RexTab extends React.Component {
   toggleRexApproval = id => {
     axios.patch(`/api/rex/${id}/status`)
