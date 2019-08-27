@@ -267,3 +267,7 @@ h2 {
 .interactive {
   cursor: pointer;
 }
+
+.tag-group {
+  width: 100%;
+}
