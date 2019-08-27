@@ -11,12 +11,24 @@ export class AddFavFilm extends React.Component {
     selectedFilm: null,
     showTagDropDown: false
   }
+  componentWillMount() {
+    document.addEventListener('mousedown', this.handleClickOut, false)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOut, false)
+  }
+
+  handleClickOut = e => {
+    if (this.colorPicker.contains(e.target)) {
+      return
+    }
+    this.setState({ displayColorPicker: false })
+  }
 
   handleTagName = e => {
     this.setState({ tagName: e.target.value })
   }
   handleTagColour = e => {
-    console.log('handleTagColour:')
     this.setState({ tagColour: e.hex })
   }
   selectFilm = filmInfo => {
@@ -87,11 +99,13 @@ export class AddFavFilm extends React.Component {
               }
             ></div>
             {displayColorPicker && (
-              <SketchPicker
-                color={this.state.tagColour}
-                onChangeComplete={this.handleTagColour}
-                className="interactive color-picker"
-              />
+              <div ref={colorPicker => (this.colorPicker = colorPicker)}>
+                <SketchPicker
+                  color={this.state.tagColour}
+                  onChangeComplete={this.handleTagColour}
+                  className="interactive color-picker"
+                />
+              </div>
             )}
           </div>
         </div>
