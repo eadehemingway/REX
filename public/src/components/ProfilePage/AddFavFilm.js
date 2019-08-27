@@ -41,31 +41,32 @@ export class AddFavFilm extends React.Component {
 
     return (
       <div className="add-film-drop-down">
-        <input
-          className="text-input"
-          placeholder="tag name"
-          onChange={this.handleTagName}
-        ></input>
-        <p
-          className="interactive"
-          style={{ background: tagColour, width: 70 }}
-          onClick={() =>
-            this.setState({ displayColorPicker: !displayColorPicker })
-          }
-        >
-          {tagColour}
-        </p>
-        {displayColorPicker && (
-          <SketchPicker
-            color={this.state.tagColour}
-            onChangeComplete={this.handleTagColour}
-            className="interactive color-picker"
-          />
-        )}
         <FilmDropDown
           selectFilm={this.selectFilm}
           selectedFilm={selectedFilm}
         />
+        <div className="tag-input-container">
+          <input
+            className="text-input"
+            placeholder="tag name"
+            onChange={this.handleTagName}
+          ></input>
+          <div
+            className="interactive color-square"
+            style={{ background: tagColour }}
+            onClick={() =>
+              this.setState({ displayColorPicker: !displayColorPicker })
+            }
+          >
+            {displayColorPicker && (
+              <SketchPicker
+                color={this.state.tagColour}
+                onChangeComplete={this.handleTagColour}
+                className="interactive color-picker"
+              />
+            )}
+          </div>
+        </div>
 
         <button className="button" onClick={() => this.addFilm(selectedFilm)}>
           submit
