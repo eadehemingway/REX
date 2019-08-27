@@ -10,8 +10,8 @@ export class SmallTiles extends React.Component {
     tags: null,
     films: null
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.films !== prevState.films) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.films !== this.props.films) {
       const { films } = this.props
       const tags = films.reduce((acc, el) => {
         const tagNames = acc.map(t => t.name)
@@ -40,8 +40,8 @@ export class SmallTiles extends React.Component {
     this.props.addFilm(e)
   }
   render() {
-    const { editMode, deleteFilm, openModal, films } = this.props
-    const { addFilmPanelOpen, tags } = this.state
+    const { editMode, deleteFilm, openModal } = this.props
+    const { addFilmPanelOpen, tags, films } = this.state
     const filmsWithNoTag = (films || []).filter(f => {
       return f.tag.length === 0
     })
