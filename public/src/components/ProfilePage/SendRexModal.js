@@ -43,6 +43,7 @@ export class SendRexModal extends React.Component {
         <FilmDropDown
           selectFilm={this.selectFilm}
           selectedFilm={selectedFilm}
+          deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
         />
         <label htmlFor="rex-input" className="send-rex-label">
           Rex

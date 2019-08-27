@@ -66,6 +66,7 @@ export class AddFavFilm extends React.Component {
         <FilmDropDown
           selectFilm={this.selectFilm}
           selectedFilm={selectedFilm}
+          deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
         />
         <label htmlFor="tag" className="add-tag-label">
           Tag

@@ -17,14 +17,11 @@ export class FilmTile extends React.Component {
           className="large-film-img"
           src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}
         />
-        {/* <p>{title}</p> */}
-        {/* {tag.length > 0 &&
-              tag.map((t, i) => (
-                <p key={i} style={{ background: t.colour }}>
-                  {t.name}
-                </p>
-              ))} */}
-        <div className="more-menu-btn" onClick={this.toggleMoreMenu}>
+
+        <div
+          className="more-menu-btn interactive"
+          onClick={this.toggleMoreMenu}
+        >
           ...
         </div>
         {showMoreMenu && (

@@ -39,7 +39,7 @@ export class FilmDropDown extends React.Component {
   }
   render() {
     const { filmInfo, value, showDropDown } = this.state
-    const { selectedFilm } = this.props
+    const { selectedFilm, deleteSelectedFilm } = this.props
 
     return (
       <div>
@@ -80,6 +80,9 @@ export class FilmDropDown extends React.Component {
               className="drop-down-image"
               src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
             />
+            <button className="button" onClick={deleteSelectedFilm}>
+              remove
+            </button>
             <li className="auto-complete-list">{selectedFilm.title}</li>
           </div>
         )}
