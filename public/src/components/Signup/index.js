@@ -53,7 +53,9 @@ export class Signup extends React.Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleClick}>signUp</button>
+        <button className="button" onClick={this.handleClick}>
+          signUp
+        </button>
       </div>
     )
   }

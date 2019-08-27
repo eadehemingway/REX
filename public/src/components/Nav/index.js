@@ -32,7 +32,7 @@ class Nav extends Component {
       <nav className="nav-bar">
         <button
           onClick={() => this.goToProfilePage(signedInUser)}
-          className="home-btn"
+          className="home-btn button"
         >
           MY PROFILE
         </button>
@@ -41,10 +41,15 @@ class Nav extends Component {
             type="text"
             onChange={e => this.setState({ userToSearch: e.target.value })}
           />
-          <button onClick={() => this.goToProfilePage(userToSearch)}>
+          <button
+            className="button"
+            onClick={() => this.goToProfilePage(userToSearch)}
+          >
             search
           </button>
-          <button onClick={() => this.signOut()}>LOG OUT</button>
+          <button className="button" onClick={() => this.signOut()}>
+            LOG OUT
+          </button>
         </div>
       </nav>
     )

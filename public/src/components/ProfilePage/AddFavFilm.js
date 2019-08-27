@@ -61,7 +61,9 @@ export class AddFavFilm extends React.Component {
           selectedFilm={selectedFilm}
         />
 
-        <button onClick={() => this.addFilm(selectedFilm)}>submit</button>
+        <button className="button" onClick={() => this.addFilm(selectedFilm)}>
+          submit
+        </button>
       </div>
     )
   }

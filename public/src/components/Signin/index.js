@@ -61,7 +61,9 @@ class Signin extends React.Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleClick}>sign in</button>
+        <button className="button" onClick={this.handleClick}>
+          sign in
+        </button>
         <p>
           dont have an account?
           <Link to="/signup"> SIGN UP</Link> instead

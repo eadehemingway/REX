@@ -52,7 +52,7 @@ class ProfilePage extends React.Component {
 
             {editMode && (
               <button
-                className="send-rex-btn"
+                className="send-rex-btn button"
                 type="button"
                 onClick={() => this.openModal()}
               >

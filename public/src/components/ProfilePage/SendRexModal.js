@@ -68,12 +68,12 @@ export class SendRexModal extends React.Component {
         />
         <div className="modal-btn-container">
           <button
-            className="send-rex-btn"
+            className="modal-btn button"
             onClick={() => this.sendRex(selectedFilm, receiverHandle)}
           >
             send
           </button>
-          <button className="send-rex-btn" onClick={this.props.closeModal}>
+          <button className="modal-btn button" onClick={this.props.closeModal}>
             close
           </button>
         </div>

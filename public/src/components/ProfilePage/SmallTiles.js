@@ -26,7 +26,12 @@ export class SmallTiles extends React.Component {
     return (
       <div className="small-tile-section">
         <h2>SMALL TILES</h2>
-        {editMode && <button onClick={this.toggleAddPanel}> Add</button>}
+        {editMode && (
+          <button className="button" onClick={this.toggleAddPanel}>
+            {' '}
+            Add
+          </button>
+        )}
         {addFilmPanelOpen && <AddFavFilm addFilm={this.addFilm} />}
         <div className="small-tile-container">
           {films.map((f, i) => (

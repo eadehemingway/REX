@@ -25,7 +25,9 @@ export class AddTopFilmModal extends React.Component {
           selectFilm={this.selectFilm}
           selectedFilm={selectedFilm}
         />
-        <button onClick={this.addTopFilm}>add film</button>
+        <button className="modal-btn button" onClick={this.addTopFilm}>
+          add film
+        </button>
       </Modal>
     )
   }

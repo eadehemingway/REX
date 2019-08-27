@@ -219,13 +219,16 @@ h2 {
   margin: 10px 0 20px 0;
 }
 
-.send-rex-btn::placeholder {
+.modal-btn::placeholder {
   font-family: 'Red Hat Text', sans-serif;
 }
 
-.send-rex-btn {
+.modal-btn {
   height: 35px;
   width: 49%;
+}
+
+.button {
   outline: none;
   border: none;
   background: rgb(224, 224, 224);
