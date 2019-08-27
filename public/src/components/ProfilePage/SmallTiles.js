@@ -2,6 +2,7 @@ import React from 'react'
 import './style.css'
 import { AddFavFilm } from './AddFavFilm'
 import { FilmTile } from './FilmTile'
+import { TagGroup } from './TagGroup'
 export class SmallTiles extends React.Component {
   state = {
     addFilmPanelOpen: false,
@@ -58,58 +59,30 @@ export class SmallTiles extends React.Component {
         <div className="small-tile-container">
           {tags &&
             tags.map((t, i) => {
-              const filmWithThisTag = films.filter(f => {
+              const filmsWithThisTag = films.filter(f => {
                 const tagNames = f.tag.map(t => t.name)
                 return tagNames.includes(t.name)
               })
               return (
-                <div className="tag-group" key={i}>
-                  <h3
-                    style={{
-                      background: t.colour,
-                      border: '2px solid grey'
-                    }}
-                  >
-                    {t.name}
-                  </h3>
-                  {filmWithThisTag.map((f, i) => {
-                    return (
-                      <div key={i}>
-                        <FilmTile
-                          film={f}
-                          editMode={editMode}
-                          deleteFilm={deleteFilm}
-                          openModal={openModal}
-                          containerClass="cropped-to-square"
-                        />
-                      </div>
-                    )
-                  })}
-                </div>
+                <TagGroup
+                  key={i}
+                  tag={t}
+                  filmsWithThisTag={filmsWithThisTag}
+                  editMode={editMode}
+                  deleteFilm={deleteFilm}
+                  openModal={openModal}
+                />
               )
             })}
+
           {filmsWithNoTag.length > 0 && (
-            <div className="tag-group">
-              <h3
-                style={{
-                  background: 'lightgrey',
-                  border: '2px solid grey'
-                }}
-              >
-                No Tag
-              </h3>
-              {filmsWithNoTag.map((f, i) => (
-                <div key={i}>
-                  <FilmTile
-                    film={f}
-                    editMode={editMode}
-                    deleteFilm={deleteFilm}
-                    openModal={openModal}
-                    containerClass="cropped-to-square"
-                  />
-                </div>
-              ))}
-            </div>
+            <TagGroup
+              tag={null}
+              filmsWithThisTag={filmsWithNoTag}
+              editMode={editMode}
+              deleteFilm={deleteFilm}
+              openModal={openModal}
+            />
           )}
         </div>
       </div>
