@@ -52,11 +52,11 @@ h2 {
 
 .add-film-drop-down {
   background: white;
-  height: 15rem;
   padding: 2rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   position: absolute;
+  top: 20px;
   z-index: 2;
   width: 100%;
   box-sizing: border-box;
