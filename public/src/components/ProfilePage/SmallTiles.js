@@ -53,7 +53,9 @@ export class SmallTiles extends React.Component {
         {editMode && (
           <div className="open-add-film-dropdown-btn button">
             <p onClick={this.toggleAddPanel}>Add</p>
-            {addFilmPanelOpen && <AddFavFilm addFilm={this.addFilm} />}
+            {addFilmPanelOpen && (
+              <AddFavFilm addFilm={this.addFilm} tags={tags} />
+            )}
           </div>
         )}
 

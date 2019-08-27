@@ -8,7 +8,8 @@ export class AddFavFilm extends React.Component {
     tagName: null,
     tagColour: 'white',
     displayColorPicker: false,
-    selectedFilm: null
+    selectedFilm: null,
+    showTagDropDown: false
   }
 
   handleTagName = e => {
@@ -20,7 +21,13 @@ export class AddFavFilm extends React.Component {
   selectFilm = filmInfo => {
     this.setState({ selectedFilm: filmInfo })
   }
-
+  useExistingTag = tag => {
+    this.setState({
+      tagColour: tag.colour,
+      tagName: tag.name,
+      showTagDropDown: false
+    })
+  }
   addFilm = () => {
     const { tagName, tagColour, selectedFilm } = this.state
     const tag = tagName ? [{ name: tagName, colour: tagColour }] : []
@@ -33,7 +40,14 @@ export class AddFavFilm extends React.Component {
     this.props.addFilm(filmInfo)
   }
   render() {
-    const { tagColour, displayColorPicker, selectedFilm } = this.state
+    const {
+      tagColour,
+      tagName,
+      displayColorPicker,
+      selectedFilm,
+      showTagDropDown
+    } = this.state
+    const { tags } = this.props
 
     return (
       <div className="add-film-drop-down">
@@ -45,8 +59,23 @@ export class AddFavFilm extends React.Component {
           <input
             className="text-input"
             placeholder="tag name"
+            value={tagName ? tagName : ''}
+            onClick={() => this.setState({ showTagDropDown: true })}
             onChange={this.handleTagName}
           ></input>
+          {showTagDropDown && (
+            <div className="tag-dropdown">
+              {tags.map((t, i) => (
+                <button
+                  key={i}
+                  style={{ background: t.colour }}
+                  onClick={() => this.useExistingTag(t)}
+                >
+                  {t.name}
+                </button>
+              ))}
+            </div>
+          )}
           <div
             className="interactive color-square"
             style={{ background: tagColour }}
