@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap');
+
 body {
-  background: aliceblue;
+  font-family: 'Red Hat Text', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  color: steelblue;
+  color: black;
 }
 
+button {
+  font-family: 'Red Hat Text', sans-serif;
+}
 .page-content {
   margin: auto;
   width: 60%;
-  background: white;
   padding: 3rem;
   height: 100vh;
 }

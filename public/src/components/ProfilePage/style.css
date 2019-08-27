@@ -1,21 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap');
+
+h2 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
 .link-container {
   display: flex;
   flex-direction: column;
 }
 
 .modal-window {
-  width: 30%;
-  height: 20rem;
+  width: 450px;
+  height: 450px;
   background: white;
   z-index: 2;
   position: relative;
-  margin: 20px auto;
+  margin: 20vh auto;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
 }
 
 .modal-overlay {
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.63);
   z-index: 1;
   position: fixed;
   top: 0;
@@ -23,26 +33,241 @@
 }
 
 .modal-content {
-  margin: 2rem;
-  width: 80%;
+  width: 300px;
+  height: 400px;
   display: flex;
   flex-direction: column;
+
+  margin: 2rem;
 }
-.modal-content button,
-.modal-content input {
-  margin: 1rem;
+
+.drop-down-container {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .add-film-drop-down {
-  border: solid 2px steelblue;
-  height: 10rem;
+  background: white;
+  height: 15rem;
   padding: 2rem;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
+}
+.open-add-film-dropdown-btn {
+  position: relative;
+}
+.color-square {
+  width: 20px;
+  height: 20px;
+  border: 2px solid lightgrey;
+  margin-left: 1rem;
+  position: relative;
+}
+.color-picker {
+  position: absolute;
+  z-index: 3;
+  left: 22px;
 }
 
+.tag-input-container {
+  display: flex;
+  margin-bottom: 2rem;
+}
+.dropdown-list-item {
+  display: flex;
+}
 .auto-complete-list {
   list-style: none;
 }
 
 .drop-down-image {
   width: 42px;
+}
+
+.profile-pic {
+  border: 2px solid lightgrey;
+}
+
+.profile-header {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.send-rex-btn {
+  height: 20px;
+}
+
+.handle-send-rex-btn-container {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.handle-title {
+  font-size: 10;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.tab-header {
+  outline: none;
+  background: none;
+  border: none;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-right: 0;
+  padding-left: 0;
+  cursor: pointer;
+}
+
+.selected-tab {
+  border-bottom: 2px solid black;
+  padding-bottom: 8px;
+}
+
+.rex-list-item-info {
+  margin-left: 1rem;
+  padding: 1rem 0;
+}
+
+.rex-list-item {
+  display: flex;
+  margin-bottom: 2rem;
+  background: #ebebeb;
+}
+.rex-info-p-tag {
+  margin: 0.5rem 0;
+  font-size: 0.7rem;
+}
+
+.rex-list {
+  margin-top: 3rem;
+}
+
+.rex-img {
+  width: 70px;
+}
+
+.large-film-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  width: 300px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.small-tile-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+}
+.large-film-img,
+.empty-tile-btn {
+  width: 131px;
+  height: 178px;
+}
+
+.empty-tile-btn {
+  background: #ebebeb;
+  outline: none;
+  border: 1px dashed #a7a6a6;
+  border-radius: 4px;
+  display: inline-block;
+}
+.small-film-img {
+  width: 100px;
+}
+.small-tile-section {
+  margin-top: 2rem;
+}
+
+.cropped-to-square {
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.onhover-tile-btn-container {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  opacity: 0.9;
+  width: 95px;
+}
+
+.large-film-tile {
+  position: relative;
+}
+
+.more-menu-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: white;
+  opacity: 0.9;
+  padding: 0 4px 4px 4px;
+  border-radius: 2px;
+}
+
+.modal-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.send-rex-label {
+  display: block;
+}
+.film-dropdown-input,
+.send-rex-input {
+  height: 35px;
+  width: 100%;
+
+  margin: 10px 0 20px 0;
+}
+
+.modal-btn::placeholder {
+  font-family: 'Red Hat Text', sans-serif;
+}
+
+.modal-btn {
+  height: 35px;
+  width: 49%;
+}
+
+.button {
+  outline: none;
+  border: none;
+  background: rgb(224, 224, 224);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.text-input {
+  border-radius: 4px;
+  border: 1px solid gray;
+}
+.interactive {
+  cursor: pointer;
+}
+
+.tag-group {
+  width: 100%;
 }

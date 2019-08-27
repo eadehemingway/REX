@@ -1,0 +1,18 @@
+.App {
+  position: relative;
+  white-space: nowrap;
+  position: relative;
+  /* overflow-y: auto;
+  overflow-x: hidden; */
+}
+
+.background-rect {
+  background: #f0f0f0;
+  height: 604px;
+  width: 90%;
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  top: 111px;
+  border-radius: 10px;
+}

@@ -48,6 +48,7 @@ class Signin extends React.Component {
     return (
       <div>
         <input
+          className="text-input"
           type="text"
           name="handle"
           value={this.state.handle}
@@ -55,15 +56,17 @@ class Signin extends React.Component {
           onChange={this.handleChange}
         />
         <input
+          className="text-input"
           type="password"
           name="password"
           placeholder="password"
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleClick}>sign in</button>
+        <button className="button" onClick={this.handleClick}>
+          sign in
+        </button>
         <p>
-          {' '}
           dont have an account?
           <Link to="/signup"> SIGN UP</Link> instead
         </p>

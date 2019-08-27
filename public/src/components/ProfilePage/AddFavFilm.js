@@ -5,7 +5,7 @@ import { SketchPicker } from 'react-color'
 
 export class AddFavFilm extends React.Component {
   state = {
-    tagName: '',
+    tagName: null,
     tagColour: 'white',
     displayColorPicker: false,
     selectedFilm: null
@@ -21,52 +21,52 @@ export class AddFavFilm extends React.Component {
     this.setState({ selectedFilm: filmInfo })
   }
 
-  addFilm = filmInfo => {
-    const { tagName, tagColour } = this.state
+  addFilm = () => {
+    const { tagName, tagColour, selectedFilm } = this.state
+    const tag = tagName ? [{ name: tagName, colour: tagColour }] : []
 
-    this.props.addFilm(filmInfo, {
-      name: tagName,
-      colour: tagColour
-    })
+    const filmInfo = {
+      ...selectedFilm,
+      tag
+    }
 
-    this.setState({
-      tagName: '',
-      tagColour: 'white',
-      displayColorPicker: false,
-      selectedFilm: null
-    })
+    this.props.addFilm(filmInfo)
   }
   render() {
     const { tagColour, displayColorPicker, selectedFilm } = this.state
 
     return (
       <div className="add-film-drop-down">
-        <input placeholder="tag name" onChange={this.handleTagName}></input>
-        <p
-          style={{ background: tagColour, width: 70 }}
-          onClick={() =>
-            this.setState({ displayColorPicker: !displayColorPicker })
-          }
-        >
-          {tagColour}
-        </p>
-        {displayColorPicker && (
-          <SketchPicker
-            color={this.state.tagColour}
-            onChangeComplete={this.handleTagColour}
-          />
-        )}
-        <FilmDropDown selectFilm={this.selectFilm} />
-        {selectedFilm && (
-          <div>
-            <img
-              className="drop-down-image"
-              src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
-            />
-            <li className="auto-complete-list">{selectedFilm.title}</li>
+        <FilmDropDown
+          selectFilm={this.selectFilm}
+          selectedFilm={selectedFilm}
+        />
+        <div className="tag-input-container">
+          <input
+            className="text-input"
+            placeholder="tag name"
+            onChange={this.handleTagName}
+          ></input>
+          <div
+            className="interactive color-square"
+            style={{ background: tagColour }}
+            onClick={() =>
+              this.setState({ displayColorPicker: !displayColorPicker })
+            }
+          >
+            {displayColorPicker && (
+              <SketchPicker
+                color={this.state.tagColour}
+                onChangeComplete={this.handleTagColour}
+                className="interactive color-picker"
+              />
+            )}
           </div>
-        )}{' '}
-        <button onClick={() => this.addFilm(selectedFilm)}>submit</button>
+        </div>
+
+        <button className="button" onClick={this.addFilm}>
+          submit
+        </button>
       </div>
     )
   }
