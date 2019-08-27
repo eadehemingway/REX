@@ -10,6 +10,20 @@ export class SmallTiles extends React.Component {
     tags: null,
     films: null
   }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOut, false)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOut, false)
+  }
+
+  handleClickOut = e => {
+    if (this.addFilmPanel && this.addFilmPanel.contains(e.target)) {
+      return
+    }
+    this.setState({ addFilmPanelOpen: false })
+  }
   componentDidUpdate(prevProps) {
     if (prevProps.films !== this.props.films) {
       const { films } = this.props
@@ -51,7 +65,10 @@ export class SmallTiles extends React.Component {
         <h2>SMALL TILES</h2>
 
         {editMode && (
-          <div className="open-add-film-dropdown-btn button">
+          <div
+            className="open-add-film-dropdown-btn button"
+            ref={addFilmPanel => (this.addFilmPanel = addFilmPanel)}
+          >
             <p onClick={this.toggleAddPanel}>Add</p>
             {addFilmPanelOpen && (
               <AddFavFilm addFilm={this.addFilm} tags={tags} />

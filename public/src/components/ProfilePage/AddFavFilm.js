@@ -67,9 +67,13 @@ export class AddFavFilm extends React.Component {
           selectFilm={this.selectFilm}
           selectedFilm={selectedFilm}
         />
+        <label htmlFor="tag" className="add-tag-label">
+          Tag
+        </label>
         <div className="tag-input-container">
           <input
-            className="text-input"
+            id="tag"
+            className="text-input tag-input"
             placeholder="tag name"
             value={tagName ? tagName : ''}
             onClick={() => this.setState({ showTagDropDown: true })}
@@ -82,11 +86,16 @@ export class AddFavFilm extends React.Component {
             >
               {tags.map((t, i) => (
                 <button
+                  className="interactive tag-dropdown-btn"
                   key={i}
-                  style={{ background: t.colour }}
                   onClick={() => this.useExistingTag(t)}
                 >
-                  {t.name}
+                  <div
+                    className="tag-dropdown-color"
+                    style={{ background: t.colour }}
+                  >
+                    {t.name}
+                  </div>
                 </button>
               ))}
             </div>

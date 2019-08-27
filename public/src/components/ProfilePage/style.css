@@ -80,12 +80,20 @@ h2 {
   width: 20px;
   height: 20px;
   border: 2px solid lightgrey;
-  margin-left: 1rem;
+
+  margin: 10px 0 20px 1rem;
 }
 .color-picker {
   position: absolute;
   z-index: 3;
   left: 22px;
+}
+
+.tag-dropdown-btn {
+  padding: 0.5rem;
+}
+.tag-dropdown-color {
+  border-radius: 4px;
 }
 .color-picker-container {
   position: relative;
@@ -246,17 +254,23 @@ h2 {
   justify-content: space-between;
 }
 
-.send-rex-label {
+.send-rex-label,
+.film-dropdown-label,
+.add-tag-label {
   display: block;
 }
 .film-dropdown-input,
 .send-rex-input {
   height: 35px;
   width: 100%;
-
   margin: 10px 0 20px 0;
 }
 
+.tag-input {
+  margin: 10px 0 20px 0;
+  height: 35px;
+  width: 40%;
+}
 .modal-btn::placeholder {
   font-family: 'Red Hat Text', sans-serif;
 }
@@ -278,6 +292,11 @@ h2 {
   border-radius: 4px;
   border: 1px solid gray;
 }
+
+.text-input::placeholder {
+  padding-left: 5px;
+}
+
 .interactive {
   cursor: pointer;
 }

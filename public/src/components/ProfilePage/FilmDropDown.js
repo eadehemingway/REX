@@ -9,7 +9,7 @@ export class FilmDropDown extends React.Component {
     showDropDown: false
   }
 
-  componentWillMount() {
+  componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOut, false)
   }
   componentWillUnmount() {
@@ -43,7 +43,7 @@ export class FilmDropDown extends React.Component {
 
     return (
       <div>
-        <label htmlFor="film" className="send-rex-label">
+        <label htmlFor="film" className="film-dropdown-label">
           Film
         </label>
         <input
