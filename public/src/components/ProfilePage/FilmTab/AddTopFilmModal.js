@@ -1,6 +1,6 @@
 import React from 'react'
-import { FilmDropDown } from './FilmDropDown'
-import { Modal } from './Modal'
+import { FilmDropDown } from '../FilmDropDown'
+import { Modal } from '../Modal'
 
 export class AddTopFilmModal extends React.Component {
   state = {

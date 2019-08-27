@@ -1,0 +1,22 @@
+.rex-list-item-info {
+  margin-left: 1rem;
+  padding: 1rem 0;
+}
+
+.rex-list-item {
+  display: flex;
+  margin-bottom: 2rem;
+  background: #ebebeb;
+}
+.rex-info-p-tag {
+  margin: 0.5rem 0;
+  font-size: 0.7rem;
+}
+
+.rex-list {
+  margin-top: 3rem;
+}
+
+.rex-img {
+  width: 70px;
+}

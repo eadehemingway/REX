@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { FilmDropDown } from './FilmDropDown'
+import { FilmDropDown } from '../FilmDropDown'
 import { SketchPicker } from 'react-color'
 
 export class AddFavFilm extends React.Component {

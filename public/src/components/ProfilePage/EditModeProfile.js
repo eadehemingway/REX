@@ -2,8 +2,8 @@ import React from 'react'
 import { SendRexModal } from './SendRexModal'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { RexTab } from './RexTab'
-import { FilmTabConnected } from './FilmTab'
+import { RexTab } from './RexTab/RexTab'
+import { FilmTabConnected } from './FilmTab/FilmTab'
 
 export class EditModeProfile extends React.Component {
   state = {

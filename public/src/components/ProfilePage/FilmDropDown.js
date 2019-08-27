@@ -55,7 +55,7 @@ export class FilmDropDown extends React.Component {
           onChange={e => this.getMovies(e.target.value)}
         />
         <div
-          className="drop-down-container"
+          className="film-drop-down-container"
           ref={filmDropDown => (this.filmDropDown = filmDropDown)}
         >
           {showDropDown &&
