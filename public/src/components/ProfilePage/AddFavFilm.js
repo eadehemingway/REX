@@ -19,10 +19,15 @@ export class AddFavFilm extends React.Component {
   }
 
   handleClickOut = e => {
-    if (this.colorPicker && this.colorPicker.contains(e.target)) {
+    if (
+      this.colorPicker &&
+      this.colorPicker.contains(e.target) &&
+      this.tagDropDown &&
+      this.tagDropDown.contains(e.target)
+    ) {
       return
     }
-    this.setState({ displayColorPicker: false })
+    this.setState({ displayColorPicker: false, showTagDropDown: false })
   }
 
   handleTagName = e => {
@@ -77,7 +82,10 @@ export class AddFavFilm extends React.Component {
             onChange={this.handleTagName}
           ></input>
           {showTagDropDown && (
-            <div className="tag-dropdown">
+            <div
+              className="tag-dropdown"
+              ref={tagDropDown => (this.tagDropDown = tagDropDown)}
+            >
               {tags.map((t, i) => (
                 <button
                   key={i}

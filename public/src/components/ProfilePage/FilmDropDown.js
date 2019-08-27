@@ -9,7 +9,24 @@ export class FilmDropDown extends React.Component {
     showDropDown: false
   }
 
+  componentWillMount() {
+    document.addEventListener('mousedown', this.handleClickOut, false)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOut, false)
+  }
+
+  handleClickOut = e => {
+    if (this.filmDropDown && this.filmDropDown.contains(e.target)) {
+      return
+    }
+    this.setState({ showDropDown: false })
+  }
   getMovies = title => {
+    if (title === '') {
+      this.setState({ value: title, showDropDown: false })
+      return
+    }
     this.setState({ value: title, showDropDown: true })
     axios.get(`/api/film/${title}`).then(res => {
       this.setState({ filmInfo: res.data.filmInfo })
@@ -37,7 +54,10 @@ export class FilmDropDown extends React.Component {
           className="film-dropdown-input text-input"
           onChange={e => this.getMovies(e.target.value)}
         />
-        <div className="drop-down-container">
+        <div
+          className="drop-down-container"
+          ref={filmDropDown => (this.filmDropDown = filmDropDown)}
+        >
           {showDropDown &&
             filmInfo.map(t => (
               <button
