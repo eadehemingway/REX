@@ -1,14 +1,12 @@
 import React from 'react'
 import { FilmDropDown } from './FilmDropDown'
+import { Modal } from './Modal'
 
 export class AddTopFilmModal extends React.Component {
   state = {
     selectedFilm: null
   }
-  handleClick = e => {
-    if (this.modalWindow.contains(e.target)) return
-    this.props.closeModal()
-  }
+
   selectFilm = filmInfo => {
     this.setState({ selectedFilm: filmInfo })
   }
@@ -20,21 +18,15 @@ export class AddTopFilmModal extends React.Component {
   }
   render() {
     const { selectedFilm } = this.state
+    const { closeModal } = this.props
     return (
-      <div className="modal-overlay" onClick={this.handleClick}>
-        <div
-          className="modal-window"
-          ref={modalWindow => (this.modalWindow = modalWindow)}
-        >
-          <div className="modal-content">
-            <FilmDropDown
-              selectFilm={this.selectFilm}
-              selectedFilm={selectedFilm}
-            />
-            <button onClick={this.addTopFilm}>add film</button>
-          </div>
-        </div>
-      </div>
+      <Modal closeModal={closeModal}>
+        <FilmDropDown
+          selectFilm={this.selectFilm}
+          selectedFilm={selectedFilm}
+        />
+        <button onClick={this.addTopFilm}>add film</button>
+      </Modal>
     )
   }
 }
