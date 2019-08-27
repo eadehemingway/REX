@@ -233,4 +233,14 @@ h2 {
   border: none;
   background: rgb(224, 224, 224);
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.color-picker {
+  position: relative;
+  z-index: 3;
 }

@@ -43,6 +43,7 @@ export class AddFavFilm extends React.Component {
       <div className="add-film-drop-down">
         <input placeholder="tag name" onChange={this.handleTagName}></input>
         <p
+          className="interactive"
           style={{ background: tagColour, width: 70 }}
           onClick={() =>
             this.setState({ displayColorPicker: !displayColorPicker })
@@ -54,6 +55,7 @@ export class AddFavFilm extends React.Component {
           <SketchPicker
             color={this.state.tagColour}
             onChangeComplete={this.handleTagColour}
+            className="interactive color-picker"
           />
         )}
         <FilmDropDown

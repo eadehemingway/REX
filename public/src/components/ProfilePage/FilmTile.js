@@ -30,9 +30,16 @@ export class FilmTile extends React.Component {
         {showMoreMenu && (
           <div className="onhover-tile-btn-container">
             {editMode && (
-              <button onClick={() => deleteFilm(film._id)}>delete</button>
+              <button
+                className="interactive"
+                onClick={() => deleteFilm(film._id)}
+              >
+                delete
+              </button>
             )}
-            <button onClick={() => openModal(film)}>send rex</button>
+            <button className="interactive" onClick={() => openModal(film)}>
+              send rex
+            </button>
           </div>
         )}
       </div>

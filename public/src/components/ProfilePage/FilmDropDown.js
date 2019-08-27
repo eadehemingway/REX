@@ -41,7 +41,7 @@ export class FilmDropDown extends React.Component {
           {showDropDown &&
             filmInfo.map(t => (
               <button
-                className="dropdown-list-item"
+                className="dropdown-list-item interactive"
                 key={t.poster_path}
                 onClick={() => this.selectFilm(t)}
               >

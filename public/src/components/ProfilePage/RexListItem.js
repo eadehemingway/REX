@@ -21,10 +21,15 @@ export class RexListItem extends React.Component {
           </p>
 
           <div>
-            <button onClick={() => toggleRexApproval(rex._id)}>
+            <button
+              className="button"
+              onClick={() => toggleRexApproval(rex._id)}
+            >
               {inApprovedTab ? 'unapprove' : 'approve'}
             </button>
-            <button onClick={() => deleteRex(rex._id)}>delete</button>
+            <button className="button" onClick={() => deleteRex(rex._id)}>
+              delete
+            </button>
           </div>
         </div>
       </div>

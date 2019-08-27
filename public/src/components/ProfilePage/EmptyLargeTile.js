@@ -26,7 +26,10 @@ export class EmptyLargeTile extends React.Component {
             addTopFilm={this.addTopFilm}
           />
         )}
-        <button onClick={this.toggleAddModal} className="empty-tile-btn">
+        <button
+          onClick={this.toggleAddModal}
+          className="empty-tile-btn interactive"
+        >
           +
         </button>
       </div>
