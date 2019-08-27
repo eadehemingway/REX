@@ -16,7 +16,8 @@ export class AddFavFilm extends React.Component {
     this.setState({ tagName: e.target.value })
   }
   handleTagColour = e => {
-    this.setState({ tagColour: e.hex, displayColorPicker: false })
+    console.log('handleTagColour:')
+    this.setState({ tagColour: e.hex })
   }
   selectFilm = filmInfo => {
     this.setState({ selectedFilm: filmInfo })
@@ -76,13 +77,15 @@ export class AddFavFilm extends React.Component {
               ))}
             </div>
           )}
-          <div
-            className="interactive color-square"
-            style={{ background: tagColour }}
-            onClick={() =>
-              this.setState({ displayColorPicker: !displayColorPicker })
-            }
-          >
+
+          <div className="color-picker-container">
+            <div
+              className="interactive color-square"
+              style={{ background: tagColour }}
+              onClick={() =>
+                this.setState({ displayColorPicker: !displayColorPicker })
+              }
+            ></div>
             {displayColorPicker && (
               <SketchPicker
                 color={this.state.tagColour}

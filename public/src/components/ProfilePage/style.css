@@ -81,14 +81,15 @@ h2 {
   height: 20px;
   border: 2px solid lightgrey;
   margin-left: 1rem;
-  position: relative;
 }
 .color-picker {
   position: absolute;
   z-index: 3;
   left: 22px;
 }
-
+.color-picker-container {
+  position: relative;
+}
 .tag-input-container {
   display: flex;
   margin-bottom: 2rem;
