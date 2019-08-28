@@ -5,8 +5,9 @@ import { connect } from 'react-redux'
 import { signOutSuccess, updateUserBeingViewed } from '../../actions/actions'
 import { SettingsMenu } from './SettingsMenu'
 import Logo from '../../assets/rex.png'
-import SearchIcon from '../../assets/search.png'
+
 import SettingsIcon from '../../assets/settings.png'
+import { UserDropDown } from '../ProfilePage/UserDropDown'
 
 class Nav extends Component {
   state = {
@@ -42,12 +43,7 @@ class Nav extends Component {
       .catch(e => console.log(e))
     this.setState({ showSettingsMenu: false })
   }
-  keyPressed = (event, user) => {
-    const keyCode = event.keyCode || event.which
-    if (keyCode === 13) {
-      this.goToProfilePage(user)
-    }
-  }
+
   toggleShowSettingsMenu = () => {
     this.setState({ showSettingsMenu: !this.state.showSettingsMenu })
   }
@@ -63,19 +59,8 @@ class Nav extends Component {
         >
           <img src={Logo} className="logo" />
         </button>
-        <div className="search-bar">
-          <input
-            className="text-input search-input"
-            type="text"
-            onChange={e => this.setState({ userToSearch: e.target.value })}
-            onKeyPress={e => this.keyPressed(e, userToSearch)}
-          />
-          <img
-            src={SearchIcon}
-            className="search-icon"
-            onClick={() => this.goToProfilePage(userToSearch)}
-          />
-        </div>
+
+        <UserDropDown selectUser={this.goToProfilePage} />
         <button
           className="settings-btn interactive"
           onClick={() => this.toggleShowSettingsMenu()}
