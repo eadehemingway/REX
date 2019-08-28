@@ -1972,7 +1972,7 @@ module.exports = function isBuffer (obj) {
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".nav-bar {\n  background: lightsteelblue;\n  display: flex;\n  justify-content: center;\n  height: 3rem;\n  margin: auto;\n}\n\n.search-bar {\n  height: 1rem;\n  margin: auto;\n}\n\n.home-btn {\n  height: 1rem;\n  margin: auto;\n}\n", ""]);
+exports.push([module.i, ".nav-bar {\n  background: lightsteelblue;\n  display: flex;\n  justify-content: center;\n  height: 3rem;\n  margin: auto;\n}\n\n.search-bar-container {\n  height: 1rem;\n  margin: auto;\n}\n\n.home-btn {\n  height: 1rem;\n  margin: auto;\n}\n", ""]);
 
 
 /***/ }),
@@ -35028,7 +35028,7 @@ var Nav = exports.Nav = function (_Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'search-bar' },
+          { className: 'search-bar-container' },
           _react2.default.createElement('input', {
             type: 'text',
             onChange: function onChange(e) {

@@ -5,7 +5,7 @@ import SearchIcon from '../../assets/search.png'
 
 export class UserDropDown extends React.Component {
   state = {
-    userInfo: [],
+    userInfoList: [],
     showDropDown: false
   }
 
@@ -31,7 +31,7 @@ export class UserDropDown extends React.Component {
     this.props.updateUser(user)
     axios.get(`/api/user/all/${user}`).then(res => {
       if (!res.data.data.filteredUsers) return
-      this.setState({ userInfo: res.data.data.filteredUsers })
+      this.setState({ userInfoList: res.data.data.filteredUsers })
     })
   }
 
@@ -46,16 +46,16 @@ export class UserDropDown extends React.Component {
     }
   }
   render() {
-    const { userInfo, showDropDown } = this.state
-    const { selectedUser } = this.props
+    const { userInfoList, showDropDown } = this.state
+    const { selectedUser, containerClass } = this.props
 
     return (
-      <div className="search-bar">
+      <div className={`search-bar-container ${containerClass}`}>
         <input
           id="user"
           type="text"
           value={selectedUser}
-          className="text-input search-input"
+          className="text-input"
           onChange={e => this.getUsers(e.target.value)}
           onKeyPress={e => this.keyPressed(e, selectedUser)}
         />
@@ -69,7 +69,7 @@ export class UserDropDown extends React.Component {
           ref={userDropdown => (this.userDropdown = userDropdown)}
         >
           {showDropDown &&
-            userInfo.map(u => (
+            userInfoList.map(u => (
               <button
                 className="dropdown-list-item interactive"
                 key={u.handle}

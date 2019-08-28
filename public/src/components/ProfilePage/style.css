@@ -47,6 +47,16 @@ h2 {
   justify-content: space-between;
 }
 
+.send-rex-user-dropdown-container .text-input {
+  height: 35px;
+  width: 100%;
+  margin: 10px 0 20px 0;
+}
+.send-rex-user-dropdown-container .search-icon {
+  height: 25px;
+  top: 15px;
+  right: 8px;
+}
 /* FILM DROP DOWN ============================ */
 .film-drop-down-container {
   background: white;
@@ -147,16 +157,12 @@ h2 {
   cursor: pointer;
 }
 
-.search-bar {
-  margin: auto;
+.search-bar-container {
   position: relative;
 }
 
 .search-icon {
-  height: 20px;
   position: absolute;
-  top: 3px;
-  right: 8px;
   opacity: 0.3;
 }
 

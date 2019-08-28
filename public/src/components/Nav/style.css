@@ -45,3 +45,18 @@
 .logo {
   height: 30px;
 }
+
+.nav-search-input-container {
+  margin: 10px 200px;
+}
+
+.nav-search-input-container .text-input {
+  height: 25px;
+  width: 200px;
+}
+
+.nav-search-input-container .search-icon {
+  height: 20px;
+  top: 3px;
+  right: 8px;
+}

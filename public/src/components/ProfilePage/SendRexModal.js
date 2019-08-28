@@ -16,7 +16,6 @@ export class SendRexModal extends React.Component {
   sendRex = () => {
     const { selectedFilm, receiverHandle, comment } = this.state
     const { addRexToState, signedInUser, closeModal } = this.props
-
     axios
       .patch('/api/rex', { filmInfo: selectedFilm, receiverHandle, comment })
       .then(response => console.log(response))
@@ -25,18 +24,13 @@ export class SendRexModal extends React.Component {
       const rexObj = { filmInfo: selectedFilm, comment, pending: true }
       addRexToState(rexObj)
     }
-
     closeModal()
   }
-  handleChange = (value, name) => {
+
+  handleChange = (name, value) => {
     this.setState({ [name]: value })
   }
-  selectFilm = filmInfo => {
-    this.setState({ selectedFilm: filmInfo })
-  }
-  selectUser = user => {
-    this.setState({ receiverHandle: user })
-  }
+
   render() {
     const { selectedFilm, receiverHandle, comment } = this.state
     const { closeModal } = this.props
@@ -45,17 +39,18 @@ export class SendRexModal extends React.Component {
       <Modal closeModal={closeModal}>
         <h2>Send Recommendation</h2>
         <FilmDropDown
-          selectFilm={this.selectFilm}
+          selectFilm={val => this.handleChange('selectedFilm', val)}
           selectedFilm={selectedFilm}
-          deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
+          deleteSelectedFilm={() => this.handleChange('selectedFilm', null)}
         />
         <label htmlFor="rex-input" className="form-label">
           Rex
         </label>
         <UserDropDown
-          selectUser={val => this.selectUser(val)}
+          selectUser={val => this.handleChange('receiverHandle', val)}
           selectedUser={receiverHandle}
-          updateUser={val => this.handleChange(val, 'receiverHandle')}
+          updateUser={val => this.handleChange('receiverHandle', val)}
+          containerClass="send-rex-user-dropdown-container"
         />
         <label htmlFor="comment-input" className="form-label">
           Comment
@@ -65,8 +60,8 @@ export class SendRexModal extends React.Component {
           id="comment-input"
           placeholder="comment"
           value={comment}
-          className="form-inputtext-input"
-          onChange={event => this.handleChange(event.target.value, 'comment')}
+          className="form-input text-input"
+          onChange={event => this.handleChange('comment', event.target.value)}
         />
         <div className="send-rex-btn-container">
           <button
