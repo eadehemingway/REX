@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { signOutSuccess, updateUserBeingViewed } from '../../actions/actions'
+import SearchIcon from '../../assets/search.png'
 
 class Nav extends Component {
   state = {
@@ -24,6 +25,12 @@ class Nav extends Component {
       .then(res => console.log(res))
       .catch(e => console.log(e))
   }
+  keyPressed = (event, user) => {
+    const keyCode = event.keyCode || event.which
+    if (keyCode === 13) {
+      this.goToProfilePage(user)
+    }
+  }
 
   render() {
     const { signedInUser } = this.props
@@ -38,20 +45,20 @@ class Nav extends Component {
         </button>
         <div className="search-bar">
           <input
-            className="text-input"
+            className="text-input search-input"
             type="text"
             onChange={e => this.setState({ userToSearch: e.target.value })}
+            onKeyPress={e => this.keyPressed(e, userToSearch)}
           />
-          <button
-            className="button"
+          <img
+            src={SearchIcon}
+            className="search-icon"
             onClick={() => this.goToProfilePage(userToSearch)}
-          >
-            search
-          </button>
-          <button className="button" onClick={() => this.signOut()}>
-            LOG OUT
-          </button>
+          />
         </div>
+        <button className="button" onClick={() => this.signOut()}>
+          LOG OUT
+        </button>
       </nav>
     )
   }

@@ -7,11 +7,23 @@
 }
 
 .search-bar {
-  height: 1rem;
   margin: auto;
+  position: relative;
 }
 
 .home-btn {
   height: 1rem;
   margin: auto;
+}
+
+.search-icon {
+  height: 20px;
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  opacity: 0.3;
+}
+
+.search-input {
+  height: 23px;
 }
