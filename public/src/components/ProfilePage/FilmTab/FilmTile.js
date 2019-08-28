@@ -20,12 +20,19 @@ export class FilmTile extends React.Component {
     this.setState(prevState => ({ showMoreMenu: !prevState.showMoreMenu }))
   }
   render() {
-    const { film, editMode, deleteFilm, openModal, containerClass } = this.props
+    const {
+      film,
+      editMode,
+      deleteFilm,
+      openModal,
+      containerClass,
+      imageClass
+    } = this.props
     const { showMoreMenu } = this.state
     return (
-      <div className={containerClass}>
+      <div className={`${containerClass}  film-tile`}>
         <img
-          className="large-film-tile"
+          className={`${imageClass}`}
           src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}
         />
 

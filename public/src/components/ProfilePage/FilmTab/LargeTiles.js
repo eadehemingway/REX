@@ -19,6 +19,7 @@ export class LargeTiles extends React.Component {
             deleteFilm={deleteFilm}
             openModal={openModal}
             containerClass="large-film-tile"
+            imageClass="large-film-tile"
           />
         ))}
         {editMode &&

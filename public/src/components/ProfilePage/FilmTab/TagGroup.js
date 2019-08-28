@@ -36,6 +36,7 @@ export class TagGroup extends React.Component {
                   deleteFilm={deleteFilm}
                   openModal={openModal}
                   containerClass="cropped-to-square"
+                  imageClass="small-film-tile"
                 />
               </div>
             )
