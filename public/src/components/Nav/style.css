@@ -27,3 +27,31 @@
 .search-input {
   height: 23px;
 }
+
+.settings-btn {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.settings-icon {
+  height: 23px;
+  opacity: 0.5;
+}
+
+.settings-menu {
+  background: #f1f1f1;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 47px;
+  right: 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.signout-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}

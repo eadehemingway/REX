@@ -3,13 +3,28 @@ import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { signOutSuccess, updateUserBeingViewed } from '../../actions/actions'
+import { SettingsMenu } from './SettingsMenu'
 import SearchIcon from '../../assets/search.png'
+import SettingsIcon from '../../assets/settings.png'
 
 class Nav extends Component {
   state = {
-    userToSearch: ''
+    userToSearch: '',
+    showSettingsMenu: false
+  }
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOut, false)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOut, false)
   }
 
+  handleClickOut = e => {
+    if (this.settingsMenu && this.settingsMenu.contains(e.target)) {
+      return
+    }
+    this.setState({ showSettingsMenu: false })
+  }
   goToProfilePage = userHandle => {
     const { updateUserBeingViewed } = this.props
     updateUserBeingViewed(userHandle)
@@ -24,12 +39,16 @@ class Nav extends Component {
       .get('/api/user/signout')
       .then(res => console.log(res))
       .catch(e => console.log(e))
+    this.setState({ showSettingsMenu: false })
   }
   keyPressed = (event, user) => {
     const keyCode = event.keyCode || event.which
     if (keyCode === 13) {
       this.goToProfilePage(user)
     }
+  }
+  toggleShowSettingsMenu = () => {
+    this.setState({ showSettingsMenu: !this.state.showSettingsMenu })
   }
 
   render() {
@@ -56,13 +75,22 @@ class Nav extends Component {
             onClick={() => this.goToProfilePage(userToSearch)}
           />
         </div>
-        <button className="button" onClick={() => this.signOut()}>
-          LOG OUT
+        <button
+          className="settings-btn interactive"
+          onClick={() => this.toggleShowSettingsMenu()}
+        >
+          <img className="settings-icon" src={SettingsIcon} />
         </button>
+        <div ref={settingsMenu => (this.settingsMenu = settingsMenu)}>
+          {this.state.showSettingsMenu && (
+            <SettingsMenu signout={this.signOut} />
+          )}
+        </div>
       </nav>
     )
   }
 }
+// onClick={() => this.signOut()}
 
 const NavConnected = connect(
   state => ({ signedInUser: state.signedInUser }),
