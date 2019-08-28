@@ -1986,7 +1986,7 @@ exports.push([module.i, ".nav-bar {\n  background: lightsteelblue;\n  display: f
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".link-container {\n  display: flex;\n  flex-direction: column;\n}\n\n.modal-window {\n  width: 30%;\n  height: 20rem;\n  background: white;\n  z-index: 2;\n  position: relative;\n  margin: 25% auto;\n}\n\n.modal-overlay {\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.4);\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  left: 0;\n}\n\n.modal-content {\n  margin: 2rem;\n  width: 80%;\n  display: flex;\n  flex-direction: column;\n}\n.modal-content button,\n.modal-content input {\n  margin: 1rem;\n}\n\n.add-film-drop-down {\n  border: solid 2px steelblue;\n  height: 10rem;\n}\n\n.auto-complete-list {\n  list-style: none;\n}\n\n.drop-down-image {\n  width: 42px;\n}\n", ""]);
+exports.push([module.i, ".link-container {\n  display: flex;\n  flex-direction: column;\n}\n\n.modal-window {\n  width: 30%;\n  height: 20rem;\n  background: white;\n  z-index: 2;\n  position: relative;\n  margin: 25% auto;\n}\n\n.modal-overlay {\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.4);\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  left: 0;\n}\n\n.modal-content {\n  margin: 2rem;\n  width: 80%;\n  display: flex;\n  flex-direction: column;\n}\n.modal-content button,\n.modal-content input {\n  margin: 1rem;\n}\n\n.add-film-drop-down {\n  border: solid 2px steelblue;\n  height: 10rem;\n}\n\n.auto-complete-list {\n  list-style: none;\n}\n\n.film-drop-down-image {\n  width: 42px;\n}\n", ""]);
 
 
 /***/ }),
@@ -35173,7 +35173,7 @@ var AddFavFilmDropDown = exports.AddFavFilmDropDown = function (_React$Component
                 return _this2.addFavFilm(t);
               } },
             _react2.default.createElement('img', {
-              className: 'drop-down-image',
+              className: 'film-drop-down-image',
               src: 'https://image.tmdb.org/t/p/w185/' + t.poster_path
             }),
             _react2.default.createElement(

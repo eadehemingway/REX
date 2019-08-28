@@ -47,6 +47,9 @@ class Nav extends Component {
   toggleShowSettingsMenu = () => {
     this.setState({ showSettingsMenu: !this.state.showSettingsMenu })
   }
+  updateUserToSearch = user => {
+    this.setState({ userToSearch: user })
+  }
 
   render() {
     const { signedInUser } = this.props
@@ -60,7 +63,11 @@ class Nav extends Component {
           <img src={Logo} className="logo" />
         </button>
 
-        <UserDropDown selectUser={this.goToProfilePage} />
+        <UserDropDown
+          selectUser={this.goToProfilePage}
+          selectedUser={userToSearch}
+          updateUser={this.updateUserToSearch}
+        />
         <button
           className="settings-btn interactive"
           onClick={() => this.toggleShowSettingsMenu()}

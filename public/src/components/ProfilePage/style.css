@@ -57,13 +57,17 @@ h2 {
   z-index: 2;
 }
 
-.drop-down-image {
+.film-drop-down-image {
   width: 42px;
 }
 
+/* GENERAL DROP DOWN ========================= */
 .dropdown-list-item {
   display: flex;
+  width: 200px;
 }
+
+/* USER DROP DOWN ============================= */
 
 /* PROFILE GENERIC =============================*/
 
@@ -141,4 +145,22 @@ h2 {
 
 .interactive {
   cursor: pointer;
+}
+
+.search-bar {
+  margin: auto;
+  position: relative;
+}
+
+.search-icon {
+  height: 20px;
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  opacity: 0.3;
+}
+
+.search-input {
+  height: 23px;
+  width: 200px;
 }

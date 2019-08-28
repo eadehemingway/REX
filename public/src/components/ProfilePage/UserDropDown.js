@@ -5,7 +5,6 @@ import SearchIcon from '../../assets/search.png'
 
 export class UserDropDown extends React.Component {
   state = {
-    userToSearch: '',
     userInfo: [],
     showDropDown: false
   }
@@ -25,10 +24,11 @@ export class UserDropDown extends React.Component {
   }
   getUsers = user => {
     if (user === '') {
-      this.setState({ userToSearch: user, showDropDown: false })
+      this.setState({ showDropDown: false })
       return
     }
-    this.setState({ userToSearch: user, showDropDown: true })
+    this.setState({ showDropDown: true })
+    this.props.updateUser(user)
     axios.get(`/api/user/all/${user}`).then(res => {
       if (!res.data.data.filteredUsers) return
       this.setState({ userInfo: res.data.data.filteredUsers })
@@ -46,21 +46,23 @@ export class UserDropDown extends React.Component {
     }
   }
   render() {
-    const { userInfo, userToSearch, showDropDown } = this.state
+    const { userInfo, showDropDown } = this.state
+    const { selectedUser } = this.props
+
     return (
       <div className="search-bar">
         <input
           id="user"
           type="text"
-          value={userToSearch}
+          value={selectedUser}
           className="text-input search-input"
           onChange={e => this.getUsers(e.target.value)}
-          onKeyPress={e => this.keyPressed(e, userToSearch)}
+          onKeyPress={e => this.keyPressed(e, selectedUser)}
         />
         <img
           src={SearchIcon}
           className="search-icon"
-          onClick={() => this.selectUser(userToSearch)}
+          onClick={() => this.selectUser(selectedUser)}
         />
         <div
           className="user-drop-down-container"

@@ -66,7 +66,7 @@ export class FilmDropDown extends React.Component {
                 onClick={() => this.selectFilm(t)}
               >
                 <img
-                  className="drop-down-image"
+                  className="film-drop-down-image"
                   src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
                 />
                 <p>{t.title}</p>
@@ -77,7 +77,7 @@ export class FilmDropDown extends React.Component {
         {selectedFilm && (
           <div>
             <img
-              className="drop-down-image"
+              className="film-drop-down-image"
               src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
             />
             <button className="button" onClick={deleteSelectedFilm}>
