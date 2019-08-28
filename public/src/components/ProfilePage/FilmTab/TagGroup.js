@@ -18,15 +18,14 @@ export class TagGroup extends React.Component {
     const colour = tag ? tag.colour : 'lightgrey'
     return (
       <div>
-        <h3
+        <div
+          className="tag-title-container"
           style={{
-            borderBottom: `8px solid ${colour}`,
-            borderBottomRightRadius: '4px',
-            borderBottomLeftRadius: '4px'
+            border: `1px solid ${colour}`
           }}
         >
-          {tagName}
-        </h3>
+          <h3 className="tag-title">{tagName}</h3>
+        </div>
         <div className="tag-group-film-container">
           {filmsWithThisTag.map((f, i) => {
             return (
