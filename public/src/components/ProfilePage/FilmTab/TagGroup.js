@@ -17,11 +17,12 @@ export class TagGroup extends React.Component {
     const tagName = tag ? tag.name : 'No Tag'
     const colour = tag ? tag.colour : 'lightgrey'
     return (
-      <div className="tag-group">
+      <div>
         <h3
           style={{
-            background: colour,
-            border: '2px solid grey'
+            borderBottom: `8px solid ${colour}`,
+            borderBottomRightRadius: '4px',
+            borderBottomLeftRadius: '4px'
           }}
         >
           {tagName}

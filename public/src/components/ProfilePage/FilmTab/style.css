@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
-  width: 300px;
+
   overflow-x: auto;
   white-space: nowrap;
 }
@@ -24,7 +24,6 @@
   margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
-  width: 300px;
 }
 
 .small-film-img {
@@ -47,9 +46,7 @@
   width: 400px;
   flex-wrap: wrap;
 }
-.tag-group {
-  width: 100%;
-}
+
 .tag-dropdown {
   background: white;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);

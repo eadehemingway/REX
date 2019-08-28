@@ -6,7 +6,7 @@ import { SketchPicker } from 'react-color'
 export class AddFavFilm extends React.Component {
   state = {
     tagName: null,
-    tagColour: 'white',
+    tagColour: 'red',
     displayColorPicker: false,
     selectedFilm: null,
     showTagDropDown: false
@@ -74,7 +74,7 @@ export class AddFavFilm extends React.Component {
         <div className="tag-input-container">
           <input
             id="tag"
-            className="text-input tag-input"
+            className="text-input tag-input form-input"
             placeholder="tag name"
             value={tagName ? tagName : ''}
             onClick={() => this.setState({ showTagDropDown: true })}
