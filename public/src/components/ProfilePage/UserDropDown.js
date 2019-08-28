@@ -37,6 +37,7 @@ export class UserDropDown extends React.Component {
 
   selectUser = user => {
     this.setState({ showDropDown: false })
+    this.props.updateUser(user)
     this.props.selectUser(user)
   }
   keyPressed = (event, user) => {
