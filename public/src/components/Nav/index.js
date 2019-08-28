@@ -4,6 +4,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { signOutSuccess, updateUserBeingViewed } from '../../actions/actions'
 import { SettingsMenu } from './SettingsMenu'
+import Logo from '../../assets/rex.png'
 import SearchIcon from '../../assets/search.png'
 import SettingsIcon from '../../assets/settings.png'
 
@@ -58,9 +59,9 @@ class Nav extends Component {
       <nav className="nav-bar">
         <button
           onClick={() => this.goToProfilePage(signedInUser)}
-          className="home-btn button"
+          className="logo-btn interactive"
         >
-          MY PROFILE
+          <img src={Logo} className="logo" />
         </button>
         <div className="search-bar">
           <input

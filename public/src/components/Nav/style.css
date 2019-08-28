@@ -11,11 +11,6 @@
   position: relative;
 }
 
-.home-btn {
-  height: 1rem;
-  margin: auto;
-}
-
 .search-icon {
   height: 20px;
   position: absolute;
@@ -54,4 +49,16 @@
   border: none;
   background: none;
   cursor: pointer;
+}
+
+.logo-btn {
+  outline: none;
+  border: none;
+  background: none;
+  opacity: 0.7;
+  margin-left: 30px;
+}
+
+.logo {
+  height: 30px;
 }

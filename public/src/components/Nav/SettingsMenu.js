@@ -6,7 +6,6 @@ export class SettingsMenu extends React.Component {
     return (
       <div className="settings-menu">
         <button className="signout-btn" onClick={this.props.signout}>
-          {' '}
           Sign Out
         </button>
       </div>
