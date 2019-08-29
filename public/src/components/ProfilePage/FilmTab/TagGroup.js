@@ -17,7 +17,7 @@ export class TagGroup extends React.Component {
     const tagName = tag ? tag.name : 'No Tag'
     const colour = tag ? tag.colour : 'lightgrey'
     return (
-      <div>
+      <div className="tag-group-container">
         <div
           className="tag-title-container"
           style={{

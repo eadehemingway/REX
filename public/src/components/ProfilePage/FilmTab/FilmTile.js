@@ -30,9 +30,9 @@ export class FilmTile extends React.Component {
     } = this.props
     const { showMoreMenu } = this.state
     return (
-      <div className={`${containerClass}  film-tile`}>
+      <div className={`${containerClass} film-tile`}>
         <img
-          className={`${imageClass}`}
+          className={`${imageClass} `}
           src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}
         />
 

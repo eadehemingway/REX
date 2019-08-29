@@ -62,8 +62,6 @@ export class SmallTiles extends React.Component {
 
     return (
       <div className="small-tile-section">
-        <h2>SMALL TILES</h2>
-
         {editMode && (
           <div
             className="add-film-dropdown-btn"

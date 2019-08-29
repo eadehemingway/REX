@@ -48,7 +48,7 @@ export class UserDropDown extends React.Component {
   }
   render() {
     const { userInfoList, showDropDown } = this.state
-    const { selectedUser, containerClass } = this.props
+    const { selectedUser, containerClass, inputClass } = this.props
 
     return (
       <div className={`search-bar-container ${containerClass}`}>
@@ -56,7 +56,7 @@ export class UserDropDown extends React.Component {
           id="user"
           type="text"
           value={selectedUser}
-          className="text-input"
+          className={inputClass}
           onChange={e => this.getUsers(e.target.value)}
           onKeyPress={e => this.keyPressed(e, selectedUser)}
         />

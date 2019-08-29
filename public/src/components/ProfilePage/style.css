@@ -30,7 +30,7 @@ h2 {
 }
 
 .modal-content {
-  width: 300px;
+  /* width: 300px; */
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -83,6 +83,8 @@ h2 {
 
 .profile-pic {
   border: 2px solid lightgrey;
+  width: 50px;
+  height: 50px;
 }
 
 .profile-header {
@@ -105,9 +107,11 @@ h2 {
   font-size: 10;
   margin: 0;
   padding-bottom: 10px;
+  color: #cd6b5c;
 }
 
 .tab-header {
+  color: #1e6f64;
   outline: none;
   background: none;
   border: none;
@@ -138,9 +142,10 @@ h2 {
 .button {
   outline: none;
   border: none;
-  background: rgb(224, 224, 224);
-  border-radius: 8px;
+  background: #cd6b5c;
+  border-radius: 4px;
   cursor: pointer;
+  color: white;
 }
 
 .text-input {

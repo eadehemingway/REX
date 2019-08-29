@@ -10,6 +10,7 @@
 .large-film-tile {
   width: 131px;
   height: 178px;
+  border-radius: 4px;
 }
 
 .empty-tile-btn {
@@ -22,7 +23,6 @@
 .film-tile {
   position: relative;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
 }
 /* SMALL FILMS ==============================*/
 .small-tile-container {
@@ -33,6 +33,7 @@
 
 .small-film-tile {
   width: 100px;
+  border-radius: 4px;
 }
 .small-tile-section {
   margin-top: 2rem;
@@ -48,8 +49,12 @@
 
 .tag-group-film-container {
   display: flex;
-  width: 400px;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.tag-group-container {
+  width: 100%;
+  max-width: 100%;
 }
 
 .tag-dropdown {
@@ -94,7 +99,7 @@
 
 .add-film-dropdown-btn {
   position: relative;
-  width: 400px;
+  /* width: 400px; */
 }
 
 .color-square {

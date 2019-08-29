@@ -51,6 +51,7 @@ export class SendRexModal extends React.Component {
           selectedUser={receiverHandle}
           updateUser={val => this.handleChange('receiverHandle', val)}
           containerClass="send-rex-user-dropdown-container"
+          inputClass="text-input"
         />
         <label htmlFor="comment-input" className="form-label">
           Comment

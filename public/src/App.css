@@ -1,9 +1,6 @@
 .App {
   position: relative;
   white-space: nowrap;
-  position: relative;
-  /* overflow-y: auto;
-  overflow-x: hidden; */
 }
 
 .background-rect {
