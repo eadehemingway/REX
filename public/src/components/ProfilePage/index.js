@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { jdenticon } from 'jdenticon' // need this for the identicon
 import { EditModeProfileConnected } from './EditModeProfile'
-import { FilmTabConnected } from './FilmTab'
+import { FilmTabConnected } from './FilmTab/FilmTab'
 
 class ProfilePage extends React.Component {
   state = {
@@ -40,12 +39,8 @@ class ProfilePage extends React.Component {
     return (
       <div className="page-content">
         <div className="profile-header">
-          <svg
-            width="80"
-            height="80"
-            data-jdenticon-value={userBeingViewed}
-            className="profile-pic"
-          ></svg>
+          <div className="profile-pic"></div>
+
           <div className="handle-send-rex-btn-container">
             <p className="handle-title"> @{userBeingViewed}</p>
 

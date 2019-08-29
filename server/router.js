@@ -21,7 +21,7 @@ const { isAuthenticated } = require('./middlewares/auth')
 const router = express.Router()
 
 router.get('/', getLandingPage)
-router.get('/api/user', getAllUsers)
+router.get('/api/user/all/:handle', getAllUsers) // we want to get all users that match the handle
 router.post('/api/user/signup', createUser)
 router.get('/api/user/signout', signOut)
 router.get('/api/user/:handle', isAuthenticated, getUser)

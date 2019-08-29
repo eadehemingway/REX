@@ -9,7 +9,24 @@ export class FilmDropDown extends React.Component {
     showDropDown: false
   }
 
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOut, false)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOut, false)
+  }
+
+  handleClickOut = e => {
+    if (this.filmDropDown && this.filmDropDown.contains(e.target)) {
+      return
+    }
+    this.setState({ showDropDown: false })
+  }
   getMovies = title => {
+    if (title === '') {
+      this.setState({ value: title, showDropDown: false })
+      return
+    }
     this.setState({ value: title, showDropDown: true })
     axios.get(`/api/film/${title}`).then(res => {
       this.setState({ filmInfo: res.data.filmInfo })
@@ -22,11 +39,11 @@ export class FilmDropDown extends React.Component {
   }
   render() {
     const { filmInfo, value, showDropDown } = this.state
-    const { selectedFilm } = this.props
+    const { selectedFilm, deleteSelectedFilm } = this.props
 
     return (
       <div>
-        <label htmlFor="film" className="send-rex-label">
+        <label htmlFor="film" className="form-label">
           Film
         </label>
         <input
@@ -34,10 +51,13 @@ export class FilmDropDown extends React.Component {
           type="text"
           placeholder="Add a film"
           value={value}
-          className="film-dropdown-input text-input"
+          className="form-input text-input"
           onChange={e => this.getMovies(e.target.value)}
         />
-        <div className="drop-down-container">
+        <div
+          className="film-drop-down-container"
+          ref={filmDropDown => (this.filmDropDown = filmDropDown)}
+        >
           {showDropDown &&
             filmInfo.map(t => (
               <button
@@ -46,10 +66,10 @@ export class FilmDropDown extends React.Component {
                 onClick={() => this.selectFilm(t)}
               >
                 <img
-                  className="drop-down-image"
+                  className="film-drop-down-image"
                   src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
                 />
-                <li className="auto-complete-list">{t.title}</li>
+                <p>{t.title}</p>
               </button>
             ))}
         </div>
@@ -57,10 +77,13 @@ export class FilmDropDown extends React.Component {
         {selectedFilm && (
           <div>
             <img
-              className="drop-down-image"
+              className="film-drop-down-image"
               src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
             />
-            <li className="auto-complete-list">{selectedFilm.title}</li>
+            <button className="button" onClick={deleteSelectedFilm}>
+              remove
+            </button>
+            <p>{selectedFilm.title}</p>
           </div>
         )}
       </div>

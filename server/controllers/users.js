@@ -8,14 +8,15 @@ exports.getLandingPage = (req, res) => {
 }
 
 exports.getAllUsers = async (req, res) => {
+  const { handle } = req.params
   try {
     const users = await User.find()
-
+    const filteredUsers = users.filter(u => u.handle.startsWith(handle))
     res.status(200).json({
       status: 'success',
       result: users.length,
       data: {
-        users
+        filteredUsers
       }
     })
   } catch (err) {

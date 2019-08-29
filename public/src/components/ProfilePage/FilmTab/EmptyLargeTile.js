@@ -13,7 +13,8 @@ export class EmptyLargeTile extends React.Component {
   }
   addTopFilm = film => {
     const { addTopFilm } = this.props
-    addTopFilm(film, { colour: '', name: 'TOP' })
+    const filmWithTag = { ...film, tag: [{ colour: 'white', name: 'TOP' }] }
+    addTopFilm(filmWithTag)
     this.setState({ addModalOpen: false })
   }
   render() {
@@ -28,7 +29,7 @@ export class EmptyLargeTile extends React.Component {
         )}
         <button
           onClick={this.toggleAddModal}
-          className="empty-tile-btn interactive"
+          className="empty-tile-btn large-film-tile interactive"
         >
           +
         </button>

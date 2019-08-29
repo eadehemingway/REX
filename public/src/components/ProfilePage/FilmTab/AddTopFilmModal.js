@@ -1,6 +1,6 @@
 import React from 'react'
-import { FilmDropDown } from './FilmDropDown'
-import { Modal } from './Modal'
+import { FilmDropDown } from '../FilmDropDown'
+import { Modal } from '../Modal'
 
 export class AddTopFilmModal extends React.Component {
   state = {
@@ -24,6 +24,7 @@ export class AddTopFilmModal extends React.Component {
         <FilmDropDown
           selectFilm={this.selectFilm}
           selectedFilm={selectedFilm}
+          deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
         />
         <button className="modal-btn button" onClick={this.addTopFilm}>
           add film

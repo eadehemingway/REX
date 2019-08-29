@@ -13,8 +13,6 @@ export const LandingPage = () => {
       <Link to="/signup" className="home-btn">
         sign up
       </Link>
-
-      <Link to={`user/${user}`}> my home page </Link>
     </div>
   )
 }

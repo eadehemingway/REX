@@ -1,17 +1,64 @@
 .nav-bar {
-  background: #f1f1f1;
   display: flex;
   justify-content: center;
   height: 3rem;
   margin: auto;
 }
 
-.search-bar {
-  height: 1rem;
-  margin: auto;
+.settings-btn {
+  outline: none;
+  border: none;
+  background: none;
+  padding-right: 0;
 }
 
-.home-btn {
-  height: 1rem;
-  margin: auto;
+.settings-icon {
+  height: 23px;
+  opacity: 0.5;
+}
+
+.settings-menu {
+  background: #f1f1f1;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 47px;
+  right: 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.signout-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.logo-btn {
+  outline: none;
+  border: none;
+  background: none;
+  opacity: 0.7;
+  margin-left: 30px;
+}
+
+.logo {
+  height: 30px;
+}
+
+.nav-search-input-container {
+  margin: 10px;
+}
+
+.nav-input {
+  height: 25px;
+  width: 200px;
+  border: none;
+  border-bottom: solid 2px #cd6b5c;
+}
+
+.nav-search-input-container .search-icon {
+  height: 20px;
+  top: 3px;
+  right: 8px;
 }

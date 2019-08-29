@@ -5,30 +5,48 @@ export class FilmTile extends React.Component {
   state = {
     showMoreMenu: false
   }
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOut, false)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOut, false)
+  }
+  handleClickOut = e => {
+    if (this.moreMenu && this.moreMenu.contains(e.target)) return
+    this.setState({ showMoreMenu: false })
+  }
+
   toggleMoreMenu = () => {
     this.setState(prevState => ({ showMoreMenu: !prevState.showMoreMenu }))
   }
   render() {
-    const { film, editMode, deleteFilm, openModal, containerClass } = this.props
+    const {
+      film,
+      editMode,
+      deleteFilm,
+      openModal,
+      containerClass,
+      imageClass
+    } = this.props
     const { showMoreMenu } = this.state
     return (
-      <div className={containerClass}>
+      <div className={`${containerClass} film-tile`}>
         <img
-          className="large-film-img"
+          className={`${imageClass} `}
           src={`https://image.tmdb.org/t/p/w185/${film.poster_path}`}
         />
-        {/* <p>{title}</p> */}
-        {/* {tag.length > 0 &&
-              tag.map((t, i) => (
-                <p key={i} style={{ background: t.colour }}>
-                  {t.name}
-                </p>
-              ))} */}
-        <div className="more-menu-btn" onClick={this.toggleMoreMenu}>
+
+        <div
+          className="more-menu-btn interactive"
+          onClick={this.toggleMoreMenu}
+        >
           ...
         </div>
         {showMoreMenu && (
-          <div className="onhover-tile-btn-container">
+          <div
+            className="film-tile-more-menu"
+            ref={moreMenu => (this.moreMenu = moreMenu)}
+          >
             {editMode && (
               <button
                 className="interactive"
