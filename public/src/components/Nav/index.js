@@ -56,12 +56,12 @@ class Nav extends Component {
     const { userToSearch } = this.state
     return (
       <nav className="nav-bar">
-        <button
+        {/* <button
           onClick={() => this.goToProfilePage(signedInUser)}
           className="logo-btn interactive"
         >
           <img src={Logo} className="logo" />
-        </button>
+        </button> */}
 
         <UserDropDown
           selectUser={this.goToProfilePage}
