@@ -61,6 +61,9 @@ export class SmallTiles extends React.Component {
       return f.tag.length === 0
     })
 
+    const tagName = tagToPopulateModal && tagToPopulateModal.name
+    const tagColour = tagToPopulateModal && tagToPopulateModal.colour
+
     return (
       <div className="small-tile-section">
         {editMode && (
@@ -72,8 +75,8 @@ export class SmallTiles extends React.Component {
               <AddFavFilm
                 addFilm={this.addFilm}
                 tags={tags}
-                tagName={tagToPopulateModal.name}
-                tagColour={tagToPopulateModal.colour}
+                tagName={tagName}
+                tagColour={tagColour}
               />
             )}
           </div>
