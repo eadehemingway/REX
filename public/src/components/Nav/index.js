@@ -5,8 +5,7 @@ import { connect } from 'react-redux'
 import { signOutSuccess, updateUserBeingViewed } from '../../actions/actions'
 import { SettingsMenu } from './SettingsMenu'
 import Logo from '../../assets/rex.png'
-
-import SettingsIcon from '../../assets/settings.png'
+import Menu from '../../assets/menu.svg'
 import { UserDropDown } from '../ProfilePage/UserDropDown'
 
 class Nav extends Component {
@@ -56,13 +55,6 @@ class Nav extends Component {
     const { userToSearch } = this.state
     return (
       <nav className="nav-bar">
-        {/* <button
-          onClick={() => this.goToProfilePage(signedInUser)}
-          className="logo-btn interactive"
-        >
-          <img src={Logo} className="logo" />
-        </button> */}
-
         <UserDropDown
           selectUser={this.goToProfilePage}
           selectedUser={userToSearch}
@@ -74,18 +66,20 @@ class Nav extends Component {
           className="settings-btn interactive"
           onClick={() => this.toggleShowSettingsMenu()}
         >
-          <img className="settings-icon" src={SettingsIcon} />
+          <img src={Menu} className="hamburger-menu" />
         </button>
         <div ref={settingsMenu => (this.settingsMenu = settingsMenu)}>
           {this.state.showSettingsMenu && (
-            <SettingsMenu signout={this.signOut} />
+            <SettingsMenu
+              signout={this.signOut}
+              goToMyProfile={() => this.goToProfilePage(signedInUser)}
+            />
           )}
         </div>
       </nav>
     )
   }
 }
-// onClick={() => this.signOut()}
 
 const NavConnected = connect(
   state => ({ signedInUser: state.signedInUser }),

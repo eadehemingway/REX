@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import './style.css'
-import SearchIcon from '../../assets/search.png'
+import SearchIcon from '../../assets/search.svg'
 
 export class UserDropDown extends React.Component {
   state = {

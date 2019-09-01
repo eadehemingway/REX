@@ -26,12 +26,17 @@
   right: 0;
   padding: 10px;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
 }
 
-.signout-btn {
+.menu-list-item {
   border: none;
   background: none;
   cursor: pointer;
+  text-align: left;
+  border-top: 1px solid grey;
+  padding: 1rem;
 }
 
 .logo-btn {
@@ -51,14 +56,20 @@
 }
 
 .nav-input {
-  height: 25px;
-  width: 200px;
+  height: 20px;
+  width: 140px;
   border: none;
-  border-bottom: solid 2px #cd6b5c;
+  border-bottom: solid 1px #cd6b5c;
+  opacity: 0.7;
 }
 
-.nav-search-input-container .search-icon {
-  height: 20px;
-  top: 3px;
-  right: 8px;
+.search-icon {
+  height: 16px;
+  top: 0px;
+  right: 0px;
+}
+
+.hamburger-menu {
+  width: 20px;
+  padding-right: 10px;
 }
