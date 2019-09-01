@@ -149,3 +149,8 @@
   padding: 0 4px 4px 4px;
   border-radius: 2px;
 }
+
+.plus-icon {
+  width: 20px;
+  opacity: 0.4;
+}
