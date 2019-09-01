@@ -2,13 +2,16 @@ import React from 'react'
 import './style.css'
 import { AddFavFilm } from './AddFavFilm'
 import { TagGroup } from './TagGroup'
+import Plus from './../../../assets/plus.svg'
+import { AddTagModal } from './AddTagModal'
 
 export class SmallTiles extends React.Component {
   state = {
     addFilmPanelOpen: false,
     showMoreMenu: false,
     tags: null,
-    films: null
+    films: null,
+    addTagModalOpen: false
   }
 
   componentDidMount() {
@@ -23,6 +26,12 @@ export class SmallTiles extends React.Component {
       return
     }
     this.setState({ addFilmPanelOpen: false })
+  }
+
+  addTag = newTag => {
+    const { tags } = this.state
+    const newTags = [...tags, newTag]
+    this.setState({ tags: newTags })
   }
   componentDidUpdate(prevProps) {
     if (prevProps.films !== this.props.films) {
@@ -56,10 +65,13 @@ export class SmallTiles extends React.Component {
   }
   render() {
     const { editMode, deleteFilm, openSendRexModal } = this.props
-    const { addFilmPanelOpen, tags, films, tagToPopulateModal } = this.state
-    const filmsWithNoTag = (films || []).filter(f => {
-      return f.tag.length === 0
-    })
+    const {
+      addFilmPanelOpen,
+      tags,
+      films,
+      tagToPopulateModal,
+      addTagModalOpen
+    } = this.state
 
     const tagName = tagToPopulateModal && tagToPopulateModal.name
     const tagColour = tagToPopulateModal && tagToPopulateModal.colour
@@ -101,18 +113,18 @@ export class SmallTiles extends React.Component {
                 />
               )
             })}
-
-          {filmsWithNoTag.length > 0 && (
-            <TagGroup
-              tag={null}
-              filmsWithThisTag={filmsWithNoTag}
-              editMode={editMode}
-              deleteFilm={deleteFilm}
-              openSendRexModal={openSendRexModal}
-              openAddFilmModal={this.toggleAddPanel}
-            />
-          )}
         </div>
+
+        {editMode && (
+          <button
+            onClick={() => this.setState({ addTagModalOpen: true })}
+            className="add-tag"
+          >
+            <img src={Plus} className="plus-icon" />
+            add tag
+          </button>
+        )}
+        {addTagModalOpen && <AddTagModal addTag={this.addTag} />}
       </div>
     )
   }

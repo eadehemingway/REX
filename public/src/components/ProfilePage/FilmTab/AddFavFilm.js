@@ -69,7 +69,7 @@ export class AddFavFilm extends React.Component {
           selectedFilm={selectedFilm}
           deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
         />
-        <label htmlFor="tag" className="form-label">
+        {/* <label htmlFor="tag" className="form-label">
           Tag
         </label>
         <div className="tag-input-container">
@@ -121,7 +121,7 @@ export class AddFavFilm extends React.Component {
               </div>
             )}
           </div>
-        </div>
+        </div> */}
 
         <button className="button" onClick={this.addFilm}>
           submit
