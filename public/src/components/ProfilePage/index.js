@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { EditModeProfileConnected } from './EditModeProfile'
 import { FilmTabConnected } from './FilmTab/FilmTab'
-import Logo from '../../assets/rex.png'
+import Logo from '../../assets/rex.svg'
 class ProfilePage extends React.Component {
   state = {
     modalOpen: false,
@@ -25,7 +25,7 @@ class ProfilePage extends React.Component {
     })
   }
 
-  openModal = (film = null) => {
+  openSendRexModal = (film = null) => {
     this.setState({ filmToRecommend: film, modalOpen: true })
   }
   closeModal = () => {
@@ -50,7 +50,7 @@ class ProfilePage extends React.Component {
               <button
                 className="send-rex-btn"
                 type="button"
-                onClick={() => this.openModal()}
+                onClick={() => this.openSendRexModal()}
               >
                 SEND REX
               </button>
@@ -60,7 +60,7 @@ class ProfilePage extends React.Component {
 
         {editMode && (
           <EditModeProfileConnected
-            openModal={this.openModal}
+            openSendRexModal={this.openSendRexModal}
             closeModal={this.closeModal}
             filmToRecommend={filmToRecommend}
             favFilms={favFilms}
@@ -72,7 +72,7 @@ class ProfilePage extends React.Component {
             <FilmTabConnected
               films={favFilms}
               editMode={false}
-              openModal={this.openModal}
+              openSendRexModal={this.openSendRexModal}
             />
           )}
         </div>

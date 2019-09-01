@@ -24,7 +24,7 @@ export class FilmTile extends React.Component {
       film,
       editMode,
       deleteFilm,
-      openModal,
+      openSendRexModal,
       containerClass,
       imageClass
     } = this.props
@@ -55,7 +55,10 @@ export class FilmTile extends React.Component {
                 delete
               </button>
             )}
-            <button className="interactive" onClick={() => openModal(film)}>
+            <button
+              className="interactive"
+              onClick={() => openSendRexModal(film)}
+            >
               send rex
             </button>
           </div>

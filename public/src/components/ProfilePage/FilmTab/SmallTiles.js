@@ -40,9 +40,10 @@ export class SmallTiles extends React.Component {
       this.setState({ tags, films })
     }
   }
-  toggleAddPanel = () => {
+  toggleAddPanel = tag => {
     this.setState(prevState => ({
-      addFilmPanelOpen: !prevState.addFilmPanelOpen
+      addFilmPanelOpen: !prevState.addFilmPanelOpen,
+      tagToPopulateModal: tag
     }))
   }
 
@@ -54,8 +55,8 @@ export class SmallTiles extends React.Component {
     this.props.addFilm(e)
   }
   render() {
-    const { editMode, deleteFilm, openModal } = this.props
-    const { addFilmPanelOpen, tags, films } = this.state
+    const { editMode, deleteFilm, openSendRexModal } = this.props
+    const { addFilmPanelOpen, tags, films, tagToPopulateModal } = this.state
     const filmsWithNoTag = (films || []).filter(f => {
       return f.tag.length === 0
     })
@@ -67,11 +68,13 @@ export class SmallTiles extends React.Component {
             className="add-film-dropdown-btn"
             ref={addFilmPanel => (this.addFilmPanel = addFilmPanel)}
           >
-            <button className="button" onClick={this.toggleAddPanel}>
-              Add
-            </button>
             {addFilmPanelOpen && (
-              <AddFavFilm addFilm={this.addFilm} tags={tags} />
+              <AddFavFilm
+                addFilm={this.addFilm}
+                tags={tags}
+                tagName={tagToPopulateModal.name}
+                tagColour={tagToPopulateModal.colour}
+              />
             )}
           </div>
         )}
@@ -90,7 +93,8 @@ export class SmallTiles extends React.Component {
                   filmsWithThisTag={filmsWithThisTag}
                   editMode={editMode}
                   deleteFilm={deleteFilm}
-                  openModal={openModal}
+                  openSendRexModal={openSendRexModal}
+                  openAddFilmModal={this.toggleAddPanel}
                 />
               )
             })}
@@ -101,7 +105,8 @@ export class SmallTiles extends React.Component {
               filmsWithThisTag={filmsWithNoTag}
               editMode={editMode}
               deleteFilm={deleteFilm}
-              openModal={openModal}
+              openSendRexModal={openSendRexModal}
+              openAddFilmModal={this.toggleAddPanel}
             />
           )}
         </div>

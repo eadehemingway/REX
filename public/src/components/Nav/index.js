@@ -4,7 +4,6 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { signOutSuccess, updateUserBeingViewed } from '../../actions/actions'
 import { SettingsMenu } from './SettingsMenu'
-import Logo from '../../assets/rex.png'
 import Menu from '../../assets/menu.svg'
 import { UserDropDown } from '../ProfilePage/UserDropDown'
 

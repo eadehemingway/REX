@@ -46,7 +46,7 @@ export class EditModeProfile extends React.Component {
 
   render() {
     const {
-      openModal,
+      openSendRexModal,
       closeModal,
       filmToRecommend,
       favFilms,
@@ -63,7 +63,7 @@ export class EditModeProfile extends React.Component {
       <div>
         {modalOpen && (
           <SendRexModal
-            openModal={openModal}
+            openSendRexModal={openSendRexModal}
             closeModal={closeModal}
             film={filmToRecommend}
             addRexToState={this.addRexToState}
@@ -102,7 +102,7 @@ export class EditModeProfile extends React.Component {
               <FilmTabConnected
                 films={favFilms}
                 editMode={true}
-                openModal={openModal}
+                openSendRexModal={openSendRexModal}
               />
             )}
 

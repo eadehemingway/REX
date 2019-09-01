@@ -19,6 +19,7 @@
 
 .settings-menu {
   background: #f1f1f1;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2);
   height: 100px;
   width: 100px;
   position: absolute;
@@ -59,7 +60,7 @@
   height: 20px;
   width: 140px;
   border: none;
-  border-bottom: solid 1px #cd6b5c;
+  border-bottom: solid 1px #1e6f64;
   opacity: 0.7;
 }
 

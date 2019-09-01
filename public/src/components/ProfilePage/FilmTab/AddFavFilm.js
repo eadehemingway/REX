@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import { FilmDropDown } from '../FilmDropDown'
 import { SketchPicker } from 'react-color'
 
@@ -11,8 +10,11 @@ export class AddFavFilm extends React.Component {
     selectedFilm: null,
     showTagDropDown: false
   }
-  componentWillMount() {
+
+  componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOut, false)
+    const { tagName, tagColour } = this.props
+    this.setState({ tagName, tagColour })
   }
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOut, false)
@@ -60,7 +62,6 @@ export class AddFavFilm extends React.Component {
       showTagDropDown
     } = this.state
     const { tags } = this.props
-
     return (
       <div className="add-film-drop-down-container">
         <FilmDropDown

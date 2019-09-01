@@ -11,7 +11,7 @@ export class TagGroup extends React.Component {
       filmsWithThisTag,
       editMode,
       deleteFilm,
-      openModal
+      openSendRexModal
     } = this.props
 
     const tagName = tag ? tag.name : 'No Tag'
@@ -34,13 +34,14 @@ export class TagGroup extends React.Component {
                   film={f}
                   editMode={editMode}
                   deleteFilm={deleteFilm}
-                  openModal={openModal}
+                  openSendRexModal={openSendRexModal}
                   containerClass="cropped-to-square"
                   imageClass="small-film-tile"
                 />
               </div>
             )
           })}
+          <div onClick={() => this.props.openAddFilmModal(tag)}>ADD NEW</div>
         </div>
       </div>
     )

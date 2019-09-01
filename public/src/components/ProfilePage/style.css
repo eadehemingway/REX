@@ -74,7 +74,6 @@ h2 {
 /* GENERAL DROP DOWN ========================= */
 .dropdown-list-item {
   display: flex;
-  width: 200px;
 }
 
 /* USER DROP DOWN ============================= */
@@ -82,7 +81,7 @@ h2 {
 /* PROFILE GENERIC =============================*/
 
 .profile-pic {
-  border: 2px solid lightgrey;
+  border: 2px solid #cd6b5c;
   width: 50px;
   height: 50px;
   opacity: 0.4;
@@ -140,7 +139,7 @@ h2 {
 }
 
 .tab-content-background {
-  background: #f4f0ed;
+  background: #faf9f8;
 }
 
 .tab-content {
