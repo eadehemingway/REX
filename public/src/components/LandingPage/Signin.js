@@ -1,14 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { connect } from 'react-redux'
-import {
-  signInSuccess,
-  updateSignedInUser,
-  updateUserBeingViewed
-} from '../../actions/actions'
 
-class Signin extends React.Component {
+export class Signin extends React.Component {
   state = {
     handle: '',
     password: ''
@@ -21,21 +15,12 @@ class Signin extends React.Component {
   handleClick = e => {
     e.preventDefault()
     const { handle, password } = this.state
-    const {
-      history,
-      signInSuccess,
-      updateSignedInUser,
-      updateUserBeingViewed
-    } = this.props
+    const { updateReduxSignedIn } = this.props
     axios
       .post('/api/user/signin', { handle, password })
       .then(({ data }) => {
         if (data.status === 'success') {
-          const { handle } = data.user
-          signInSuccess()
-          updateUserBeingViewed(handle)
-          updateSignedInUser(handle)
-          history.push(`/user/${handle}`)
+          updateReduxSignedIn(handle)
         } else {
           this.setState({ error })
         }
@@ -78,12 +63,3 @@ class Signin extends React.Component {
     )
   }
 }
-
-export const SigninConnected = connect(
-  state => ({ signedIn: state.signedIn }),
-  dispatch => ({
-    signInSuccess: () => dispatch(signInSuccess()),
-    updateSignedInUser: handle => dispatch(updateSignedInUser(handle)),
-    updateUserBeingViewed: handle => dispatch(updateUserBeingViewed(handle))
-  })
-)(Signin)

@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 export class Signup extends React.Component {
   state = {
@@ -16,12 +15,12 @@ export class Signup extends React.Component {
   handleClick = e => {
     e.preventDefault()
     const { handle, email, password } = this.state
-    const { history } = this.props
+    const { updateReduxSignedIn } = this.props
     axios
       .post('/api/user/signup', { handle, email, password })
       .then(({ data }) => {
-        if (data) {
-          history.push('/')
+        if (data.status === 'success') {
+          updateReduxSignedIn(handle)
         } else {
           this.setState({ error })
         }

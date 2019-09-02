@@ -1,10 +1,16 @@
 import React from 'react'
 import Logo from '../../assets/rex.svg'
-import { SigninConnected } from './Signin'
+import { Signin } from './Signin'
 import { Signup } from './Signup'
 import './style.css'
+import { connect } from 'react-redux'
+import {
+  signInSuccess,
+  updateSignedInUser,
+  updateUserBeingViewed
+} from '../../actions/actions'
 
-export class LandingPage extends React.Component {
+class LandingPage extends React.Component {
   state = {
     onSignInTab: true
   }
@@ -12,21 +18,46 @@ export class LandingPage extends React.Component {
   switchTab = () => {
     this.setState(prevState => ({ onSignInTab: !prevState.onSignInTab }))
   }
+  updateReduxSignedIn = handle => {
+    const {
+      history,
+      signInSuccess,
+      updateSignedInUser,
+      updateUserBeingViewed
+    } = this.props
+    signInSuccess()
+    updateUserBeingViewed(handle)
+    updateSignedInUser(handle)
+    history.push(`/user/${handle}`)
+  }
   render() {
     const { onSignInTab } = this.state
+
     return (
       <div className="page-content">
         <img src={Logo} className="rex-logo-landing-page" />
 
         {onSignInTab ? (
-          <SigninConnected
+          <Signin
             switchTab={this.switchTab}
-            history={this.props.history}
+            updateReduxSignedIn={this.updateReduxSignedIn}
           />
         ) : (
-          <Signup switchTab={this.switchTab} history={this.props.history} />
+          <Signup
+            switchTab={this.switchTab}
+            updateReduxSignedIn={this.updateReduxSignedIn}
+          />
         )}
       </div>
     )
   }
 }
+
+export const LandingPageConnected = connect(
+  state => ({ signedIn: state.signedIn }),
+  dispatch => ({
+    signInSuccess: () => dispatch(signInSuccess()),
+    updateSignedInUser: handle => dispatch(updateSignedInUser(handle)),
+    updateUserBeingViewed: handle => dispatch(updateUserBeingViewed(handle))
+  })
+)(LandingPage)
