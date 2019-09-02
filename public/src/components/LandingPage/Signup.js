@@ -13,7 +13,8 @@ export class Signup extends React.Component {
     this.setState({ [name]: value })
   }
 
-  handleClick = () => {
+  handleClick = e => {
+    e.preventDefault()
     const { handle, email, password } = this.state
     const { history } = this.props
     axios
@@ -34,33 +35,35 @@ export class Signup extends React.Component {
     return (
       <div className="signup-signin-form">
         <h2>Sign Up</h2>
-        <input
-          type="text"
-          name="handle"
-          value={this.state.handle}
-          placeholder="handle"
-          onChange={this.handleChange}
-          className="form-input"
-        />
-        <input
-          type="text"
-          name="email"
-          value={this.state.email}
-          placeholder="username"
-          onChange={this.handleChange}
-          className="form-input"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-          className="form-input"
-        />
-        <button className="button" onClick={this.handleClick}>
-          signUp
-        </button>
+        <form onSubmit={this.handleClick}>
+          <input
+            type="text"
+            name="handle"
+            value={this.state.handle}
+            placeholder="handle"
+            onChange={this.handleChange}
+            className="form-input"
+          />
+          <input
+            type="text"
+            name="email"
+            value={this.state.email}
+            placeholder="username"
+            onChange={this.handleChange}
+            className="form-input"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            className="form-input"
+          />
+          <button type="submit" className="button">
+            signUp
+          </button>
+        </form>
 
         <p>
           dont have an account?
