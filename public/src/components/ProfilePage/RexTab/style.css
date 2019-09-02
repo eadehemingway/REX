@@ -1,22 +1,48 @@
 .rex-list-item-info {
   margin-left: 1rem;
-  padding: 1rem 0;
+  padding-top: 10px;
 }
 
 .rex-list-item {
   display: flex;
+  position: relative;
   margin-bottom: 2rem;
   background: #ebebeb;
+  border-radius: 4px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
-.rex-info-p-tag {
+.rex-info-from {
   margin: 0.5rem 0;
   font-size: 0.7rem;
 }
+.rex-info-comment {
+  margin: 0.5rem 0;
+  font-size: 0.7rem;
+  color: #cd6b5c;
+}
+.rex-info-title {
+  color: #1e6f64;
+  font-size: 0.9rem;
+  margin: 0;
+}
+.rex-list-button-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
 
+.rex-list-button {
+  margin-right: 10px;
+}
 .rex-list {
   margin-top: 3rem;
 }
 
 .rex-img {
-  width: 70px;
+  width: 40px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
