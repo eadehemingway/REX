@@ -35,10 +35,7 @@ class Nav extends Component {
     // changes redux store
     this.props.signOut()
     // deletes the jwt
-    axios
-      .get('/api/user/signout')
-      .then(res => console.log(res))
-      .catch(e => console.log(e))
+    axios.get('/api/user/signout').catch(e => console.log(e))
     this.setState({ showSettingsMenu: false })
   }
 

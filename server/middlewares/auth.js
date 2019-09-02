@@ -6,7 +6,7 @@ exports.isAuthenticated = async (req, res, next) => {
   // get jwt
 
   if (!req.headers.cookie) {
-    res.redirect(302, '/signin')
+    res.redirect(302, '/')
   } else if (req.headers.cookie.match(/jwt/)) {
     const parsedCookie = cookie.parse(req.headers.cookie)
 
@@ -20,7 +20,7 @@ exports.isAuthenticated = async (req, res, next) => {
     if (!auth) {
       console.log('errrrrrrrrrrror')
 
-      res.redirect(302, '/signin')
+      res.redirect(302, '/')
     }
 
     next()

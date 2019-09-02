@@ -20,7 +20,7 @@ export class Signup extends React.Component {
       .post('/api/user/signup', { handle, email, password })
       .then(({ data }) => {
         if (data) {
-          history.push('/signin')
+          history.push('/')
         } else {
           this.setState({ error })
         }
@@ -32,7 +32,7 @@ export class Signup extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="signup-signin-form">
         <h2>Sign Up</h2>
         <input
           type="text"

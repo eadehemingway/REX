@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Logo from '../../assets/rex.svg'
-import { SigninConnected } from '../Signin'
-import { Signup } from '../Signup'
+import { SigninConnected } from './Signin'
+import { Signup } from './Signup'
 
 export class LandingPage extends React.Component {
   state = {
@@ -19,9 +18,12 @@ export class LandingPage extends React.Component {
         <img src={Logo} />
 
         {onSignInTab ? (
-          <SigninConnected switchTab={this.switchTab} />
+          <SigninConnected
+            switchTab={this.switchTab}
+            history={this.props.history}
+          />
         ) : (
-          <Signup switchTab={this.switchTab} />
+          <Signup switchTab={this.switchTab} history={this.props.history} />
         )}
       </div>
     )
