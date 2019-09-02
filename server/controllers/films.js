@@ -2,7 +2,7 @@ const request = require('request')
 const User = require('./../models/users')
 const cookie = require('cookie')
 
-exports.addFavFilm = (req, res) => {
+exports.AddSmallFilm = (req, res) => {
   const { handle, filmInfo } = req.body
 
   User.findOne({ handle }, (err, doc) => {

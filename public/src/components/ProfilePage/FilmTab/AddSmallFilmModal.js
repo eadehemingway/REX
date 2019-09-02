@@ -1,8 +1,8 @@
 import React from 'react'
 import { FilmDropDown } from '../FilmDropDown'
-import { SketchPicker } from 'react-color'
+import { Modal } from '../Modal'
 
-export class AddFavFilm extends React.Component {
+export class AddSmallFilmModal extends React.Component {
   state = {
     selectedFilm: null
   }
@@ -14,7 +14,7 @@ export class AddFavFilm extends React.Component {
   render() {
     const { selectedFilm } = this.state
     return (
-      <div className="add-film-drop-down-container">
+      <Modal closeModal={this.props.closeModal}>
         <FilmDropDown
           selectFilm={this.selectFilm}
           selectedFilm={selectedFilm}
@@ -26,7 +26,7 @@ export class AddFavFilm extends React.Component {
         >
           submit
         </button>
-      </div>
+      </Modal>
     )
   }
 }

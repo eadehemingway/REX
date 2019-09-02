@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import { AddFavFilm } from './AddFavFilm'
+import { AddSmallFilmModal } from './AddSmallFilmModal'
 import { TagGroup } from './TagGroup'
 import Plus from './../../../assets/plus.svg'
 import { AddTagModal } from './AddTagModal'
@@ -83,7 +83,12 @@ export class SmallTiles extends React.Component {
             className="add-film-dropdown-btn"
             ref={addFilmPanel => (this.addFilmPanel = addFilmPanel)}
           >
-            {addFilmPanelOpen && <AddFavFilm addFilm={this.addFilm} />}
+            {addFilmPanelOpen && (
+              <AddSmallFilmModal
+                addFilm={this.addFilm}
+                closeModal={() => this.setState({ addFilmPanelOpen: false })}
+              />
+            )}
           </div>
         )}
 

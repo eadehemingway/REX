@@ -35080,9 +35080,9 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./src/components/ProfilePage/AddFavFilmDropDown.js":
+/***/ "./src/components/ProfilePage/AddSmallFilmDropDown.js":
 /*!**********************************************************!*\
-  !*** ./src/components/ProfilePage/AddFavFilmDropDown.js ***!
+  !*** ./src/components/ProfilePage/AddSmallFilmDropDown.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -35093,7 +35093,7 @@ if(false) {}
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AddFavFilmDropDown = undefined;
+exports.AddSmallFilmDropDown = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -35115,21 +35115,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AddFavFilmDropDown = exports.AddFavFilmDropDown = function (_React$Component) {
-  _inherits(AddFavFilmDropDown, _React$Component);
+var AddSmallFilmDropDown = exports.AddSmallFilmDropDown = function (_React$Component) {
+  _inherits(AddSmallFilmDropDown, _React$Component);
 
-  function AddFavFilmDropDown() {
+  function AddSmallFilmDropDown() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, AddFavFilmDropDown);
+    _classCallCheck(this, AddSmallFilmDropDown);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AddFavFilmDropDown.__proto__ || Object.getPrototypeOf(AddFavFilmDropDown)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AddSmallFilmDropDown.__proto__ || Object.getPrototypeOf(AddSmallFilmDropDown)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       modalOpen: false,
       value: '',
       filmInfo: [],
@@ -35140,13 +35140,13 @@ var AddFavFilmDropDown = exports.AddFavFilmDropDown = function (_React$Component
       _axios2.default.get('/api/film/' + title).then(function (res) {
         _this.setState({ filmInfo: res.data.filmInfo });
       });
-    }, _this.addFavFilm = function (film) {
+    }, _this.AddSmallFilm = function (film) {
       var favFilmList = [].concat(_toConsumableArray(_this.state.favFilmList), [film]);
       _this.setState({ favFilmList: favFilmList, showDropDown: false });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(AddFavFilmDropDown, [{
+  _createClass(AddSmallFilmDropDown, [{
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -35170,7 +35170,7 @@ var AddFavFilmDropDown = exports.AddFavFilmDropDown = function (_React$Component
           return _react2.default.createElement(
             'button',
             { key: t.title, onClick: function onClick() {
-                return _this2.addFavFilm(t);
+                return _this2.AddSmallFilm(t);
               } },
             _react2.default.createElement('img', {
               className: 'film-drop-down-image',
@@ -35200,7 +35200,7 @@ var AddFavFilmDropDown = exports.AddFavFilmDropDown = function (_React$Component
     }
   }]);
 
-  return AddFavFilmDropDown;
+  return AddSmallFilmDropDown;
 }(_react2.default.Component);
 
 /***/ }),
@@ -35226,7 +35226,7 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AddFavFilmDropDown = __webpack_require__(/*! ./AddFavFilmDropDown */ "./src/components/ProfilePage/AddFavFilmDropDown.js");
+var _AddSmallFilmDropDown = __webpack_require__(/*! ./AddSmallFilmDropDown */ "./src/components/ProfilePage/AddSmallFilmDropDown.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35275,7 +35275,7 @@ var FavouriteFilms = exports.FavouriteFilms = function (_React$Component) {
           { onClick: this.toggleDropDown },
           ' add new'
         ),
-        showAddFilmDropDown && _react2.default.createElement(_AddFavFilmDropDown.AddFavFilmDropDown, null)
+        showAddFilmDropDown && _react2.default.createElement(_AddSmallFilmDropDown.AddSmallFilmDropDown, null)
       );
     }
   }]);
