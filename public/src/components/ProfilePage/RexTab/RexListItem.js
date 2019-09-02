@@ -13,24 +13,25 @@ export class RexListItem extends React.Component {
           src={`https://image.tmdb.org/t/p/w185/${rex.filmInfo.poster_path}`}
         />
         <div className="rex-list-item-info">
-          <p className="rex-info-p-tag">{rex.filmInfo.title}</p>
-          <p className="rex-info-p-tag"> comment: {rex.comment}</p>
-          <p className="rex-info-p-tag">
-            {' '}
-            recommendation from : {rex.fromHandle}
-          </p>
-
-          <div>
-            <button
-              className="button"
-              onClick={() => toggleRexApproval(rex._id)}
-            >
-              {inApprovedTab ? 'unapprove' : 'approve'}
-            </button>
-            <button className="button" onClick={() => deleteRex(rex._id)}>
-              delete
-            </button>
-          </div>
+          <h2 className="rex-info-title">{rex.filmInfo.title}</h2>
+          <p className="rex-info-from">From @{rex.fromHandle}</p>
+          {rex.comment.length > 0 && (
+            <p className="rex-info-comment"> "{rex.comment}"</p>
+          )}
+        </div>
+        <div className="rex-list-button-container">
+          <button
+            className="rex-list-button button"
+            onClick={() => toggleRexApproval(rex._id)}
+          >
+            {inApprovedTab ? 'unapprove' : 'approve'}
+          </button>
+          <button
+            className="rex-list-button button"
+            onClick={() => deleteRex(rex._id)}
+          >
+            delete
+          </button>
         </div>
       </div>
     )

@@ -60,6 +60,7 @@ class Nav extends Component {
           updateUser={this.updateUserToSearch}
           containerClass="nav-search-input-container"
           inputClass="nav-input"
+          placeholder=""
         />
         <button
           className="settings-btn interactive"

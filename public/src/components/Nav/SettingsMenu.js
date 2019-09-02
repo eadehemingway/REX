@@ -9,7 +9,7 @@ export class SettingsMenu extends React.Component {
           Sign Out
         </button>
         <button className="menu-list-item" onClick={this.props.goToMyProfile}>
-          Go to my profile
+          My profile
         </button>
       </div>
     )

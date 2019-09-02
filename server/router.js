@@ -8,7 +8,7 @@ const {
   signOut
 } = require('./controllers/users')
 const {
-  addFavFilm,
+  AddSmallFilm,
   deleteFavFilm,
   addTagFilms,
   removeTagFilms,
@@ -27,7 +27,7 @@ router.get('/api/user/signout', signOut)
 router.get('/api/user/:handle', isAuthenticated, getUser)
 router.post('/api/user/signin', validateUser)
 router.get('/api/film/:title', isAuthenticated, getFilm)
-router.patch('/api/film', isAuthenticated, addFavFilm)
+router.patch('/api/film', isAuthenticated, AddSmallFilm)
 router.delete('/api/film/:filmid', isAuthenticated, deleteFavFilm)
 router.patch('/api/film/:id/tag', isAuthenticated, addTagFilms)
 router.delete('/api/film/:id/tag/:tagid', isAuthenticated, removeTagFilms)

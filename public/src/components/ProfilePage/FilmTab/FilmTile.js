@@ -49,17 +49,17 @@ export class FilmTile extends React.Component {
           >
             {editMode && (
               <button
-                className="interactive"
+                className="interactive more-menu-list-item"
                 onClick={() => deleteFilm(film._id)}
               >
-                delete
+                Delete
               </button>
             )}
             <button
-              className="interactive"
+              className="interactive more-menu-list-item"
               onClick={() => openSendRexModal(film)}
             >
-              send rex
+              Send rex
             </button>
           </div>
         )}

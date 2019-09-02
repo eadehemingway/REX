@@ -1,13 +1,13 @@
 import React from 'react'
 import './style.css'
-import { AddFavFilm } from './AddFavFilm'
+import { AddSmallFilmModal } from './AddSmallFilmModal'
 import { TagGroup } from './TagGroup'
 import Plus from './../../../assets/plus.svg'
 import { AddTagModal } from './AddTagModal'
 
 export class SmallTiles extends React.Component {
   state = {
-    addFilmPanelOpen: false,
+    addFilmModalOpen: false,
     showMoreMenu: false,
     tags: null,
     films: null,
@@ -25,7 +25,7 @@ export class SmallTiles extends React.Component {
     if (this.addFilmPanel && this.addFilmPanel.contains(e.target)) {
       return
     }
-    this.setState({ addFilmPanelOpen: false })
+    this.setState({ addFilmModalOpen: false })
   }
 
   addTag = newTag => {
@@ -49,41 +49,42 @@ export class SmallTiles extends React.Component {
       this.setState({ tags, films })
     }
   }
-  toggleAddPanel = tag => {
+  toggleAddFilmModal = tag => {
     this.setState(prevState => ({
-      addFilmPanelOpen: !prevState.addFilmPanelOpen,
+      addFilmModalOpen: !prevState.addFilmModalOpen,
       tagToPopulateModal: tag
     }))
   }
 
-  toggleMoreMenu = () => {
-    this.setState(prevState => ({ showMoreMenu: !prevState.showMoreMenu }))
-  }
   addFilm = selectedFilm => {
-    this.setState({ addFilmPanelOpen: false })
+    const { addFilm } = this.props
     const { tagToPopulateModal } = this.state
-    const tag = [
-      { name: tagToPopulateModal.name, colour: tagToPopulateModal.colour }
-    ]
     const filmInfo = {
       ...selectedFilm,
-      tag
+      tag: [
+        { name: tagToPopulateModal.name, colour: tagToPopulateModal.colour }
+      ]
     }
-
-    this.props.addFilm(filmInfo)
+    addFilm(filmInfo)
+    this.toggleAddFilmModal(null)
   }
   render() {
     const { editMode, deleteFilm, openSendRexModal } = this.props
-    const { addFilmPanelOpen, tags, films, addTagModalOpen } = this.state
+    const { addFilmModalOpen, tags, films, addTagModalOpen } = this.state
 
     return (
-      <div className="small-tile-section">
+      <div>
         {editMode && (
           <div
             className="add-film-dropdown-btn"
             ref={addFilmPanel => (this.addFilmPanel = addFilmPanel)}
           >
-            {addFilmPanelOpen && <AddFavFilm addFilm={this.addFilm} />}
+            {addFilmModalOpen && (
+              <AddSmallFilmModal
+                addFilm={this.addFilm}
+                closeModal={() => this.setState({ addFilmModalOpen: false })}
+              />
+            )}
           </div>
         )}
 
@@ -102,22 +103,28 @@ export class SmallTiles extends React.Component {
                   editMode={editMode}
                   deleteFilm={deleteFilm}
                   openSendRexModal={openSendRexModal}
-                  openAddFilmModal={this.toggleAddPanel}
+                  openAddFilmModal={this.toggleAddFilmModal}
                 />
               )
             })}
         </div>
-
-        {editMode && (
-          <button
-            onClick={() => this.setState({ addTagModalOpen: true })}
-            className="add-tag"
-          >
-            <img src={Plus} className="plus-icon" />
-            <p>Add tag</p>
-          </button>
-        )}
-        {addTagModalOpen && <AddTagModal addTag={this.addTag} />}
+        <div className="add-tag-container">
+          {editMode && (
+            <button
+              onClick={() => this.setState({ addTagModalOpen: true })}
+              className="add-tag"
+            >
+              <img src={Plus} className="plus-icon" />
+              <p>Add tag</p>
+            </button>
+          )}
+          {addTagModalOpen && (
+            <AddTagModal
+              addTag={this.addTag}
+              closeModal={() => this.setState({ addTagModalOpen: false })}
+            />
+          )}
+        </div>
       </div>
     )
   }
