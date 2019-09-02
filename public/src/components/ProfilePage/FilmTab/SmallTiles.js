@@ -121,7 +121,7 @@ export class SmallTiles extends React.Component {
             className="add-tag"
           >
             <img src={Plus} className="plus-icon" />
-            add tag
+            <p>Add tag</p>
           </button>
         )}
         {addTagModalOpen && <AddTagModal addTag={this.addTag} />}

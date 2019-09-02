@@ -13,7 +13,7 @@ export class TagGroup extends React.Component {
       deleteFilm,
       openSendRexModal
     } = this.props
-    console.log(Plus)
+
     const tagName = tag ? tag.name : 'No Tag'
     const colour = tag ? tag.colour : 'lightgrey'
     return (
@@ -43,10 +43,10 @@ export class TagGroup extends React.Component {
           })}
 
           <button
-            className="interactive"
+            className="interactive empty-tile-btn small-film-tile"
             onClick={() => this.props.openAddFilmModal(tag)}
           >
-            <img src={Plus} className="plus-icon" />
+            +
           </button>
         </div>
       </div>
