@@ -14,13 +14,14 @@
 }
 .rex-info-from {
   margin: 0;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: grey;
 }
 .rex-info-comment {
   margin: 0.5rem 0;
   font-size: 0.7rem;
   color: #cd6b5c;
+  white-space: normal;
 }
 .rex-info-title {
   color: #1e6f64;
