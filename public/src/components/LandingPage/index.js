@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Logo from '../../assets/rex.svg'
 
 export const LandingPage = () => {
-  const user = document.cookie.split('=')[1]
-
   return (
     <div className="page-content">
+      <img src={Logo} />
       <div> LandingPage</div>
       <Link to="/signin" className="home-btn">
         sign in
