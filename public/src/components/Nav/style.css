@@ -57,6 +57,7 @@
 }
 
 .nav-input {
+  outline: none;
   height: 20px;
   width: 140px;
   border: none;
