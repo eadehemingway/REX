@@ -156,7 +156,8 @@
   flex-direction: column;
   background: white;
   opacity: 0.9;
-  width: 95px;
+  width: 70px;
+  border-radius: 4px;
 }
 
 .more-menu-btn {
@@ -168,7 +169,9 @@
   padding: 0 4px 4px 4px;
   border-radius: 2px;
 }
-
+.more-menu-list-item {
+  text-align: left;
+}
 .plus-icon {
   width: 20px;
   opacity: 0.4;
