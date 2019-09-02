@@ -38,7 +38,7 @@ export class Signup extends React.Component {
           value={this.state.handle}
           placeholder="handle"
           onChange={this.handleChange}
-          className="text-input"
+          className="form-input"
         />
         <input
           type="text"
@@ -46,7 +46,7 @@ export class Signup extends React.Component {
           value={this.state.email}
           placeholder="username"
           onChange={this.handleChange}
-          className="text-input"
+          className="form-input"
         />
         <input
           type="password"
@@ -54,7 +54,7 @@ export class Signup extends React.Component {
           placeholder="password"
           value={this.state.password}
           onChange={this.handleChange}
-          className="text-input"
+          className="form-input"
         />
         <button className="button" onClick={this.handleClick}>
           signUp

@@ -54,7 +54,7 @@ export class FilmDropDown extends React.Component {
             type="text"
             placeholder="Add a film"
             value={value}
-            className="form-input text-input"
+            className="form-input"
             onChange={e => this.getMovies(e.target.value)}
           />
           <img src={SearchIcon} className="dropdown-search-icon" />

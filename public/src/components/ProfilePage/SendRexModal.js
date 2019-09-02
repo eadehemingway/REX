@@ -44,14 +44,14 @@ export class SendRexModal extends React.Component {
           deleteSelectedFilm={() => this.handleChange('selectedFilm', null)}
         />
         <label htmlFor="rex-input" className="form-label">
-          Rex
+          User
         </label>
         <UserDropDown
           selectUser={val => this.handleChange('receiverHandle', val)}
           selectedUser={receiverHandle}
           updateUser={val => this.handleChange('receiverHandle', val)}
           containerClass="send-rex-user-dropdown-container"
-          inputClass="text-input"
+          inputClass="form-input"
         />
         <label htmlFor="comment-input" className="form-label">
           Comment
@@ -61,7 +61,7 @@ export class SendRexModal extends React.Component {
           id="comment-input"
           placeholder="comment"
           value={comment}
-          className="form-input text-input"
+          className="form-input"
           onChange={event => this.handleChange('comment', event.target.value)}
         />
         <div className="send-rex-btn-container">
