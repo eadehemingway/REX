@@ -107,17 +107,23 @@ export class SmallTiles extends React.Component {
               )
             })}
         </div>
-
-        {editMode && (
-          <button
-            onClick={() => this.setState({ addTagModalOpen: true })}
-            className="add-tag"
-          >
-            <img src={Plus} className="plus-icon" />
-            <p>Add tag</p>
-          </button>
-        )}
-        {addTagModalOpen && <AddTagModal addTag={this.addTag} />}
+        <div className="add-tag-container">
+          {editMode && (
+            <button
+              onClick={() => this.setState({ addTagModalOpen: true })}
+              className="add-tag"
+            >
+              <img src={Plus} className="plus-icon" />
+              <p>Add tag</p>
+            </button>
+          )}
+          {addTagModalOpen && (
+            <AddTagModal
+              addTag={this.addTag}
+              closeModal={() => this.setState({ addTagModalOpen: false })}
+            />
+          )}
+        </div>
       </div>
     )
   }
