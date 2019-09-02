@@ -25,6 +25,7 @@ export class UserDropDown extends React.Component {
   getUsers = user => {
     if (user === '') {
       this.setState({ showDropDown: false })
+      this.props.updateUser(user)
       return
     }
     this.setState({ showDropDown: true })
