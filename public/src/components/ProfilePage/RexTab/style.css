@@ -1,7 +1,7 @@
 .rex-list-item-info {
   margin-left: 1rem;
   padding-top: 5px;
-  width: 40%;
+  width: 50%;
 }
 
 .rex-list-item {
@@ -34,7 +34,8 @@
   flex-direction: column;
   position: absolute;
   right: 0;
-  height: 100%;
+  height: 80%;
+  padding: 7px 0;
 }
 
 .rex-list-button {
