@@ -34,7 +34,7 @@ class Signin extends React.Component {
           signInSuccess()
           updateUserBeingViewed(handle)
           updateSignedInUser(handle)
-          history.push('/')
+          history.push(`/user/${handle}`)
         } else {
           this.setState({ error })
         }
@@ -48,6 +48,7 @@ class Signin extends React.Component {
     return (
       <div>
         <input
+          className="form-input"
           type="text"
           name="handle"
           value={this.state.handle}

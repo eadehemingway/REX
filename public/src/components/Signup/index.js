@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export class Signup extends React.Component {
   state = {
@@ -59,6 +60,11 @@ export class Signup extends React.Component {
         <button className="button" onClick={this.handleClick}>
           signUp
         </button>
+
+        <p>
+          dont have an account?
+          <Link to="/signin"> SIGN IN</Link> instead
+        </p>
       </div>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
-import NavWithRouter from './components/Nav'
+
 import { Signup } from './components/Signup'
 import { SigninConnected } from './components/Signin'
 import { ProtectedRoute } from './authRoute'
@@ -13,7 +13,6 @@ export class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <NavWithRouter />
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/signup" component={Signup} />

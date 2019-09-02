@@ -4,6 +4,7 @@ import axios from 'axios'
 import { EditModeProfileConnected } from './EditModeProfile'
 import { FilmTabConnected } from './FilmTab/FilmTab'
 import Logo from '../../assets/rex.svg'
+import NavWithRouter from './../Nav'
 class ProfilePage extends React.Component {
   state = {
     modalOpen: false,
@@ -38,6 +39,8 @@ class ProfilePage extends React.Component {
 
     return (
       <div className="page-content">
+        <NavWithRouter />
+
         <div className="profile-header">
           <div className="profile-pic">
             <img src={Logo} className="logo" />
