@@ -24,7 +24,7 @@ router.get('/', getLandingPage)
 router.get('/api/user/all/:handle', getAllUsers) // we want to get all users that match the handle
 router.post('/api/user/signup', createUser)
 router.get('/api/user/signout', signOut)
-router.get('/api/user/:handle', isAuthenticated, getUser)
+router.get('/api/user/:handle', getUser)
 router.post('/api/user/signin', validateUser)
 router.get('/api/film/:title', isAuthenticated, getFilm)
 router.patch('/api/film', isAuthenticated, AddSmallFilm)
