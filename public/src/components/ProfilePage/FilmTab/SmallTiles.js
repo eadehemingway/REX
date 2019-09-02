@@ -59,22 +59,22 @@ export class SmallTiles extends React.Component {
   toggleMoreMenu = () => {
     this.setState(prevState => ({ showMoreMenu: !prevState.showMoreMenu }))
   }
-  addFilm = e => {
+  addFilm = selectedFilm => {
     this.setState({ addFilmPanelOpen: false })
-    this.props.addFilm(e)
+    const { tagToPopulateModal } = this.state
+    const tag = [
+      { name: tagToPopulateModal.name, colour: tagToPopulateModal.colour }
+    ]
+    const filmInfo = {
+      ...selectedFilm,
+      tag
+    }
+
+    this.props.addFilm(filmInfo)
   }
   render() {
     const { editMode, deleteFilm, openSendRexModal } = this.props
-    const {
-      addFilmPanelOpen,
-      tags,
-      films,
-      tagToPopulateModal,
-      addTagModalOpen
-    } = this.state
-
-    const tagName = tagToPopulateModal && tagToPopulateModal.name
-    const tagColour = tagToPopulateModal && tagToPopulateModal.colour
+    const { addFilmPanelOpen, tags, films, addTagModalOpen } = this.state
 
     return (
       <div className="small-tile-section">
@@ -83,14 +83,7 @@ export class SmallTiles extends React.Component {
             className="add-film-dropdown-btn"
             ref={addFilmPanel => (this.addFilmPanel = addFilmPanel)}
           >
-            {addFilmPanelOpen && (
-              <AddFavFilm
-                addFilm={this.addFilm}
-                tags={tags}
-                tagName={tagName}
-                tagColour={tagColour}
-              />
-            )}
+            {addFilmPanelOpen && <AddFavFilm addFilm={this.addFilm} />}
           </div>
         )}
 
