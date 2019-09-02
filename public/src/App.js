@@ -13,8 +13,6 @@ export class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/signin" component={SigninConnected} />
           <ProtectedRoute path="/user/:id" component={ProfilePageConnected} />
         </Switch>
       </BrowserRouter>

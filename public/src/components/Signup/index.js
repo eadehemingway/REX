@@ -33,6 +33,7 @@ export class Signup extends React.Component {
   render() {
     return (
       <div>
+        <h2>Sign Up</h2>
         <input
           type="text"
           name="handle"
@@ -63,7 +64,7 @@ export class Signup extends React.Component {
 
         <p>
           dont have an account?
-          <Link to="/signin"> SIGN IN</Link> instead
+          <button onClick={this.props.switchTab}> SIGN IN</button> instead
         </p>
       </div>
     )
