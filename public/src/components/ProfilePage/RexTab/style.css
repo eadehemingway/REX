@@ -1,19 +1,21 @@
 .rex-list-item-info {
   margin-left: 1rem;
-  padding-top: 10px;
+  padding-top: 5px;
+  width: 40%;
 }
 
 .rex-list-item {
   display: flex;
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   background: #ebebeb;
   border-radius: 4px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 .rex-info-from {
-  margin: 0.5rem 0;
+  margin: 0;
   font-size: 0.7rem;
+  color: grey;
 }
 .rex-info-comment {
   margin: 0.5rem 0;
@@ -36,9 +38,6 @@
 
 .rex-list-button {
   margin-right: 10px;
-}
-.rex-list {
-  margin-top: 3rem;
 }
 
 .rex-img {
