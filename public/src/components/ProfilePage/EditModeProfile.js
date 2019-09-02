@@ -46,7 +46,7 @@ export class EditModeProfile extends React.Component {
 
   render() {
     const {
-      openModal,
+      openSendRexModal,
       closeModal,
       filmToRecommend,
       favFilms,
@@ -63,57 +63,67 @@ export class EditModeProfile extends React.Component {
       <div>
         {modalOpen && (
           <SendRexModal
-            openModal={openModal}
+            openSendRexModal={openSendRexModal}
             closeModal={closeModal}
             film={filmToRecommend}
             addRexToState={this.addRexToState}
             signedInUser={signedInUser}
           />
         )}
+        <div className="tab-header-container">
+          <button
+            className={`interactive tab-header ${
+              onFilmTab ? 'selected-tab' : ''
+            }`}
+            onClick={() => this.changeTab('films')}
+          >
+            films
+          </button>
+          <button
+            className={`interactive tab-header ${
+              onApprovedRexTab ? 'selected-tab' : ''
+            }`}
+            onClick={() => this.changeTab('approvedRex')}
+          >
+            approved rex
+          </button>
+          <button
+            className={`interactive tab-header ${
+              onNewRexTab ? 'selected-tab' : ''
+            }`}
+            onClick={() => this.changeTab('newRex')}
+          >
+            new rex
+          </button>
+        </div>
+        <div className="tab-content-background">
+          <div className="tab-content">
+            {onFilmTab && (
+              <FilmTabConnected
+                films={favFilms}
+                editMode={true}
+                openSendRexModal={openSendRexModal}
+              />
+            )}
 
-        <button
-          className={`tab-header ${onFilmTab ? 'selected-tab' : ''}`}
-          onClick={() => this.changeTab('films')}
-        >
-          films
-        </button>
-        <button
-          className={`tab-header ${onApprovedRexTab ? 'selected-tab' : ''}`}
-          onClick={() => this.changeTab('approvedRex')}
-        >
-          approved rex
-        </button>
-        <button
-          className={`tab-header ${onNewRexTab ? 'selected-tab' : ''}`}
-          onClick={() => this.changeTab('newRex')}
-        >
-          new rex
-        </button>
-
-        {onFilmTab && (
-          <FilmTabConnected
-            films={favFilms}
-            editMode={true}
-            openModal={openModal}
-          />
-        )}
-
-        {onApprovedRexTab && (
-          <RexTab
-            rex={rex}
-            inApprovedTab={true}
-            changeStatusInState={this.changeStatusInState}
-            deleteRex={this.deleteRexFromState}
-          />
-        )}
-        {onNewRexTab && (
-          <RexTab
-            rex={rex}
-            inApprovedTab={false}
-            changeStatusInState={this.changeStatusInState}
-            deleteRex={this.deleteRexFromState}
-          />
-        )}
+            {onApprovedRexTab && (
+              <RexTab
+                rex={rex}
+                inApprovedTab={true}
+                changeStatusInState={this.changeStatusInState}
+                deleteRex={this.deleteRexFromState}
+              />
+            )}
+            {onNewRexTab && (
+              <RexTab
+                rex={rex}
+                inApprovedTab={false}
+                changeStatusInState={this.changeStatusInState}
+                deleteRex={this.deleteRexFromState}
+              />
+            )}
+          </div>
+        </div>
       </div>
     )
   }

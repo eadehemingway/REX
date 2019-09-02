@@ -74,7 +74,6 @@ h2 {
 /* GENERAL DROP DOWN ========================= */
 .dropdown-list-item {
   display: flex;
-  width: 200px;
 }
 
 /* USER DROP DOWN ============================= */
@@ -82,18 +81,27 @@ h2 {
 /* PROFILE GENERIC =============================*/
 
 .profile-pic {
-  border: 2px solid lightgrey;
+  border: 2px solid #cd6b5c;
   width: 50px;
   height: 50px;
+  opacity: 0.4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-header {
-  width: 100%;
   display: flex;
-  margin-bottom: 2rem;
+  padding: 4rem 2rem 3rem 2rem;
 }
 .send-rex-btn {
   height: 20px;
+  outline: none;
+  border: 1px solid #cd6b5c;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #cd6b5c;
 }
 
 .handle-send-rex-btn-container {
@@ -116,16 +124,28 @@ h2 {
   background: none;
   border: none;
   margin-right: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
   padding-right: 0;
   padding-left: 0;
-  cursor: pointer;
+  opacity: 0.4;
+}
+.tab-header-container {
+  padding-left: 2rem;
+}
+.selected-tab {
+  border-bottom: 3px solid #1e6f64;
+  padding-bottom: 8px;
+  opacity: 1 !important;
+  font-weight: bold;
 }
 
-.selected-tab {
-  border-bottom: 2px solid black;
-  padding-bottom: 8px;
+.tab-content-background {
+  background: #faf9f8;
+  padding: 2rem 0;
+}
+
+.tab-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 /* GENERAL LABELS INPUTS BUTTONS ============== */

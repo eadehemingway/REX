@@ -32,29 +32,33 @@ class FilmTab extends React.Component {
       .catch(e => console.log('ERROR DELETING FILM', e))
   }
   render() {
-    const { editMode, signedInUser, openModal } = this.props
+    const { editMode, signedInUser, openSendRexModal } = this.props
     const { films } = this.state
-    const topFilms = films.filter(f => {
+    const largeTileFilms = []
+    const smallTileFilms = []
+
+    films.forEach(f => {
       const tagNames = f.tag.map(t => t.name)
-      return tagNames.includes('TOP')
+      tagNames.includes('TOP') ? largeTileFilms.push(f) : smallTileFilms.push(f)
     })
+
     return (
       <div>
         <LargeTiles
-          topFilms={topFilms}
+          topFilms={largeTileFilms}
           signedInUser={signedInUser}
           addTopFilm={this.addFilm}
           editMode={editMode}
           deleteFilm={this.deleteFilm}
-          openModal={openModal}
+          openSendRexModal={openSendRexModal}
         />
         <SmallTiles
-          films={films}
+          films={smallTileFilms}
           signedInUser={signedInUser}
           addFilm={this.addFilm}
           editMode={editMode}
           deleteFilm={this.deleteFilm}
-          openModal={openModal}
+          openSendRexModal={openSendRexModal}
         />
       </div>
     )

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { EditModeProfileConnected } from './EditModeProfile'
 import { FilmTabConnected } from './FilmTab/FilmTab'
-
+import Logo from '../../assets/rex.svg'
 class ProfilePage extends React.Component {
   state = {
     modalOpen: false,
@@ -25,7 +25,7 @@ class ProfilePage extends React.Component {
     })
   }
 
-  openModal = (film = null) => {
+  openSendRexModal = (film = null) => {
     this.setState({ filmToRecommend: film, modalOpen: true })
   }
   closeModal = () => {
@@ -39,16 +39,18 @@ class ProfilePage extends React.Component {
     return (
       <div className="page-content">
         <div className="profile-header">
-          <div className="profile-pic"></div>
+          <div className="profile-pic">
+            <img src={Logo} className="logo" />
+          </div>
 
           <div className="handle-send-rex-btn-container">
             <p className="handle-title"> @{userBeingViewed}</p>
 
             {editMode && (
               <button
-                className="send-rex-btn button"
+                className="send-rex-btn"
                 type="button"
-                onClick={() => this.openModal()}
+                onClick={() => this.openSendRexModal()}
               >
                 SEND REX
               </button>
@@ -58,20 +60,22 @@ class ProfilePage extends React.Component {
 
         {editMode && (
           <EditModeProfileConnected
-            openModal={this.openModal}
+            openSendRexModal={this.openSendRexModal}
             closeModal={this.closeModal}
             filmToRecommend={filmToRecommend}
             favFilms={favFilms}
             modalOpen={modalOpen}
           />
         )}
-        {!editMode && (
-          <FilmTabConnected
-            films={favFilms}
-            editMode={false}
-            openModal={this.openModal}
-          />
-        )}
+        <div className="tab-content">
+          {!editMode && (
+            <FilmTabConnected
+              films={favFilms}
+              editMode={false}
+              openSendRexModal={this.openSendRexModal}
+            />
+          )}
+        </div>
       </div>
     )
   }

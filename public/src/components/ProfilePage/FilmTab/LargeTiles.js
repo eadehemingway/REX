@@ -5,7 +5,13 @@ import './style.css'
 
 export class LargeTiles extends React.Component {
   render() {
-    const { topFilms, addTopFilm, editMode, deleteFilm, openModal } = this.props
+    const {
+      topFilms,
+      addTopFilm,
+      editMode,
+      deleteFilm,
+      openSendRexModal
+    } = this.props
     const maxNumTopFilms = 4
     const emptyTilesNeeded = maxNumTopFilms - topFilms.length
     const emptyTileArray = [...Array(emptyTilesNeeded)].map((_, i) => i)
@@ -17,7 +23,7 @@ export class LargeTiles extends React.Component {
             key={i}
             editMode={editMode}
             deleteFilm={deleteFilm}
-            openModal={openModal}
+            openSendRexModal={openSendRexModal}
             containerClass="large-film-tile"
             imageClass="large-film-tile"
           />

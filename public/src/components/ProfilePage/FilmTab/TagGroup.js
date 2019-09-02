@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 import { FilmTile } from './FilmTile'
-
+import Plus from './../../../assets/plus.svg'
 export class TagGroup extends React.Component {
   state = {}
 
@@ -11,7 +11,7 @@ export class TagGroup extends React.Component {
       filmsWithThisTag,
       editMode,
       deleteFilm,
-      openModal
+      openSendRexModal
     } = this.props
 
     const tagName = tag ? tag.name : 'No Tag'
@@ -34,13 +34,20 @@ export class TagGroup extends React.Component {
                   film={f}
                   editMode={editMode}
                   deleteFilm={deleteFilm}
-                  openModal={openModal}
+                  openSendRexModal={openSendRexModal}
                   containerClass="cropped-to-square"
                   imageClass="small-film-tile"
                 />
               </div>
             )
           })}
+
+          <button
+            className="interactive empty-tile-btn small-empty-tile"
+            onClick={() => this.props.openAddFilmModal(tag)}
+          >
+            +
+          </button>
         </div>
       </div>
     )

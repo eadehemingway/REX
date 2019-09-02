@@ -14,7 +14,6 @@ export class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           <NavWithRouter />
-          <div className="background-rect"></div>
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/signup" component={Signup} />

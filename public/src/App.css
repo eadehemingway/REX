@@ -2,13 +2,3 @@
   position: relative;
   white-space: nowrap;
 }
-
-.background-rect {
-  /* background: #f0f0f0; */
-  height: 1100px;
-  width: 90%;
-  z-index: -1;
-  position: absolute;
-  right: 0;
-  top: 111px;
-}
