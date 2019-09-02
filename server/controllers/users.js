@@ -62,12 +62,15 @@ exports.getUser = (req, res) => {
 
   User.findOne({ handle }, (err, doc) => {
     if (err) console.log('err', err)
-    if (!doc) return
+    if (!doc) {
+      res.json({ userExists: false })
+      return
+    }
     const { films } = doc
     const rex = handle === loggedInUserHandle ? doc.receivedRex : null
     const favourtiesAndRex = { films, rex }
 
-    res.json({ doc: favourtiesAndRex })
+    res.json({ doc: favourtiesAndRex, userExists: true })
   })
 }
 

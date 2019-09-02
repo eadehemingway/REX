@@ -10,3 +10,9 @@
   left: -224px;
   z-index: -1;
 }
+
+.warning-text {
+  color: red;
+  margin: 0;
+  font-size: 0.8rem;
+}
