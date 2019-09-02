@@ -56,6 +56,10 @@
   margin: 10px;
 }
 
+.nav-search-input-container .dropdown-search-icon {
+  top: 3px;
+  width: 12px;
+}
 .nav-input {
   outline: none;
   height: 20px;
