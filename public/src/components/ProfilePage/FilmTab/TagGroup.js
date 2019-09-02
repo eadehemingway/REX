@@ -43,7 +43,7 @@ export class TagGroup extends React.Component {
           })}
 
           <button
-            className="interactive empty-tile-btn small-film-tile"
+            className="interactive empty-tile-btn small-empty-tile"
             onClick={() => this.props.openAddFilmModal(tag)}
           >
             +

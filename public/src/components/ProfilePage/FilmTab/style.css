@@ -38,6 +38,11 @@
   height: 100px;
   border-radius: 4px;
 }
+
+.small-empty-tile {
+  height: 100px;
+  width: 25px;
+}
 .small-tile-section {
   margin-top: 2rem;
 }
