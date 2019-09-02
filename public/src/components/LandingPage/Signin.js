@@ -57,7 +57,7 @@ export class Signin extends React.Component {
         </form>
         <p>
           dont have an account?
-          <button onClick={this.props.switchTab}> SIGN UP</button> instead
+          <button onClick={this.props.switchTab}> SIGN UP</button>
         </p>
       </div>
     )
