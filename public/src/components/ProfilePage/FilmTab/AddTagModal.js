@@ -3,7 +3,11 @@ import { SketchPicker } from 'react-color'
 import { Modal } from './../Modal'
 
 export class AddTagModal extends React.Component {
-  state = {}
+  state = {
+    tagName: null,
+    tagColour: '#cd6b5c',
+    displayColorPicker: false
+  }
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOut, false)

@@ -122,8 +122,9 @@
 }
 
 .color-square {
+  box-sizing: border-box;
   width: 20px;
-  height: 20px;
+  height: 30px;
   border: 2px solid lightgrey;
   margin: 10px 0 20px 1rem;
 }
@@ -133,7 +134,7 @@
 .color-picker {
   position: absolute;
   z-index: 3;
-  left: 22px;
+  right: 0;
 }
 
 .tag-input-container {
