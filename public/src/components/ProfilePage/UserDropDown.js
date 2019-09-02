@@ -62,7 +62,7 @@ export class UserDropDown extends React.Component {
         />
         <img
           src={SearchIcon}
-          className="search-icon"
+          className="dropdown-search-icon"
           onClick={() => this.selectUser(selectedUser)}
         />
         <div

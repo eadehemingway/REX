@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import './style.css'
+import SearchIcon from '../../assets/search.svg'
 
 export class FilmDropDown extends React.Component {
   state = {
@@ -46,14 +47,18 @@ export class FilmDropDown extends React.Component {
         <label htmlFor="film" className="form-label">
           Film
         </label>
-        <input
-          id="film"
-          type="text"
-          placeholder="Add a film"
-          value={value}
-          className="form-input text-input"
-          onChange={e => this.getMovies(e.target.value)}
-        />
+
+        <div className="film-search-container">
+          <input
+            id="film"
+            type="text"
+            placeholder="Add a film"
+            value={value}
+            className="form-input text-input"
+            onChange={e => this.getMovies(e.target.value)}
+          />
+          <img src={SearchIcon} className="dropdown-search-icon" />
+        </div>
         <div
           className="film-drop-down-container"
           ref={filmDropDown => (this.filmDropDown = filmDropDown)}
