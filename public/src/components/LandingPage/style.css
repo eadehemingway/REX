@@ -1,4 +1,12 @@
 .signup-signin-form {
   width: 80%;
   margin: auto;
+  margin-top: 3rem;
+}
+
+.rex-logo-landing-page {
+  position: absolute;
+  opacity: 0.5;
+  left: -224px;
+  z-index: -1;
 }
