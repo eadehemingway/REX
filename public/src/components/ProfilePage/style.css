@@ -44,7 +44,8 @@ h2 {
 }
 
 /* FILM DROP DOWN ============================ */
-.film-drop-down-container {
+.film-drop-down-container,
+.user-drop-down-container {
   background: white;
   display: flex;
   flex-direction: column;

@@ -6,7 +6,8 @@ import SearchIcon from '../../assets/search.svg'
 export class UserDropDown extends React.Component {
   state = {
     userInfoList: [],
-    showDropDown: false
+    showDropDown: false,
+    userSeletedFromDropdown: false
   }
 
   componentDidMount() {
@@ -37,18 +38,23 @@ export class UserDropDown extends React.Component {
   }
 
   selectUser = user => {
-    this.setState({ showDropDown: false })
+    this.setState({ showDropDown: false, userSeletedFromDropdown: true })
     this.props.updateUser(user)
     this.props.selectUser(user)
   }
   keyPressed = (event, user) => {
+    const { userSeletedFromDropdown } = this.state
     const keyCode = event.keyCode || event.which
     if (keyCode === 13) {
       this.props.selectUser(user)
     }
+    if (keyCode === 8 && userSeletedFromDropdown) {
+      this.props.updateUser('')
+      this.setState({ userSeletedFromDropdown: false })
+    }
   }
   render() {
-    const { userInfoList, showDropDown } = this.state
+    const { userInfoList, showDropDown, userSeletedFromDropdown } = this.state
     const { selectedUser, containerClass, inputClass, placeholder } = this.props
 
     return (
@@ -56,10 +62,11 @@ export class UserDropDown extends React.Component {
         <input
           id="user"
           type="text"
-          value={selectedUser}
+          value={`${userSeletedFromDropdown ? '@' : ''}${selectedUser}`}
           className={inputClass}
+          style={{ color: userSeletedFromDropdown ? 'blue' : 'black' }}
           onChange={e => this.getUsers(e.target.value)}
-          onKeyPress={e => this.keyPressed(e, selectedUser)}
+          onKeyDown={e => this.keyPressed(e, selectedUser)}
           placeholder={placeholder}
         />
         <img
@@ -78,7 +85,7 @@ export class UserDropDown extends React.Component {
                 key={u.handle}
                 onClick={() => this.selectUser(u.handle)}
               >
-                <p>{u.handle}</p>
+                <p style={{ color: 'blue' }}>@{u.handle}</p>
               </button>
             ))}
         </div>
