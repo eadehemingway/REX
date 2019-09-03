@@ -59,19 +59,21 @@ class Nav extends Component {
           inputClass="nav-input"
           placeholder=""
         />
-        <button
-          className="settings-btn interactive"
-          onClick={() => this.toggleShowSettingsMenu()}
-        >
-          <img src={Menu} className="hamburger-menu" />
-        </button>
-        <div ref={settingsMenu => (this.settingsMenu = settingsMenu)}>
-          {this.state.showSettingsMenu && (
-            <SettingsMenu
-              signout={this.signOut}
-              goToMyProfile={() => this.goToProfilePage(signedInUser)}
-            />
-          )}
+        <div className="nav-menu-container">
+          <button
+            className="settings-btn interactive"
+            onClick={() => this.toggleShowSettingsMenu()}
+          >
+            <img src={Menu} className="hamburger-menu" />
+          </button>
+          <div ref={settingsMenu => (this.settingsMenu = settingsMenu)}>
+            {this.state.showSettingsMenu && (
+              <SettingsMenu
+                signout={this.signOut}
+                goToMyProfile={() => this.goToProfilePage(signedInUser)}
+              />
+            )}
+          </div>
         </div>
       </nav>
     )
