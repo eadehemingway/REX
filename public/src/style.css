@@ -14,3 +14,22 @@ button {
   margin: auto;
   height: 100vh;
 }
+
+@media only screen and (min-width: 1000px) {
+  .page-content {
+    width: 50%;
+    max-width: 50%;
+  }
+  .modal-window {
+    width: 40%;
+    max-width: 40%;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .page-content {
+    width: 70%;
+  }
+  .modal-window {
+    width: 50%;
+  }
+}

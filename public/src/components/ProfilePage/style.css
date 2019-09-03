@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap');
 
-h2 {
+h3 {
   margin: 0;
 }
 
@@ -31,19 +31,26 @@ h2 {
   display: flex;
   flex-direction: column;
   margin: 2rem;
+  width: 100%;
 }
 
 .modal-btn {
-  height: 35px;
+  height: 28px;
   width: 49%;
 }
-/* SEND REX MODAL  ======================*/
-.send-rex-btn-container {
+.modal-btn-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 2rem;
 }
+/* SEND REX MODAL  ======================*/
+
 .send-rex-user-dropdown-container .user-drop-down-container {
   top: 40px;
+}
+
+.send-rex-title {
+  margin-top: 0;
 }
 
 /* FILM DROP DOWN ============================ */

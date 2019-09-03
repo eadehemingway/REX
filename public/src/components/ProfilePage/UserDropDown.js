@@ -68,6 +68,7 @@ export class UserDropDown extends React.Component {
           onChange={e => this.getUsers(e.target.value)}
           onKeyDown={e => this.keyPressed(e, selectedUser)}
           placeholder={placeholder}
+          autoComplete="off"
         />
         <img
           src={SearchIcon}

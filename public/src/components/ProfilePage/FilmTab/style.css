@@ -92,6 +92,8 @@
 .add-tag {
   display: flex;
   margin-top: 3rem;
+  border: none;
+  background: #faf9f8;
 }
 .add-tag p {
   margin: auto;

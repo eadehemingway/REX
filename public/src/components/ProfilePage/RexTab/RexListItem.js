@@ -13,7 +13,7 @@ export class RexListItem extends React.Component {
           src={`https://image.tmdb.org/t/p/w185/${rex.filmInfo.poster_path}`}
         />
         <div className="rex-list-item-info">
-          <h2 className="rex-info-title">{rex.filmInfo.title}</h2>
+          <h3 className="rex-info-title">{rex.filmInfo.title}</h3>
           <p className="rex-info-from">From @{rex.fromHandle}</p>
           {rex.comment.length > 0 && (
             <p className="rex-info-comment"> "{rex.comment}"</p>

@@ -56,7 +56,7 @@ export class FilmDropDown extends React.Component {
             value={value}
             className="form-input"
             onChange={e => this.getMovies(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
           />
           <img src={SearchIcon} className="dropdown-search-icon" />
 
@@ -80,7 +80,7 @@ export class FilmDropDown extends React.Component {
                     <div className="drop-down-empty-poster">No image</div>
                   )}
 
-                  <h2 className="film-drop-down-title">{t.title}</h2>
+                  <h3 className="film-drop-down-title">{t.title}</h3>
                 </button>
               ))}
           </div>
@@ -93,7 +93,7 @@ export class FilmDropDown extends React.Component {
               src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
             />
 
-            <h2 className="selected-film-title">{selectedFilm.title}</h2>
+            <h3 className="selected-film-title">{selectedFilm.title}</h3>
 
             <button
               className="remove-selected-film button"
