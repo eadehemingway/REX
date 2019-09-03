@@ -56,13 +56,37 @@ h2 {
   position: relative;
 }
 .film-drop-down-image {
-  width: 42px;
+  width: 32px;
+  border-radius: 4px;
 }
 .dropdown-search-icon {
   position: absolute;
   height: 15px;
   top: 17px;
   right: 4px;
+}
+
+.selected-film-container {
+  display: flex;
+  margin-bottom: 1rem;
+  border: 1px solid #cd6b5c;
+  border-radius: 4px;
+  padding: 0.2rem;
+  position: relative;
+}
+
+.selected-film-img-and-title {
+  margin-left: 0.7rem;
+  padding-top: 0.3rem;
+}
+.selected-film-title {
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+.remove-selected-film {
+  height: 17px;
+  position: absolute;
+  right: 2px;
 }
 /* GENERAL DROP DOWN ========================= */
 .dropdown-list-item {

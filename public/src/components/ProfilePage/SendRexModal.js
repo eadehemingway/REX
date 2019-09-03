@@ -28,8 +28,6 @@ export class SendRexModal extends React.Component {
   }
 
   handleChange = (name, value) => {
-    console.log('value:', value)
-
     this.setState({ [name]: value })
   }
 

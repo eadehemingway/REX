@@ -36,7 +36,7 @@ export class FilmDropDown extends React.Component {
 
   selectFilm = film => {
     this.props.selectFilm(film)
-    this.setState({ showDropDown: false })
+    this.setState({ showDropDown: false, value: '' })
   }
   render() {
     const { filmInfo, value, showDropDown } = this.state
@@ -80,15 +80,20 @@ export class FilmDropDown extends React.Component {
         </div>
 
         {selectedFilm && (
-          <div>
+          <div className="selected-film-container">
             <img
               className="film-drop-down-image"
               src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
             />
-            <button className="button" onClick={deleteSelectedFilm}>
-              remove
+            <div className="selected-film-img-and-title">
+              <h2 className="selected-film-title">{selectedFilm.title}</h2>
+            </div>
+            <button
+              className="remove-selected-film button"
+              onClick={deleteSelectedFilm}
+            >
+              x
             </button>
-            <p>{selectedFilm.title}</p>
           </div>
         )}
       </div>
