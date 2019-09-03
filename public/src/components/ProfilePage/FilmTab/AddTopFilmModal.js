@@ -26,9 +26,11 @@ export class AddTopFilmModal extends React.Component {
           selectedFilm={selectedFilm}
           deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
         />
-        <button className="modal-btn button" onClick={this.addTopFilm}>
-          add film
-        </button>
+        <div className="modal-btn-container">
+          <button className="modal-btn button" onClick={this.addTopFilm}>
+            add film
+          </button>
+        </div>
       </Modal>
     )
   }

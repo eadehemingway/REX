@@ -72,10 +72,11 @@ export class AddTagModal extends React.Component {
               )}
             </div>
           </div>
-
-          <button className="button" onClick={this.addTag}>
-            submit
-          </button>
+          <div className="modal-btn-container">
+            <button className="button modal-btn" onClick={this.addTag}>
+              submit
+            </button>
+          </div>
         </div>
       </Modal>
     )

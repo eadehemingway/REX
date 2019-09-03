@@ -37,7 +37,7 @@ export class SendRexModal extends React.Component {
 
     return (
       <Modal closeModal={closeModal}>
-        <h2>Send Recommendation</h2>
+        <h2 className="send-rex-title">Send Recommendation</h2>
         <FilmDropDown
           selectFilm={val => this.handleChange('selectedFilm', val)}
           selectedFilm={selectedFilm}
@@ -65,15 +65,12 @@ export class SendRexModal extends React.Component {
           className="form-input"
           onChange={event => this.handleChange('comment', event.target.value)}
         />
-        <div className="send-rex-btn-container">
+        <div className="modal-btn-container">
           <button
             className="modal-btn button"
             onClick={() => this.sendRex(selectedFilm, receiverHandle)}
           >
             send
-          </button>
-          <button className="modal-btn button" onClick={this.props.closeModal}>
-            close
           </button>
         </div>
       </Modal>

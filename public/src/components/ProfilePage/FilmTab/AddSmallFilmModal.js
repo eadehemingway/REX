@@ -20,12 +20,14 @@ export class AddSmallFilmModal extends React.Component {
           selectedFilm={selectedFilm}
           deleteSelectedFilm={() => this.setState({ selectedFilm: null })}
         />
-        <button
-          className="button"
-          onClick={() => this.props.addFilm(selectedFilm)}
-        >
-          submit
-        </button>
+        <div className="modal-btn-container">
+          <button
+            className="button modal-btn"
+            onClick={() => this.props.addFilm(selectedFilm)}
+          >
+            submit
+          </button>
+        </div>
       </Modal>
     )
   }
