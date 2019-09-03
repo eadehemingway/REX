@@ -58,25 +58,26 @@ export class FilmDropDown extends React.Component {
             onChange={e => this.getMovies(e.target.value)}
           />
           <img src={SearchIcon} className="dropdown-search-icon" />
-        </div>
-        <div
-          className="film-drop-down-container"
-          ref={filmDropDown => (this.filmDropDown = filmDropDown)}
-        >
-          {showDropDown &&
-            filmInfo.map(t => (
-              <button
-                className="dropdown-list-item interactive"
-                key={t.poster_path}
-                onClick={() => this.selectFilm(t)}
-              >
-                <img
-                  className="film-drop-down-image"
-                  src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
-                />
-                <p>{t.title}</p>
-              </button>
-            ))}
+
+          <div
+            className="film-drop-down-container"
+            ref={filmDropDown => (this.filmDropDown = filmDropDown)}
+          >
+            {showDropDown &&
+              filmInfo.map(t => (
+                <button
+                  className="dropdown-list-item interactive"
+                  key={t.poster_path}
+                  onClick={() => this.selectFilm(t)}
+                >
+                  <img
+                    className="film-drop-down-image"
+                    src={`https://image.tmdb.org/t/p/w185/${t.poster_path}`}
+                  />
+                  <h2 className="film-drop-down-title">{t.title}</h2>
+                </button>
+              ))}
+          </div>
         </div>
 
         {selectedFilm && (
