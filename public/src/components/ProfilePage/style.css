@@ -68,6 +68,17 @@ h2 {
   width: 32px;
   border-radius: 4px;
 }
+
+.drop-down-empty-poster {
+  opacity: 0.3;
+  border: 2px solid grey;
+  height: 40px;
+  width: 28px;
+  font-size: 0.5rem;
+  border-radius: 4px;
+  padding-top: 6px;
+  box-sizing: border-box;
+}
 .dropdown-search-icon {
   position: absolute;
   height: 15px;
