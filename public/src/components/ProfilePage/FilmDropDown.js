@@ -85,9 +85,9 @@ export class FilmDropDown extends React.Component {
               className="film-drop-down-image"
               src={`https://image.tmdb.org/t/p/w185/${selectedFilm.poster_path}`}
             />
-            <div className="selected-film-img-and-title">
-              <h2 className="selected-film-title">{selectedFilm.title}</h2>
-            </div>
+
+            <h2 className="selected-film-title">{selectedFilm.title}</h2>
+
             <button
               className="remove-selected-film button"
               onClick={deleteSelectedFilm}

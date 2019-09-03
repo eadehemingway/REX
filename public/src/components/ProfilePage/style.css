@@ -75,13 +75,11 @@ h2 {
   position: relative;
 }
 
-.selected-film-img-and-title {
-  margin-left: 0.7rem;
-  padding-top: 0.3rem;
-}
 .selected-film-title {
+  margin-left: 0.7rem;
   font-size: 0.7rem;
   margin-bottom: 0.5rem;
+  padding-top: 0.3rem;
 }
 .remove-selected-film {
   height: 17px;
