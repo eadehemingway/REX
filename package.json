@@ -4,9 +4,8 @@
   "description": "### to run the app for development",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:front": "cd public && npm run build",
-    "start:back": "cd server && npm start",
+    "start:back": "cd server && npm run start:heroku",
     "start": "npm run build:front && npm run start:back"
   },
   "repository": {
