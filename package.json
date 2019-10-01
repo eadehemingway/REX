@@ -1,0 +1,22 @@
+{
+  "name": "rex",
+  "version": "1.0.0",
+  "description": "### to run the app for development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:front": "cd public && npm run build",
+    "start:back": "cd server && npm start",
+    "start": "npm run build:front && npm run start:back"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eadehemingway/REX.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eadehemingway/REX/issues"
+  },
+  "homepage": "https://github.com/eadehemingway/REX#readme"
+}
