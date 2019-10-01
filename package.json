@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/eadehemingway/REX/issues"
   },
-  "homepage": "https://github.com/eadehemingway/REX#readme"
+  "homepage": "https://github.com/eadehemingway/REX#readme",
+  "engines": {
+    "node": "10.15.3"
+  }
 }
