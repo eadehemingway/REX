@@ -40,6 +40,7 @@ export class FilmDropDown extends React.Component {
   }
   render() {
     const { filmInfo, value, showDropDown } = this.state
+
     const { selectedFilm, deleteSelectedFilm } = this.props
 
     return (
@@ -68,7 +69,7 @@ export class FilmDropDown extends React.Component {
               filmInfo.map(t => (
                 <button
                   className="dropdown-list-item interactive"
-                  key={t.poster_path}
+                  key={`${t.title}${t.poster_path}`}
                   onClick={() => this.selectFilm(t)}
                 >
                   {t.poster_path ? (
