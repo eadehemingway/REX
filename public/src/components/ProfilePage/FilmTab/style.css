@@ -35,13 +35,11 @@
 
 .small-film-tile {
   width: 100px;
-  height: 100px;
-  border-radius: 4px;
+  height: 135px;
 }
 
 .small-empty-tile {
   height: 100px;
-  width: 25px;
 }
 
 .cropped-to-square {
@@ -51,6 +49,7 @@
   margin-right: 15px;
   margin-bottom: 15px;
   position: relative;
+  border-radius: 4px;
 }
 
 .tag-group-film-container {
@@ -61,6 +60,7 @@
 .tag-group-container {
   width: 100%;
   max-width: 100%;
+  margin-top: 2rem;
 }
 
 .tag-dropdown {
