@@ -4,8 +4,8 @@
   "description": "### to run the app for development",
   "main": "index.js",
   "scripts": {
-    "build:front": "cd public && npm run build",
-    "start:back": "cd server && npm run start:heroku",
+    "build:front": "cd public && npm i && npm run build",
+    "start:back": "cd server && npm i && npm run start:heroku",
     "start": "npm run build:front && npm run start:back"
   },
   "repository": {
