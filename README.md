@@ -2,7 +2,7 @@
 
 ### to run the app for development
 
-in public
+in client
 
 ```
 npm run build:watch

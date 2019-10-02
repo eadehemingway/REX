@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 import { FilmTile } from './FilmTile'
-import Plus from './../../../assets/plus.svg'
+import Plus from '../../../assets/plus.svg'
 export class TagGroup extends React.Component {
   state = {}
 

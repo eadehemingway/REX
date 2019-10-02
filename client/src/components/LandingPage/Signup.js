@@ -34,7 +34,7 @@ export class Signup extends React.Component {
         if (data.status === 'success') {
           updateReduxSignedIn(handle)
         } else {
-          this.setState({ error })
+          this.setState({ error: 'error with signing in' })
         }
       })
       .catch(error => {

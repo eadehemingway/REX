@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 import { AddSmallFilmModal } from './AddSmallFilmModal'
 import { TagGroup } from './TagGroup'
-import Plus from './../../../assets/plus.svg'
+import Plus from '../../../assets/plus.svg'
 import { AddTagModal } from './AddTagModal'
 
 export class SmallTiles extends React.Component {

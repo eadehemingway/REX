@@ -1,6 +1,6 @@
 import React from 'react'
 import { SketchPicker } from 'react-color'
-import { Modal } from './../Modal'
+import { Modal } from '../Modal'
 
 export class AddTagModal extends React.Component {
   state = {

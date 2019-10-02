@@ -7,9 +7,7 @@
     "start:heroku": "node ./index.js",
     "start": "nodemon ./index.js",
     "db:build": "node database/db_build.js",
-    "eslint": "eslint \"**/*.js\" --ignore-pattern node_modules/",
-    "eslint:fix": "eslint --fix \"**/*.js\" --ignore-pattern node_modules/",
-    "build:front": "cd ../public && npm run build:watch"
+    "build:front": "cd ../client && npm run build:watch"
   },
   "author": "",
   "license": "ISC",
@@ -25,19 +23,5 @@
     "path": "^0.12.7",
     "pg-promise": "^8.7.2",
     "request": "^2.88.0"
-  },
-  "devDependencies": {
-    "babel-eslint": "^9.0.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-config-wesbos": "0.0.19",
-    "eslint-plugin-html": "^5.0.5",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.2",
-    "eslint-plugin-react-hooks": "^1.6.1",
-    "prettier": "^1.18.2"
   }
 }

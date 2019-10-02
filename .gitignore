@@ -2,7 +2,7 @@
 # Dependency directories
 node_modules/
 jspm_packages/
-public/dist
+client/build
 
 
 # dotenv environment variables file

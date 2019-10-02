@@ -4,7 +4,7 @@ const User = require('../models/users')
 const bcrypt = require('bcryptjs')
 
 exports.getLandingPage = (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/dist/index.html'))
+  res.sendFile(path.join(__dirname, '../client/build/index.html'))
 }
 
 exports.getAllUsers = async (req, res) => {

@@ -4,7 +4,7 @@ import axios from 'axios'
 import { EditModeProfileConnected } from './EditModeProfile'
 import { FilmTabConnected } from './FilmTab/FilmTab'
 import Logo from '../../assets/rex.svg'
-import NavWithRouter from './../Nav'
+import NavWithRouter from '../Nav'
 class ProfilePage extends React.Component {
   state = {
     modalOpen: false,

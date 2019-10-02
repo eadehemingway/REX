@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { App } from './App'
 import './style.css'
-import './components/Nav/style.css'
-import './components/ProfilePage/style.css'
 import store from './store/configStore'
+import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -13,3 +12,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 )
+
+serviceWorker.register()
